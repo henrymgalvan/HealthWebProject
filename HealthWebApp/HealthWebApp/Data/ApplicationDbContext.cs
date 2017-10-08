@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using HealthWebApp.Models;
+using HealthWebApp.Data.EntityModel;
 
 namespace HealthWebApp.Data
 {
@@ -15,6 +16,11 @@ namespace HealthWebApp.Data
         {
         }
 
+        public DbSet<Person> People {get; set;}
+        public DbSet<Barangay> Barangay { get; set; }        
+        public DbSet<HouseholdMember> HouseholdMember { get; set; }
+        public DbSet<HouseholdProfile> HouseholdProfile { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

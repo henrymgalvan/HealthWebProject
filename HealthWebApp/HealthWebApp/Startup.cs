@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using HealthWebApp.Data;
 using HealthWebApp.Models;
 using HealthWebApp.Services;
+using HealthWebApp.Data.Services;
+using HealthWebApp.Data.Interface;
 
 namespace HealthWebApp
 {
@@ -52,6 +54,9 @@ namespace HealthWebApp
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddSingleton(Configuration);
+            services.AddScoped<IPerson, PersonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

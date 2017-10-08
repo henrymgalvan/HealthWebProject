@@ -40,7 +40,7 @@ namespace HealthWebApp.Data.EntityModel
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
 
         public HouseholdProfile HouseholdProfile {get; set;}
-        public FamilyProfile FamilyProfile { get; set; }
+        public HouseholdMember HouseholdMember { get; set; }
 
     }
 }
