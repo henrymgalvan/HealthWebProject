@@ -31,5 +31,10 @@ namespace HealthWebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Error1()
+        {
+            return View();
+        }
     }
 }
