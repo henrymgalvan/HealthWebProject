@@ -2,6 +2,8 @@ using System.Linq;
 using HealthWebApp.Data.Interface;
 using HealthWebApp.Models.Person;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using HealthWebApp.Data.EntityModel;
 
 namespace HealthWebApp.Controllers
 {
@@ -36,6 +38,27 @@ namespace HealthWebApp.Controllers
                 People = PersonModels
             };
 
+            return View(model);
+        }
+
+        public IActionResult Details(int id)
+        {
+            Person patient = _person.Get(id);
+
+            var model = new PersonDetailModel()
+            {
+                Id = patient.Id,
+                FirstName = patient.FirstName,
+                MiddleName = patient.MiddleName,
+                LastName = patient.LastName,
+                ExtensionName = patient.ExtensionName,
+                NameTittle = patient.NameTittle,
+                DateOfBirth = patient.DateOfBirth.ToString(),
+                Sex = patient.Sex.ToString(),
+                ContactNumber = patient.ContactNumber,
+                HouseholdProfileId = patient.HouseholdProfile.ProfileId
+
+            };
             return View(model);
         }
     }

@@ -17,10 +17,11 @@ namespace HealthWebApp.Models.Person
 
         public string ContactNumber { get; set; }
 
-        public string HouseholdProfileId {get; set;}
+        public string HouseholdProfileId { get; set; }
+        public string HouseholdMemberId { get; set; }
 
-        // public HouseholdProfile HouseholdProfile {get; set;}
-        // public HouseholdMember HouseholdMember { get; set; }
+        public virtual HouseholdProfile HouseholdProfile {get; set;}
+        public virtual HouseholdMember HouseholdMember { get; set; }
 
     }
 }

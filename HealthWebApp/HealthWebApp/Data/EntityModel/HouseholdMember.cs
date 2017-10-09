@@ -23,6 +23,8 @@ namespace HealthWebApp.Data.EntityModel
 
         public CivilStatus CivilStatus { get; set; }
         public virtual Person Person { get; set; }
+        public virtual Person Father { get; set; }
+        public virtual Person Mother { get; set; }
 
     }
 }
