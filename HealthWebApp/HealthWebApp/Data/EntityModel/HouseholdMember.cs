@@ -1,9 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace HealthWebApp.Data.EntityModel
 {
-    public enum CivilStatus
-    {
-        Dependent = 1, Single, Married, LiveIn ,Separated, Annuled, Widowed
-    }
+
     public enum RelationToHouseholdHead
      { 
         Head = 1, Spouse = 2, Son = 3, Daughter = 4, Grandson = 5, GrandDaughter = 6,
@@ -13,18 +12,22 @@ namespace HealthWebApp.Data.EntityModel
      }
     public class HouseholdMember
     {
+        [Key]
         public int Id { get; set; }
-        public string HouseholdProfileId { get; set; }
-        public int PersonId { get; set; }
+
         public RelationToHouseholdHead RelationToHead { get; set; }
 
         public int FatherId { get; set; }
         public int MotherId { get; set; }
 
-        public CivilStatus CivilStatus { get; set; }
+        //public virtual Person Father { get; set; }
+        //public virtual Person Mother { get; set; }
+
+        public int PersonId { get; set; }
         public virtual Person Person { get; set; }
-        public virtual Person Father { get; set; }
-        public virtual Person Mother { get; set; }
+
+        public string HouseholdProfileId { get; set; }
+        public virtual HouseholdProfile HouseholdProfile { get; set; }
 
     }
 }

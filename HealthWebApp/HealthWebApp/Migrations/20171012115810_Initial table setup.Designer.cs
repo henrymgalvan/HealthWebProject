@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using HealthWebApp.Data;
 using HealthWebApp.Data.EntityModel;
 
-namespace HealthWebApp.Data.Migrations
+namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171008153445_Patient details added")]
-    partial class Patientdetailsadded
+    [Migration("20171012115810_Initial table setup")]
+    partial class Initialtablesetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,11 +35,11 @@ namespace HealthWebApp.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CivilStatus");
-
                     b.Property<int>("FatherId");
 
                     b.Property<string>("HouseholdProfileId");
+
+                    b.Property<int?>("HouseholdProfileId1");
 
                     b.Property<int>("MotherId");
 
@@ -49,8 +49,9 @@ namespace HealthWebApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonId")
-                        .IsUnique();
+                    b.HasIndex("HouseholdProfileId1");
+
+                    b.HasIndex("PersonId");
 
                     b.ToTable("HouseholdMember");
                 });
@@ -74,9 +75,6 @@ namespace HealthWebApp.Data.Migrations
 
                     b.HasIndex("BarangayId");
 
-                    b.HasIndex("RespondentId")
-                        .IsUnique();
-
                     b.ToTable("HouseholdProfile");
                 });
 
@@ -84,6 +82,8 @@ namespace HealthWebApp.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CivilStatus");
 
                     b.Property<string>("ContactNumber");
 
@@ -95,6 +95,8 @@ namespace HealthWebApp.Data.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(30);
+
+                    b.Property<int>("HouseholdProfileId");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -112,6 +114,8 @@ namespace HealthWebApp.Data.Migrations
                     b.Property<int>("Sex");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HouseholdProfileId");
 
                     b.ToTable("People");
                 });
@@ -275,9 +279,13 @@ namespace HealthWebApp.Data.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.HouseholdMember", b =>
                 {
+                    b.HasOne("HealthWebApp.Data.EntityModel.HouseholdProfile", "HouseholdProfile")
+                        .WithMany("HouseholdMembers")
+                        .HasForeignKey("HouseholdProfileId1");
+
                     b.HasOne("HealthWebApp.Data.EntityModel.Person", "Person")
-                        .WithOne("HouseholdMember")
-                        .HasForeignKey("HealthWebApp.Data.EntityModel.HouseholdMember", "PersonId")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -287,10 +295,13 @@ namespace HealthWebApp.Data.Migrations
                         .WithMany()
                         .HasForeignKey("BarangayId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("HealthWebApp.Data.EntityModel.Person", "Respondent")
-                        .WithOne("HouseholdProfile")
-                        .HasForeignKey("HealthWebApp.Data.EntityModel.HouseholdProfile", "RespondentId")
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Person", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.HouseholdProfile", "HouseholdProfile")
+                        .WithMany()
+                        .HasForeignKey("HouseholdProfileId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

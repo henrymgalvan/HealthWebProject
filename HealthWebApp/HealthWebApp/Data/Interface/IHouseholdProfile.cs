@@ -6,8 +6,8 @@ namespace HealthWebApp.Data.Interface
     public interface IHouseholdProfile
     {
         IEnumerable<HouseholdProfile> GetAll();
-        HouseholdProfile Get(int id);
-        HouseholdProfile Get(string ProfileId);
+        HouseholdProfile GetById(int id);
+        HouseholdProfile GetByProfileId(string ProfileId);
         void Add(HouseholdProfile newHouseholdProfile);
 
     }

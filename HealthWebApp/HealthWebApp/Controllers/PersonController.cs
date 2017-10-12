@@ -29,6 +29,8 @@ namespace HealthWebApp.Controllers
                                     NameTittle = p.NameTittle,
                                     DateOfBirth = p.DateOfBirth.ToString(),
                                     Sex = p.Sex.ToString(),
+                                    Address = p.HouseholdProfile.Address,
+                                    Barangay = p.HouseholdProfile.Barangay.Name,
                                     ContactNumber = p.ContactNumber,
                                     HouseholdProfileId = p.HouseholdProfile.ProfileId
                                 }).ToList();
@@ -55,6 +57,8 @@ namespace HealthWebApp.Controllers
                 NameTittle = patient.NameTittle,
                 DateOfBirth = patient.DateOfBirth.ToString(),
                 Sex = patient.Sex.ToString(),
+                Address = patient.HouseholdProfile.Address,
+                Barangay = patient.HouseholdProfile.Barangay.Name,
                 ContactNumber = patient.ContactNumber,
                 HouseholdProfileId = patient.HouseholdProfile.ProfileId
 
