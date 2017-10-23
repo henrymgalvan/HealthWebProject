@@ -24,13 +24,15 @@ namespace HealthWebApp.Data.Services
         {
             return _context.People
                 .Include(a => a.HouseholdProfile)
+                .Include(a => a.HouseholdProfile.Barangay)
                 .ToList();
 
         }
 
         public Person Get(int id)
         {
-            return Getall().FirstOrDefault(p => p.Id == id);
+            return Getall()
+                .FirstOrDefault(p => p.Id == id);
         }
 
 

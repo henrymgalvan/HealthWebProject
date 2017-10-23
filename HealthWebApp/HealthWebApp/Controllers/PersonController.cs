@@ -1,9 +1,9 @@
-using System.Linq;
+using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Data.Interface;
 using HealthWebApp.Models.Person;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using HealthWebApp.Data.EntityModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HealthWebApp.Controllers
 {
@@ -17,29 +17,29 @@ namespace HealthWebApp.Controllers
 
         public IActionResult Index()
         {
-            var allPersons = _person.Getall();
-            var PersonModels = allPersons
-                                .Select(p=>new PersonDetailModel
+            IEnumerable<Person> allPersons = _person.Getall();
+
+            IEnumerable<PersonDetailModel> PersonModels = allPersons
+                                .Select(p => new PersonDetailModel
                                 {
                                     Id = p.Id,
                                     FirstName = p.FirstName,
                                     MiddleName = p.MiddleName,
                                     LastName = p.LastName,
                                     ExtensionName = p.ExtensionName,
-                                    NameTittle = p.NameTittle,
+                                    NameTitle = p.NameTitle,
                                     DateOfBirth = p.DateOfBirth.ToString(),
                                     Sex = p.Sex.ToString(),
-                                    Address = p.HouseholdProfile.Address,
-                                    Barangay = p.HouseholdProfile.Barangay.Name,
+                                    CivilStatus = p.CivilStatus.ToString(),
+                                    Address = p.HouseholdProfile?.Address,
+                                    Barangay = p.HouseholdProfile?.Barangay.Name,
                                     ContactNumber = p.ContactNumber,
-                                    HouseholdProfileId = p.HouseholdProfile.ProfileId
+                                    HouseholdProfileId = p.HouseholdProfile?.ProfileId
                                 }).ToList();
-
             var model = new PersonIndexModel()
             {
                 People = PersonModels
             };
-
             return View(model);
         }
 
@@ -54,7 +54,7 @@ namespace HealthWebApp.Controllers
                 MiddleName = patient.MiddleName,
                 LastName = patient.LastName,
                 ExtensionName = patient.ExtensionName,
-                NameTittle = patient.NameTittle,
+                NameTitle = patient.NameTitle,
                 DateOfBirth = patient.DateOfBirth.ToString(),
                 Sex = patient.Sex.ToString(),
                 Address = patient.HouseholdProfile.Address,
@@ -65,5 +65,12 @@ namespace HealthWebApp.Controllers
             };
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            PersonCreateModel newPerson = new PersonCreateModel();
+            return View(newPerson);
+         }
     }
 }

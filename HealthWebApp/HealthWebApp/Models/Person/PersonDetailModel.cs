@@ -12,8 +12,8 @@ namespace HealthWebApp.Models.Person
         public string ExtensionName { get; set; }   
         public string DateOfBirth { get; set; }
         public string Sex { get; set; }
-
-        public string NameTittle { get; set; }
+        public string CivilStatus { get; set; }
+        public string NameTitle { get; set; }
 
         public string ContactNumber { get; set; }
 

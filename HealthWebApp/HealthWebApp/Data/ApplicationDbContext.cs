@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using HealthWebApp.Models;
 using HealthWebApp.Data.EntityModel;
+using HealthWebApp.Models.Person;
 
 namespace HealthWebApp.Data
 {
@@ -28,5 +29,7 @@ namespace HealthWebApp.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+        
+        public DbSet<HealthWebApp.Models.Person.PersonCreateModel> PersonCreateModel { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace HealthWebApp.Data.EntityModel
         public string ExtensionName { get; set; }
 
         [StringLength(30)]
-        public string NameTittle { get; set; }
+        public string NameTitle { get; set; }
 
         public Gender Sex { get; set; }
 

@@ -50,6 +50,8 @@ namespace HealthWebApp.Data
                 context.Barangay.AddRange(barangays);
                 context.SaveChanges();
             }
+
+
         }
 
     }

@@ -60,7 +60,7 @@ namespace HealthWebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, ApplicationDbContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -89,7 +89,7 @@ namespace HealthWebApp
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DbInitialize.Initialize(ApplicationDbContext context);
+            DbInitialize.Initialize(context);
             
         }
     }
