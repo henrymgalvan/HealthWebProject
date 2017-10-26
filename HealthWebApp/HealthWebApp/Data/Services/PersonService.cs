@@ -23,8 +23,6 @@ namespace HealthWebApp.Data.Services
         public IEnumerable<Person> Getall()
         {
             return _context.People
-                .Include(a => a.HouseholdProfile)
-                .Include(a => a.HouseholdProfile.Barangay)
                 .ToList();
 
         }
@@ -33,6 +31,11 @@ namespace HealthWebApp.Data.Services
         {
             return Getall()
                 .FirstOrDefault(p => p.Id == id);
+        }
+
+        public Person Update(int id)
+        {
+
         }
 
 

@@ -9,9 +9,10 @@ using HealthWebApp.Data.EntityModel;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171026125539_Person table cleanup")]
+    partial class Persontablecleanup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -85,8 +86,6 @@ namespace HealthWebApp.Migrations
                     b.Property<int>("CivilStatus");
 
                     b.Property<string>("ContactNumber");
-
-                    b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime?>("DateOfBirth");
 
@@ -172,6 +171,10 @@ namespace HealthWebApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Address");
+
+                    b.Property<int?>("BarangayId");
+
                     b.Property<int>("CivilStatus");
 
                     b.Property<string>("ContactNumber");
@@ -182,17 +185,19 @@ namespace HealthWebApp.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<string>("HouseholdProfileId");
+
                     b.Property<string>("LastName");
 
                     b.Property<string>("MiddleName");
 
                     b.Property<string>("NameTitle");
 
-                    b.Property<bool>("PersonConsent");
-
                     b.Property<int>("Sex");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BarangayId");
 
                     b.ToTable("PersonCreateModel");
                 });
@@ -322,6 +327,13 @@ namespace HealthWebApp.Migrations
                         .WithMany()
                         .HasForeignKey("BarangayId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HealthWebApp.Models.Person.PersonCreateModel", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.Barangay", "Barangay")
+                        .WithMany()
+                        .HasForeignKey("BarangayId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

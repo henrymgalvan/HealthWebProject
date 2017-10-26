@@ -8,6 +8,7 @@ namespace HealthWebApp.Data.EntityModel
     {
         Male = 1, Female = 2
     }
+
     public enum CivilStatus
     {
         Dependent = 1, Single, Married, LiveIn, Separated, Annuled, Widowed
@@ -43,10 +44,6 @@ namespace HealthWebApp.Data.EntityModel
         [Phone]
         public string ContactNumber { get; set; }
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
-
-
-        public int HouseholdProfileId { get; set; }
-        public virtual HouseholdProfile HouseholdProfile { get; set; }
-
+        public DateTime DateCreated { get; set; }
     }
 }

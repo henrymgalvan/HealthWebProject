@@ -1,5 +1,7 @@
 ﻿using HealthWebApp.Data.EntityModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HealthWebApp.Models.Person
@@ -18,18 +20,16 @@ namespace HealthWebApp.Models.Person
         [Display(Name = "Extension")]
         public string ExtensionName { get; set; }
         [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         [Display(Name = "Gender")]
         public Gender Sex { get; set; }
+
         [Display(Name = "Civil Status")]
         public CivilStatus CivilStatus { get; set; }
 
-
+        [Phone]
         public string ContactNumber { get; set; }
-
-        public string Address { get; set; }
-        public Barangay Barangay { get; set; }
-
-        public string HouseholdProfileId { get; set; }
+        public bool PersonConsent { get; set; }
     }
 }

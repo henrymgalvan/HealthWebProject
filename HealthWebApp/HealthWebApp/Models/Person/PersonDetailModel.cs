@@ -14,15 +14,6 @@ namespace HealthWebApp.Models.Person
         public string Sex { get; set; }
         public string CivilStatus { get; set; }
         public string NameTitle { get; set; }
-
         public string ContactNumber { get; set; }
-
-        public string Address { get; set; }
-        public string Barangay { get; set; }
-
-        public string HouseholdProfileId { get; set; }
-
-
-
     }
 }
