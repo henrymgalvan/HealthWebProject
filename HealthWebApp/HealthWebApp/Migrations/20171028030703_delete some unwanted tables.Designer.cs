@@ -9,9 +9,10 @@ using HealthWebApp.Data.EntityModel;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171028030703_delete some unwanted tables")]
+    partial class deletesomeunwantedtables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -64,13 +65,11 @@ namespace HealthWebApp.Migrations
 
                     b.Property<int>("BarangayId");
 
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateTimeLastUpdated");
-
                     b.Property<string>("Note");
 
                     b.Property<string>("ProfileId");
+
+                    b.Property<int>("RespondentId");
 
                     b.HasKey("Id");
 

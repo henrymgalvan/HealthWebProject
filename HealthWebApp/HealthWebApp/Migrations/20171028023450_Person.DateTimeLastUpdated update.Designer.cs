@@ -9,9 +9,10 @@ using HealthWebApp.Data.EntityModel;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171028023450_Person.DateTimeLastUpdated update")]
+    partial class PersonDateTimeLastUpdatedupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -64,13 +65,11 @@ namespace HealthWebApp.Migrations
 
                     b.Property<int>("BarangayId");
 
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateTimeLastUpdated");
-
                     b.Property<string>("Note");
 
                     b.Property<string>("ProfileId");
+
+                    b.Property<int>("RespondentId");
 
                     b.HasKey("Id");
 
@@ -169,6 +168,64 @@ namespace HealthWebApp.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Models.Person.PersonCreateModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CivilStatus");
+
+                    b.Property<string>("ContactNumber");
+
+                    b.Property<DateTime>("DateOfBirth");
+
+                    b.Property<string>("ExtensionName");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("MiddleName");
+
+                    b.Property<string>("NameTitle");
+
+                    b.Property<bool>("PersonConsent");
+
+                    b.Property<int>("Sex");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PersonCreateModel");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Models.Person.PersonEditModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CivilStatus");
+
+                    b.Property<string>("ContactNumber");
+
+                    b.Property<DateTime?>("DateOfBirth");
+
+                    b.Property<string>("ExtensionName");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("MiddleName");
+
+                    b.Property<string>("NameTitle");
+
+                    b.Property<int>("Sex");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PersonEditModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>

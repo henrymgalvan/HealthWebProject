@@ -43,7 +43,9 @@ namespace HealthWebApp.Data.EntityModel
 
         [Phone]
         public string ContactNumber { get; set; }
+
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
+        public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
     }
 }

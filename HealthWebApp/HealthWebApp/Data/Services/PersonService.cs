@@ -22,20 +22,18 @@ namespace HealthWebApp.Data.Services
 
         public IEnumerable<Person> Getall()
         {
-            return _context.People
-                .ToList();
-
+            return _context.People.ToList();
         }
 
         public Person Get(int id)
         {
-            return Getall()
-                .FirstOrDefault(p => p.Id == id);
+            return Getall().FirstOrDefault(p => p.Id == id);
         }
 
-        public Person Update(int id)
+        public void Update(Person UpdatedPerson)
         {
-
+            _context.Entry(UpdatedPerson).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
 

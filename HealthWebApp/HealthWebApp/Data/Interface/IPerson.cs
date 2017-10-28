@@ -8,7 +8,7 @@ namespace HealthWebApp.Data.Interface
         IEnumerable<Person> Getall();
         Person Get(int id);
         void Add(Person newPerson);
-        
+        void Update(Person updatedPerson);
          
     }
 }

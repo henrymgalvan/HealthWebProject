@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using HealthWebApp.Models;
 using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Models.Person;
+using HealthWebApp.Models.HouseholdProfile;
 
 namespace HealthWebApp.Data
 {
@@ -30,8 +31,10 @@ namespace HealthWebApp.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         
-        public DbSet<HealthWebApp.Models.Person.PersonCreateModel> PersonCreateModel { get; set; }
+        public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
         
-        public DbSet<HealthWebApp.Models.Person.PersonEditModel> PersonEditModel { get; set; }
+        //public DbSet<HealthWebApp.Models.Person.PersonCreateModel> PersonCreateModel { get; set; }
+        
+        //public DbSet<HealthWebApp.Models.Person.PersonEditModel> PersonEditModel { get; set; }
     }
 }

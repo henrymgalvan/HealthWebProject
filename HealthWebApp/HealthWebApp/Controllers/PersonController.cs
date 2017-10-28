@@ -40,7 +40,6 @@ namespace HealthWebApp.Controllers
             };
             return View(model);
         }
-
         public IActionResult Details(int id)
         {
             Person person = _person.Get(id);
@@ -87,6 +86,7 @@ namespace HealthWebApp.Controllers
                         person.CivilStatus = newPerson.CivilStatus;
                         person.ContactNumber = newPerson.ContactNumber;
                         person.DateCreated = DateTime.Now;
+                        person.DateTimeLastUpdated = person.DateCreated;
                         person.PersonConsent = newPerson.PersonConsent;
 
                         _person.Add(person);
@@ -120,7 +120,6 @@ namespace HealthWebApp.Controllers
             };
             return View(model);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(PersonEditModel editPerson)
@@ -129,26 +128,22 @@ namespace HealthWebApp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (editPerson.PersonConsent)
-                    {
-                        var person = new Person();
-                        person.FirstName = editPerson.FirstName;
-                        person.MiddleName = editPerson.MiddleName;
-                        person.LastName = editPerson.LastName;
-                        person.ExtensionName = editPerson.ExtensionName;
-                        person.NameTitle = editPerson.NameTitle;
-                        person.Sex = editPerson.Sex;
-                        person.DateOfBirth = editPerson.DateOfBirth;
-                        person.CivilStatus = editPerson.CivilStatus;
-                        person.ContactNumber = editPerson.ContactNumber;
-                        person.DateCreated = DateTime.Now;
-                        person.PersonConsent = editPerson.PersonConsent;
-
-                        _person.Add(person);
+                    var UpdatedPerson = new Person();
+                    UpdatedPerson.Id = editPerson.Id;
+                    UpdatedPerson.FirstName = editPerson.FirstName;
+                    UpdatedPerson.MiddleName = editPerson.MiddleName;
+                    UpdatedPerson.LastName = editPerson.LastName;
+                    UpdatedPerson.ExtensionName = editPerson.ExtensionName;
+                    UpdatedPerson.NameTitle = editPerson.NameTitle;
+                    UpdatedPerson.Sex = editPerson.Sex;
+                    UpdatedPerson.DateOfBirth = editPerson.DateOfBirth;
+                    UpdatedPerson.CivilStatus = editPerson.CivilStatus;
+                    UpdatedPerson.ContactNumber = editPerson.ContactNumber;
+                    UpdatedPerson.DateTimeLastUpdated = DateTime.Now;
+                    _person.Update(UpdatedPerson);
                         return RedirectToAction("Index");
-                    }
-                    return View(editPerson);
                 }
+                return View(editPerson);
             }
             catch (Exception err)
             {
