@@ -38,6 +38,7 @@ namespace HealthWebApp.Data.Services
         public HouseholdProfile GetById(int id)
         {
             return _context.HouseholdProfile
+                .Include(b => b.Barangay)
                 .FirstOrDefault(hp => hp.Id == id);
         }
 
@@ -49,6 +50,7 @@ namespace HealthWebApp.Data.Services
         public HouseholdProfile GetByProfileId(string ProfileId)
         {
             return _context.HouseholdProfile
+                .Include(b => b.Barangay)
                 .FirstOrDefault(hp => hp.ProfileId == ProfileId);
         }
 

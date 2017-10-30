@@ -1,0 +1,14 @@
+﻿using HealthWebApp.Data.EntityModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace HealthWebApp.Data.Interface
+{
+    public interface IBarangay
+    {
+        IEnumerable<Barangay> GetAll();
+        Barangay GetBarangayById(int id);
+    }
+}
