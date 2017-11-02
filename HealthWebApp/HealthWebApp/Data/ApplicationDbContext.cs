@@ -33,7 +33,9 @@ namespace HealthWebApp.Data
         
         public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
         
-        public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileEditModel> HouseholdProfileEditModel { get; set; }
+        //public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
+        
+        //public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileEditModel> HouseholdProfileEditModel { get; set; }
         
         //public DbSet<HealthWebApp.Models.Person.PersonCreateModel> PersonCreateModel { get; set; }
         

@@ -1,0 +1,73 @@
+@model HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HouseholdProfileDetailModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfileId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProfileId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Barangay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Barangay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+    </dl>
+</div>
+
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="alert-info">
+                <th>Id #</th>
+                <th>Full Name</th>
+                <th>Gender</th>
+                <th>Relation</th>
+                <th>Age</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody class="alert-success">
+            @foreach (var member in Model.HouseholdMembers)
+            {
+                <tr>
+                    <td>@member.Id</td>
+                    <td>@member.FullName</td>
+                    <td>@member.Sex</td>
+                    <td>@member.RelationToHead</td>
+                    <td>@member.YearsOld, "y.o.", @member.MonthsOld, "m.o.",@member.DaysOld,"d.o."</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

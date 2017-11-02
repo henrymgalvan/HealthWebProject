@@ -6,10 +6,6 @@
     <UserSecretsId>aspnet-HealthWebApp-F29CBC18-89F7-4809-B569-5B6356D0E076</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Views\HouseholdProfile\Create.cshtml" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Bootstrap.v3.Datetimepicker" Version="4.17.45" />

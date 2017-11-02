@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HealthWebApp.Data.Interface;
 using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Models.HouseholdProfile;
+using HealthWebApp.Models.HouseholdMember;
 
 namespace HealthWebApp.Controllers
 {
@@ -13,11 +14,13 @@ namespace HealthWebApp.Controllers
     {
         private IHouseholdProfile _householdProfile;
         private IBarangay _barangay;
+        private IHouseholdMember _householdMembers;
 
-        public HouseholdProfileController(IHouseholdProfile householdProfile, IBarangay barangay)
+        public HouseholdProfileController(IHouseholdProfile householdProfile, IBarangay barangay, IHouseholdMember householdMembers)
         {
             _householdProfile = householdProfile;
             _barangay = barangay;
+            _householdMembers = householdMembers;
         }
         public IActionResult Index()
         {
@@ -76,22 +79,88 @@ namespace HealthWebApp.Controllers
             return View(householdProfileCreateModel);
         }
 
-        //[HttpGet]
-        //public IActionResult Edit(HouseholdProfileEditModel householdProfileEditModel)
-        //{
-        //    List<Barangay> barangaylist = new List<Barangay>();
-        //    barangaylist = (from barangay in _barangay.GetAll() select barangay).ToList();
-        //    barangaylist.Insert(0, new Barangay { Id = 0, Name = "Select" });
-        //    ViewBag.ListOfBarangay = barangaylist;
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            HouseholdProfile household = _householdProfile.GetById(id);
 
-        //    return View(householdProfileEditModel);
-        //}
+            List<Barangay> barangaylist = new List<Barangay>();
+            barangaylist = (from barangay in _barangay.GetAll() select barangay).ToList();
+            barangaylist.Insert(0, new Barangay { Id = 0, Name = "Select" });
+            ViewBag.ListOfBarangay = barangaylist;
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit(HouseholdProfileEditModel householdProfileEditModel)
-        //{
+            var householdProfileEditModel = new HouseholdProfileEditModel()
+            {
+                Id = household.Id,
+                ProfileId = household.ProfileId,
+                Address = household.Address,
+                BarangayId = household.BarangayId,
+                Note = household.Note
+            };
 
-        //}
+            return View(householdProfileEditModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(HouseholdProfileEditModel householdProfileEditModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var updatedHousehold = new HouseholdProfile();
+                    updatedHousehold.Id = householdProfileEditModel.Id;
+                    updatedHousehold.ProfileId = householdProfileEditModel.ProfileId;
+                    updatedHousehold.Address = householdProfileEditModel.Address;
+                    updatedHousehold.BarangayId = householdProfileEditModel.BarangayId;
+                    updatedHousehold.Note = householdProfileEditModel.Note;
+
+                    _householdProfile.Update(updatedHousehold);
+                    return RedirectToAction("Index");
+                }
+                return View(householdProfileEditModel);
+            }
+            catch (Exception err)
+            {
+                ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            return View(householdProfileEditModel);
+
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            HouseholdProfile household = _householdProfile.GetById(id);
+            List<HouseholdMember> members = _householdMembers.GetAllByHouseholdProfileId(household.ProfileId).ToList();
+            IEnumerable<HouseholdMemberDetailModel> membersDetailModel = new List<HouseholdMemberDetailModel>();
+
+            foreach (var member in members)
+            {
+                var memberDetailModel = new HouseholdMemberDetailModel()
+                {
+                    Id = member.Id,
+                    FullName = member.Person.FirstName + " " + member.Person.MiddleName + " " + member.Person.LastName,
+                    Sex = member.Person.Sex.ToString(),
+                    RelationToHead = member.RelationToHead.ToString(),
+                    YearsOld = 0,
+                    MonthsOld = 0,
+                    DaysOld = 0
+                };
+                membersDetailModel.Append(memberDetailModel);
+            }
+            var model = new HouseholdProfileDetailModel()
+            {
+                Id = household.Id,
+                ProfileId = household.ProfileId,
+                Address = household.Address,
+                Barangay = household.Barangay.Name,
+                Note = household.Note,
+                HouseholdMembers = membersDetailModel
+            };
+
+            return View(model);
+        }
     }
 }

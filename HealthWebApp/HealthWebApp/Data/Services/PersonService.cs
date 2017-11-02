@@ -36,6 +36,11 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-
+        public void Delete(int id)
+        {
+            Person person = _context.People.FirstOrDefault(p => p.Id == id);
+            _context.People.Remove(person);
+            _context.SaveChanges();
+         }
     }
 }

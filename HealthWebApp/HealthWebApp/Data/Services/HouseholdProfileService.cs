@@ -39,6 +39,7 @@ namespace HealthWebApp.Data.Services
         {
             return _context.HouseholdProfile
                 .Include(b => b.Barangay)
+                .Include(m => m.HouseholdMembers)
                 .FirstOrDefault(hp => hp.Id == id);
         }
 

@@ -151,5 +151,20 @@ namespace HealthWebApp.Controllers
             }
             return View(editPerson);
         }
+
+        //[HttpGet]
+        //public IActionResult Delete(int id)
+        //{
+        //    Person person = _person.Get(id);
+        //    if (person != null)
+        //    {
+
+        //        ViewBag["FullName"] = person.FirstName + " " + person.MiddleName + " " + person.LastName;
+        //        return View(ViewBag);
+        //    } else
+        //    {
+        //        return View("ErrorDelete");
+        //    }
+        //}
     }
 }
