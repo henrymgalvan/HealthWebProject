@@ -1,0 +1,54 @@
+@model HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>HouseholdMemberDetailModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RelationToHead)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RelationToHead)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearsOld)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearsOld)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MonthsOld)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MonthsOld)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DaysOld)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DaysOld)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

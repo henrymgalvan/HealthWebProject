@@ -1,7 +1,5 @@
 ﻿using HealthWebApp.Data.EntityModel;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HealthWebApp.Models.Person

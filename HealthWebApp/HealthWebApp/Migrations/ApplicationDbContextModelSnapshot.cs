@@ -36,9 +36,7 @@ namespace HealthWebApp.Migrations
 
                     b.Property<int>("FatherId");
 
-                    b.Property<string>("HouseholdProfileId");
-
-                    b.Property<int?>("HouseholdProfileId1");
+                    b.Property<int>("HouseholdProfileId");
 
                     b.Property<int>("MotherId");
 
@@ -48,7 +46,7 @@ namespace HealthWebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HouseholdProfileId1");
+                    b.HasIndex("HouseholdProfileId");
 
                     b.HasIndex("PersonId");
 
@@ -171,6 +169,50 @@ namespace HealthWebApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DaysOld");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<int?>("HouseholdProfileDetailModelId");
+
+                    b.Property<int>("MonthsOld");
+
+                    b.Property<string>("RelationToHead");
+
+                    b.Property<string>("Sex");
+
+                    b.Property<int>("YearsOld");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HouseholdProfileDetailModelId");
+
+                    b.ToTable("HouseholdMemberDetailModel");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("Barangay");
+
+                    b.Property<string>("Note");
+
+                    b.Property<string>("ProfileId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HouseholdProfileDetailModel");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -282,7 +324,8 @@ namespace HealthWebApp.Migrations
                 {
                     b.HasOne("HealthWebApp.Data.EntityModel.HouseholdProfile", "HouseholdProfile")
                         .WithMany("HouseholdMembers")
-                        .HasForeignKey("HouseholdProfileId1");
+                        .HasForeignKey("HouseholdProfileId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HealthWebApp.Data.EntityModel.Person", "Person")
                         .WithMany()
@@ -296,6 +339,13 @@ namespace HealthWebApp.Migrations
                         .WithMany()
                         .HasForeignKey("BarangayId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel", b =>
+                {
+                    b.HasOne("HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel")
+                        .WithMany("HouseholdMembers")
+                        .HasForeignKey("HouseholdProfileDetailModelId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

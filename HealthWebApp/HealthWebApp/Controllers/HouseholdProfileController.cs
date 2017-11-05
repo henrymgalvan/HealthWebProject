@@ -133,23 +133,19 @@ namespace HealthWebApp.Controllers
         public IActionResult Details(int id)
         {
             HouseholdProfile household = _householdProfile.GetById(id);
-            List<HouseholdMember> members = _householdMembers.GetAllByHouseholdProfileId(household.ProfileId).ToList();
-            IEnumerable<HouseholdMemberDetailModel> membersDetailModel = new List<HouseholdMemberDetailModel>();
-
-            foreach (var member in members)
-            {
-                var memberDetailModel = new HouseholdMemberDetailModel()
+            List<HouseholdMember> members = _householdMembers.GetAllByHouseholdProfileId(household.Id).ToList();
+            IEnumerable<HouseholdMemberDetailModel> householdMembersDetailModel = members
+                .Select(hm => new HouseholdMemberDetailModel
                 {
-                    Id = member.Id,
-                    FullName = member.Person.FirstName + " " + member.Person.MiddleName + " " + member.Person.LastName,
-                    Sex = member.Person.Sex.ToString(),
-                    RelationToHead = member.RelationToHead.ToString(),
+                    Id = hm.Id,
+                    FullName = hm.Person.FirstName + " " + hm.Person.MiddleName + " " + hm.Person.LastName,
+                    Sex = hm.Person.Sex.ToString(),
+                    RelationToHead = hm.RelationToHead.ToString(),
                     YearsOld = 0,
                     MonthsOld = 0,
                     DaysOld = 0
-                };
-                membersDetailModel.Append(memberDetailModel);
-            }
+                }).ToList();
+
             var model = new HouseholdProfileDetailModel()
             {
                 Id = household.Id,
@@ -157,7 +153,7 @@ namespace HealthWebApp.Controllers
                 Address = household.Address,
                 Barangay = household.Barangay.Name,
                 Note = household.Note,
-                HouseholdMembers = membersDetailModel
+                HouseholdMembers = householdMembersDetailModel
             };
 
             return View(model);

@@ -26,7 +26,7 @@ namespace HealthWebApp.Data.EntityModel
         public int PersonId { get; set; }
         public virtual Person Person { get; set; }
 
-        public string HouseholdProfileId { get; set; }
+        public int HouseholdProfileId { get; set; }
         public virtual HouseholdProfile HouseholdProfile { get; set; }
 
     }

@@ -1,0 +1,43 @@
+﻿@model HealthWebApp.Models.HouseholdMember.HouseholdMembersIndexModel
+
+@{
+    ViewBag.Title = "Household Members Index";
+ }
+
+<h3>Household Member List</h3>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="alert-success">
+                <th>Id</th>
+                <th>Full Name </th>
+                <th>Gender</th>
+                <th>Relation to Head</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="alert-info">
+            @foreach(var member in Model.Members)
+            {
+                <tr>
+                    <td id="MemberIcon"><a asp-controller="HouseholdMember" asp-action="Details" asp-route-id="@member.Id">@member.Id</a></td>
+                    <td>@member.FullName</td>
+                    <td>@member.Sex</td>
+                    <td>@member.RelationToHead</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a asp-controller="HouseholdMember" asp-action="Edit" asp-route-id="@member.Id">Edit</a></td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a asp-controller="HouseholdMember" asp-action="Create">Create new Household Member record.</a>
+</div>

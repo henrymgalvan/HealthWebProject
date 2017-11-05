@@ -8,6 +8,7 @@ using HealthWebApp.Models;
 using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Models.Person;
 using HealthWebApp.Models.HouseholdProfile;
+using HealthWebApp.Models.HouseholdMember;
 
 namespace HealthWebApp.Data
 {
@@ -32,6 +33,8 @@ namespace HealthWebApp.Data
         }
         
         public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
+        
+        public DbSet<HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel> HouseholdMemberDetailModel { get; set; }
         
         //public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
         

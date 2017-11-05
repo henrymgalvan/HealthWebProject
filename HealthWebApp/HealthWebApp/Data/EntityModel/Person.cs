@@ -47,5 +47,8 @@ namespace HealthWebApp.Data.EntityModel
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
+
+
+        public string FullName => (FirstName + " " + MiddleName + " " + LastName);
     }
 }

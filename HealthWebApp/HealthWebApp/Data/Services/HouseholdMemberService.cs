@@ -2,6 +2,7 @@
 using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Data.Interface;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthWebApp.Data.Services
 {
@@ -25,19 +26,28 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-        public HouseholdMember Get(int PersonId)
+        public HouseholdMember Get(int Id)
         {
-            return _context.HouseholdMember.FirstOrDefault(p => p.PersonId == PersonId);
+            return _context.HouseholdMember
+                .Include(p => p.Person)
+                .Include(hp => hp.HouseholdProfile)
+                .FirstOrDefault(p => p.Id == Id);
         }
 
         public IEnumerable<HouseholdMember> GetAll()
         {
-            return _context.HouseholdMember.ToList();
+            return _context.HouseholdMember
+                .Include(p => p.Person)
+                .Include(h => h.HouseholdProfile);
+                //.ToList();
         }
 
-        public IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(string HouseholdProfileId)
+        public IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(int householdProfileId)
         {
-            return _context.HouseholdMember.Where(p => p.HouseholdProfileId == HouseholdProfileId).ToList();
+            return _context.HouseholdMember
+                .Include(m => m.Person)
+                .Where(p => p.HouseholdProfileId == householdProfileId);
+                //.ToList();
         }
 
         public Person GetFather(int FatherId)

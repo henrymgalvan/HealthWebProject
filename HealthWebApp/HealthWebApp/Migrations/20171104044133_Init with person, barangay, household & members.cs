@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HealthWebApp.Migrations
 {
-    public partial class Initialtablesetup : Migration
+    public partial class Initwithpersonbarangayhouseholdmembers : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,30 @@ namespace HealthWebApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Barangay", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "People",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CivilStatus = table.Column<int>(nullable: false),
+                    ContactNumber = table.Column<string>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateOfBirth = table.Column<DateTime>(nullable: true),
+                    DateTimeLastUpdated = table.Column<DateTime>(nullable: false),
+                    ExtensionName = table.Column<string>(maxLength: 3, nullable: true),
+                    FirstName = table.Column<string>(maxLength: 30, nullable: false),
+                    LastName = table.Column<string>(maxLength: 30, nullable: false),
+                    MiddleName = table.Column<string>(maxLength: 30, nullable: false),
+                    NameTitle = table.Column<string>(maxLength: 30, nullable: true),
+                    PersonConsent = table.Column<bool>(nullable: false),
+                    Sex = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_People", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,6 +69,22 @@ namespace HealthWebApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HouseholdProfileDetailModel",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(nullable: true),
+                    Barangay = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
+                    ProfileId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HouseholdProfileDetailModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,9 +123,10 @@ namespace HealthWebApp.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Address = table.Column<string>(nullable: true),
                     BarangayId = table.Column<int>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateTimeLastUpdated = table.Column<DateTime>(nullable: false),
                     Note = table.Column<string>(nullable: true),
-                    ProfileId = table.Column<string>(nullable: true),
-                    RespondentId = table.Column<int>(nullable: false)
+                    ProfileId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -140,6 +181,31 @@ namespace HealthWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HouseholdMemberDetailModel",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DaysOld = table.Column<int>(nullable: false),
+                    FullName = table.Column<string>(nullable: true),
+                    HouseholdProfileDetailModelId = table.Column<int>(nullable: true),
+                    MonthsOld = table.Column<int>(nullable: false),
+                    RelationToHead = table.Column<string>(nullable: true),
+                    Sex = table.Column<string>(nullable: true),
+                    YearsOld = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HouseholdMemberDetailModel", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HouseholdMemberDetailModel_HouseholdProfileDetailModel_HouseholdProfileDetailModelId",
+                        column: x => x.HouseholdProfileDetailModelId,
+                        principalTable: "HouseholdProfileDetailModel",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -185,43 +251,13 @@ namespace HealthWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "People",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CivilStatus = table.Column<int>(nullable: false),
-                    ContactNumber = table.Column<string>(nullable: true),
-                    DateOfBirth = table.Column<DateTime>(nullable: true),
-                    ExtensionName = table.Column<string>(maxLength: 3, nullable: true),
-                    FirstName = table.Column<string>(maxLength: 30, nullable: false),
-                    HouseholdProfileId = table.Column<int>(nullable: false),
-                    LastName = table.Column<string>(maxLength: 30, nullable: false),
-                    MiddleName = table.Column<string>(maxLength: 30, nullable: false),
-                    NameTittle = table.Column<string>(maxLength: 30, nullable: true),
-                    PersonConsent = table.Column<bool>(nullable: false),
-                    Sex = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_People", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_People_HouseholdProfile_HouseholdProfileId",
-                        column: x => x.HouseholdProfileId,
-                        principalTable: "HouseholdProfile",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HouseholdMember",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FatherId = table.Column<int>(nullable: false),
-                    HouseholdProfileId = table.Column<string>(nullable: true),
-                    HouseholdProfileId1 = table.Column<int>(nullable: true),
+                    HouseholdProfileId = table.Column<int>(nullable: false),
                     MotherId = table.Column<int>(nullable: false),
                     PersonId = table.Column<int>(nullable: false),
                     RelationToHead = table.Column<int>(nullable: false)
@@ -230,11 +266,11 @@ namespace HealthWebApp.Migrations
                 {
                     table.PrimaryKey("PK_HouseholdMember", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HouseholdMember_HouseholdProfile_HouseholdProfileId1",
-                        column: x => x.HouseholdProfileId1,
+                        name: "FK_HouseholdMember_HouseholdProfile_HouseholdProfileId",
+                        column: x => x.HouseholdProfileId,
                         principalTable: "HouseholdProfile",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_HouseholdMember_People_PersonId",
                         column: x => x.PersonId,
@@ -244,9 +280,9 @@ namespace HealthWebApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_HouseholdMember_HouseholdProfileId1",
+                name: "IX_HouseholdMember_HouseholdProfileId",
                 table: "HouseholdMember",
-                column: "HouseholdProfileId1");
+                column: "HouseholdProfileId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HouseholdMember_PersonId",
@@ -259,11 +295,6 @@ namespace HealthWebApp.Migrations
                 column: "BarangayId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_People_HouseholdProfileId",
-                table: "People",
-                column: "HouseholdProfileId");
-
-            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -273,6 +304,11 @@ namespace HealthWebApp.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HouseholdMemberDetailModel_HouseholdProfileDetailModelId",
+                table: "HouseholdMemberDetailModel",
+                column: "HouseholdProfileDetailModelId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -307,6 +343,9 @@ namespace HealthWebApp.Migrations
                 name: "HouseholdMember");
 
             migrationBuilder.DropTable(
+                name: "HouseholdMemberDetailModel");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -322,16 +361,19 @@ namespace HealthWebApp.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "HouseholdProfile");
+
+            migrationBuilder.DropTable(
                 name: "People");
+
+            migrationBuilder.DropTable(
+                name: "HouseholdProfileDetailModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "HouseholdProfile");
 
             migrationBuilder.DropTable(
                 name: "Barangay");
