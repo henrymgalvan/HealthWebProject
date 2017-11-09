@@ -29,10 +29,11 @@ namespace HealthWebApp.Controllers
                                     LastName = p.LastName,
                                     ExtensionName = p.ExtensionName,
                                     NameTitle = p.NameTitle,
-                                    DateOfBirth = p.DateOfBirth.ToString(),
+                                    DateOfBirth = p.DateOfBirth.ToString("yyyy, MMM-dd"),
                                     Sex = p.Sex.ToString(),
                                     CivilStatus = p.CivilStatus.ToString(),
                                     ContactNumber = p.ContactNumber,
+                                    Barangay = p.HouseholdMember.HouseholdProfile.Barangay.Name
                                 }).ToList();
             var model = new PersonIndexModel()
             {
@@ -52,7 +53,7 @@ namespace HealthWebApp.Controllers
                 LastName = person.LastName,
                 ExtensionName = person.ExtensionName,
                 NameTitle = person.NameTitle,
-                DateOfBirth = person.DateOfBirth.ToString(),
+                DateOfBirth = person.DateOfBirth.ToString("yyyy, MMM-dd"),
                 Sex = person.Sex.ToString(),
                 ContactNumber = person.ContactNumber,
             };

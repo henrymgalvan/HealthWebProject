@@ -22,7 +22,11 @@ namespace HealthWebApp.Data.Services
 
         public IEnumerable<Person> Getall()
         {
-            return _context.People.ToList();
+            return _context.People
+                .Include(hm => hm.HouseholdMember)
+                .Include(hp => hp.HouseholdMember.HouseholdProfile)
+                .Include(b => b.HouseholdMember.HouseholdProfile.Barangay)
+                .ToList();
         }
 
         public Person Get(int id)

@@ -22,7 +22,7 @@ namespace HealthWebApp.Models.Person
         public string ExtensionName { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         [Display(Name = "Gender")]
         public Gender Sex { get; set; }
         [Display(Name = "Civil Status")]

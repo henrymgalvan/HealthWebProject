@@ -37,7 +37,7 @@ namespace HealthWebApp.Data.EntityModel
         public Gender Sex { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public CivilStatus CivilStatus { get; set; }
 
@@ -48,6 +48,7 @@ namespace HealthWebApp.Data.EntityModel
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
 
+        public virtual HouseholdMember HouseholdMember { get; set; }
 
         public string FullName => (FirstName + " " + MiddleName + " " + LastName);
     }

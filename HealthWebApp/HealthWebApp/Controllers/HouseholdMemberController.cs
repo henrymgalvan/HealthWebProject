@@ -31,9 +31,9 @@ namespace HealthWebApp.Controllers
                     FullName = hm.Person.FullName,
                     Sex = hm.Person.Sex.ToString(),
                     RelationToHead = hm.RelationToHead.ToString(),
-                    YearsOld = (hm.Person.DateOfBirth.Value).Year,
-                    MonthsOld = (hm.Person.DateOfBirth.Value).Month,
-                    DaysOld = (hm.Person.DateOfBirth.Value).Day
+                    YearsOld = hm.Person.DateOfBirth.Year,
+                    MonthsOld = hm.Person.DateOfBirth.Month,
+                    DaysOld = hm.Person.DateOfBirth.Day
                 }).ToList();
             var model = new HouseholdMembersIndexModel()
             {
@@ -52,9 +52,9 @@ namespace HealthWebApp.Controllers
                 FullName = member.Person.FullName,
                 Sex = member.Person.Sex.ToString(),
                 RelationToHead = member.RelationToHead.ToString(),
-                YearsOld = member.Person.DateOfBirth.Value.Year,
-                MonthsOld = member.Person.DateOfBirth.Value.Month,
-                DaysOld = member.Person.DateOfBirth.Value.Day,
+                YearsOld = member.Person.DateOfBirth.Year,
+                MonthsOld = member.Person.DateOfBirth.Month,
+                DaysOld = member.Person.DateOfBirth.Day,
             };
 
             return View(model);

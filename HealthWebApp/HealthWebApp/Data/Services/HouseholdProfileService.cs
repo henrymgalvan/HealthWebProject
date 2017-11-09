@@ -24,8 +24,9 @@ namespace HealthWebApp.Data.Services
 
         public IEnumerable<HouseholdProfile> GetAll()
         {
-            return _context.HouseholdProfile.Include(b => b.Barangay)
-                .ToList();
+            return _context.HouseholdProfile
+                .Include(b => b.Barangay);
+                //.ToList();
         }
 
         public IEnumerable<HouseholdProfile> GetallByBarangay(int BarangayId)

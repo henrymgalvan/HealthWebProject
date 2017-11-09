@@ -18,6 +18,7 @@
                 <th>Date Of Birth</th>
                 <th>Gender</th>
                 <th>Civil Status</th>
+                <th>Barangay</th>
                 <th></th>
             </tr>
         </thead>
@@ -33,6 +34,7 @@
                     <td>@patient.DateOfBirth</td>
                     <td>@patient.Sex</td>
                     <td>@patient.CivilStatus</td>
+                    <td>@patient.Barangay</td>
                     <td id="PatientIcon"><a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a></td>
 
                 </tr>
