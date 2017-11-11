@@ -14,6 +14,7 @@ using HealthWebApp.Models;
 using HealthWebApp.Services;
 using HealthWebApp.Data.Services;
 using HealthWebApp.Data.Interface;
+using AutoMapper;
 
 namespace HealthWebApp
 {
@@ -50,6 +51,7 @@ namespace HealthWebApp
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+            services.AddAutoMapper();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

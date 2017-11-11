@@ -5,42 +5,39 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 
 namespace HealthWebApp.Controllers
 {
     public class PersonController : Controller
     {
         private IPerson _person;
-        public PersonController(IPerson person)
+        private IMapper _mapper;
+
+        public PersonController(IPerson person, IMapper mapper)
         {
             _person = person;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Person> allPersons = _person.Getall();
+            List<Person> allPersons = _person.Getall().ToList();
+            IEnumerable<PersonDetailModel> PersonModels;
 
-            IEnumerable<PersonDetailModel> PersonModels = allPersons
-                                .Select(p => new PersonDetailModel
-                                {
-                                    Id = p.Id,
-                                    FirstName = p.FirstName,
-                                    MiddleName = p.MiddleName,
-                                    LastName = p.LastName,
-                                    ExtensionName = p.ExtensionName,
-                                    NameTitle = p.NameTitle,
-                                    DateOfBirth = p.DateOfBirth.ToString("yyyy, MMM-dd"),
-                                    Sex = p.Sex.ToString(),
-                                    CivilStatus = p.CivilStatus.ToString(),
-                                    ContactNumber = p.ContactNumber,
-                                    Barangay = p.HouseholdMember.HouseholdProfile.Barangay.Name
-                                }).ToList();
-            var model = new PersonIndexModel()
+            if (allPersons.Any())
             {
-                People = PersonModels
-            };
-            return View(model);
+                PersonModels = Mapper.Map<List<Person>, List<PersonDetailModel>>(allPersons);
+                var model = new PersonIndexModel()
+                {
+                    People = PersonModels
+                };
+                return View(model);
+            }
+            return RedirectToAction("Index", "Home");
         }
+
+
         public IActionResult Details(int id)
         {
             Person person = _person.Get(id);
@@ -142,7 +139,7 @@ namespace HealthWebApp.Controllers
                     UpdatedPerson.ContactNumber = editPerson.ContactNumber;
                     UpdatedPerson.DateTimeLastUpdated = DateTime.Now;
                     _person.Update(UpdatedPerson);
-                        return RedirectToAction("Index");
+                    return RedirectToAction("Index");
                 }
                 return View(editPerson);
             }
