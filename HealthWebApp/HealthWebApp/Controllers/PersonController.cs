@@ -41,20 +41,26 @@ namespace HealthWebApp.Controllers
         public IActionResult Details(int id)
         {
             Person person = _person.Get(id);
-
-            var model = new PersonDetailModel()
+            if (person != null)
             {
-                Id = person.Id,
-                FirstName = person.FirstName,
-                MiddleName = person.MiddleName,
-                LastName = person.LastName,
-                ExtensionName = person.ExtensionName,
-                NameTitle = person.NameTitle,
-                DateOfBirth = person.DateOfBirth.ToString("yyyy, MMM-dd"),
-                Sex = person.Sex.ToString(),
-                ContactNumber = person.ContactNumber,
-            };
-            return View(model);
+                var model = Mapper.Map<Person, PersonDetailModel>(person);
+                return View(model);
+            }
+
+            //var model = new PersonDetailModel()
+            //{
+            //    Id = person.Id,
+            //    FirstName = person.FirstName,
+            //    MiddleName = person.MiddleName,
+            //    LastName = person.LastName,
+            //    ExtensionName = person.ExtensionName,
+            //    NameTitle = person.NameTitle,
+            //    DateOfBirth = person.DateOfBirth.ToString("yyyy, MMM-dd"),
+            //    Sex = person.Sex.ToString(),
+            //    ContactNumber = person.ContactNumber,
+            //};
+            return RedirectToAction("Index", "Home");
+
         }
 
         [HttpGet]
@@ -63,6 +69,7 @@ namespace HealthWebApp.Controllers
             PersonCreateModel newPerson = new PersonCreateModel();
             return View(newPerson);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PersonCreateModel newPerson)

@@ -12,7 +12,10 @@ namespace HealthWebApp.Services
     {
         public MappingProfile()
         {
-            CreateMap<Person, PersonDetailModel>();
+            CreateMap<Person, PersonDetailModel>()
+                .ForMember(dest => dest.Barangay, opt => opt.MapFrom(src => src.HouseholdMember.HouseholdProfile.Barangay.Name))
+                .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth.ToString("yyyy, MMM-dd")));
+                
             CreateMap<PersonDetailModel, Person>();
         }
     }
