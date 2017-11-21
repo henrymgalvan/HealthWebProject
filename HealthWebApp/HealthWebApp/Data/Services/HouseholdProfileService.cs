@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HealthWebApp.Data.EntityModel;
 using Microsoft.EntityFrameworkCore;
+using HealthWebApp.Data.EntityModel.Household;
 
 namespace HealthWebApp.Data.Services
 {

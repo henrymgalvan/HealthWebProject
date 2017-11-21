@@ -1,4 +1,5 @@
 ﻿using HealthWebApp.Data.EntityModel;
+using HealthWebApp.Data.EntityModel.Household;
 using System.Collections.Generic;
 
 namespace HealthWebApp.Data.Interface

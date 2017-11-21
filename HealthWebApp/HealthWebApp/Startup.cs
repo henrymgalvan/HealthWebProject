@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using HealthWebApp.Data;
+using HealthWebApp.Data.Interface;
+using HealthWebApp.Data.Services;
+using HealthWebApp.Models;
+using HealthWebApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -9,12 +11,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using HealthWebApp.Data;
-using HealthWebApp.Models;
-using HealthWebApp.Services;
-using HealthWebApp.Data.Services;
-using HealthWebApp.Data.Interface;
-using AutoMapper;
 
 namespace HealthWebApp
 {

@@ -3,6 +3,7 @@ using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Data.Interface;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using HealthWebApp.Data.EntityModel.Household;
 
 namespace HealthWebApp.Data.Services
 {

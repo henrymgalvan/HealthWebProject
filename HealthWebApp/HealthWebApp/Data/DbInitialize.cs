@@ -1,4 +1,5 @@
 ﻿using HealthWebApp.Data.EntityModel;
+using HealthWebApp.Data.EntityModel.Barangays;
 using System;
 using System.Collections.Generic;
 using System.Linq;

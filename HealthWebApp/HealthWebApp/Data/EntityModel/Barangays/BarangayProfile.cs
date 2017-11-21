@@ -1,0 +1,24 @@
+﻿
+using HealthWebApp.Data.EntityModel.Admin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace HealthWebApp.Data.EntityModel.Barangays
+{
+    public class BarangayProfile
+    {
+        public int Id { get; set; }
+        public int BarangayId { get; set; }
+        public virtual Barangay Barangay { get; set; }
+
+        public IEnumerable<BarangayOfficial> BarangayOfficials { get; set; }
+        public virtual IEnumerable<Population> Population { get; set; }
+
+        public virtual IEnumerable<Employee> BarangayNurses { get; set; }
+        public virtual IEnumerable<Employee> BarangayHealthWorkers { get; set; }
+        public virtual IEnumerable<Employee> BarangayPhysicians { get; set; }
+
+    }
+}

@@ -11,7 +11,8 @@ namespace HealthWebApp.Models.Person
         public string MiddleName { get; set; }  
         public string LastName { get; set; }    
         public string ExtensionName { get; set; }
-        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:mm-dd-yyyy}")]
         public string DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string CivilStatus { get; set; }

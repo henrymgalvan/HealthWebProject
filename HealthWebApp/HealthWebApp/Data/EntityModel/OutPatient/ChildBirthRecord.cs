@@ -1,0 +1,36 @@
+﻿using HealthWebApp.Data.EntityModel.Admin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace HealthWebApp.Data.EntityModel.OutPatient
+{
+    public enum TypeOfDelivery
+    {
+        Normal = 1, CS =2
+    }
+
+    public class ChildBirthRecord
+    {
+        public int Id { get; set; }
+        public int PersonId { get; set; }
+        public virtual Person  Person { get; set; }
+
+        public int Months { get; set; }
+        public int Weeks { get; set; }
+        public int Days { get; set; }
+        public TypeOfDelivery TypeOfDelivery { get; set; }
+        public decimal BirthWeightLbs { get; set; }
+        public decimal BirthLengthCm { get; set; }
+        public decimal HeadCircumferenceCm { get; set; }
+        public decimal ChestCircumferenceCm { get; set; }
+        public decimal AbdominalCircumferenceCm { get; set; }
+
+        public int EmployeeId { get; set; }
+        public virtual Employee AdministeredBy { get; set; }
+
+        public string Notes { get; set; }
+
+    }
+}

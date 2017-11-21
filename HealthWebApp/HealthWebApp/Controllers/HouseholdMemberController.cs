@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HealthWebApp.Data.Interface;
 using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Models.HouseholdMember;
+using HealthWebApp.Data.EntityModel.Household;
 
 namespace HealthWebApp.Controllers
 {

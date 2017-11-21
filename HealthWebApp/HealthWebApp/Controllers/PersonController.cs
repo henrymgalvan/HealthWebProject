@@ -25,16 +25,16 @@ namespace HealthWebApp.Controllers
             List<Person> allPersons = _person.Getall().ToList();
             IEnumerable<PersonDetailModel> PersonModels;
 
-            if (allPersons.Any())
-            {
+ //           if (allPersons.Any())
+ //           {
                 PersonModels = Mapper.Map<List<Person>, List<PersonDetailModel>>(allPersons);
                 var model = new PersonIndexModel()
                 {
                     People = PersonModels
                 };
                 return View(model);
-            }
-            return RedirectToAction("Index", "Home");
+ //           }
+ //           return RedirectToAction("Index", "Home");
         }
 
 

@@ -7,6 +7,8 @@ using HealthWebApp.Data.Interface;
 using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Models.HouseholdProfile;
 using HealthWebApp.Models.HouseholdMember;
+using HealthWebApp.Data.EntityModel.Barangays;
+using HealthWebApp.Data.EntityModel.Household;
 
 namespace HealthWebApp.Controllers
 {

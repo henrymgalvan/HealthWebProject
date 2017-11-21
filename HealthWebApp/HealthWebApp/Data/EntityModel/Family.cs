@@ -16,5 +16,6 @@ namespace HealthWebApp.Data.EntityModel
 
         public int Spouse { get; set; }
         IEnumerable<Person> Children { get; set; }
+        IEnumerable<Person> Siblings { get; set; }
     }
 }

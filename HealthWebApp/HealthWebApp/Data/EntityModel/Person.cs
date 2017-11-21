@@ -1,3 +1,4 @@
+using HealthWebApp.Data.EntityModel.Household;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,7 @@ namespace HealthWebApp.Data.EntityModel
         public int Id { get; set; }
 
         [Required, StringLength(30), MinLength(1)]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
         public string FirstName { get; set; }
 
         [Required, StringLength(30)]
@@ -37,6 +39,7 @@ namespace HealthWebApp.Data.EntityModel
         public Gender Sex { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
 
         public CivilStatus CivilStatus { get; set; }

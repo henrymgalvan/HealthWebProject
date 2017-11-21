@@ -9,6 +9,8 @@ using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Models.Person;
 using HealthWebApp.Models.HouseholdProfile;
 using HealthWebApp.Models.HouseholdMember;
+using HealthWebApp.Data.EntityModel.Barangays;
+using HealthWebApp.Data.EntityModel.Household;
 
 namespace HealthWebApp.Data
 {

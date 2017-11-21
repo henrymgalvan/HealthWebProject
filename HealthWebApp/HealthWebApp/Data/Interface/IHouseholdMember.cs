@@ -1,4 +1,5 @@
 ﻿using HealthWebApp.Data.EntityModel;
+using HealthWebApp.Data.EntityModel.Household;
 using System;
 using System.Collections.Generic;
 using System.Linq;
