@@ -1,3 +1,4 @@
+using HealthWebApp.Data.EntityModel.Admin;
 using HealthWebApp.Data.EntityModel.Household;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace HealthWebApp.Data.EntityModel
 
     public enum CivilStatus
     {
-        Dependent = 1, Single, Married, LiveIn, Separated, Annuled, Widowed
+        Single =1, Married, LiveIn, Separated, Annuled, Widow
     }
 
     public class Person
@@ -52,6 +53,9 @@ namespace HealthWebApp.Data.EntityModel
         public DateTime DateCreated { get; set; }
 
         public virtual HouseholdMember HouseholdMember { get; set; }
+
+        public int EmployeeId { get; set; }
+        public virtual Employee AssignedBy { get; set; }
 
         public string FullName => (FirstName + " " + MiddleName + " " + LastName);
     }

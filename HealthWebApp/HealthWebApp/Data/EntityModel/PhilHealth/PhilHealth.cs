@@ -17,6 +17,8 @@ namespace HealthWebApp.Data.EntityModel.PhilHealth
         public virtual Person Person { get; set; }
         public StatusType StatusType { get; set; }
         public PhilHealthCategory Category { get; set; }
+        public DateTime DateAssigned { get; set; }
+
 
     }
 }

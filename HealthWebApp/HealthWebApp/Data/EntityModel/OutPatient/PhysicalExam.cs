@@ -9,5 +9,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     {
         public int Id { get; set; }
 
+
+
     }
 }

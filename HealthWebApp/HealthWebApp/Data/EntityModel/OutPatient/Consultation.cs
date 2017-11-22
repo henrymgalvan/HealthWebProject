@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthWebApp.Data.EntityModel.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,9 +14,12 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public int VitalStatsId { get; set; }
         public virtual VitalStats NewVitalStats { get; set; }
 
+
+
         public bool Done { get; set; }
         
-        public int AttendingPhysicianId { get; set; } // based on PhysicianId
 
+        public int EmployeeId { get; set; } // based on PhysicianId
+        public Physician Physician { get; set; }
     }
 }
