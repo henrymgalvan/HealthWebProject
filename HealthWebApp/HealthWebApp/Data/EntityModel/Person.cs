@@ -13,7 +13,7 @@ namespace HealthWebApp.Data.EntityModel
 
     public enum CivilStatus
     {
-        Single =1, Married, LiveIn, Separated, Annuled, Widow
+        Single = 1, Married, LiveIn, Separated, Annuled, Widow
     }
 
     public class Person

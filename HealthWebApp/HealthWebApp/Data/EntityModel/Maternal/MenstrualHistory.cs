@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HealthWebApp.Data.EntityModel.Maternal
 {
-    public enum BirthControlMethod { NaturalMethod = 1, Pills = 2, Injectable = 3 }
+    public enum BirthControlMethod { NaturalMethod = 1, Pills = 2, Injectable = 3, BLT = 4 }
 
     public class MenstrualHistory
     {

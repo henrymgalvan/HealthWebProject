@@ -11,6 +11,11 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         Normal = 1, CS =2
     }
 
+    public enum PlaceOfBirthCategory
+    {
+        Home = 1, Hospital = 2, BirthingHome = 3, PublicPlace = 4
+    }
+
     public class ChildBirthRecord
     {
         public int Id { get; set; }
@@ -29,6 +34,9 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
         public int EmployeeId { get; set; }
         public virtual Employee AdministeredBy { get; set; }
+
+        public PlaceOfBirthCategory PlaceOfBirthCategory { get; set; }
+        public string  PlaceOfBirth { get; set; }
 
         public string Notes { get; set; }
 
