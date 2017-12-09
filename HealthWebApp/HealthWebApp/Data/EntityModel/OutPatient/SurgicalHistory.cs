@@ -11,6 +11,8 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public int Id { get; set; }
         public string Operation { get; set; }
         public DateTime DateofSurgery { get; set; }
+        public string StatusOfOperation { get; set; }
+
 
     }
 }
