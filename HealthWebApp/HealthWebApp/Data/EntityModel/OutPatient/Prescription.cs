@@ -5,6 +5,15 @@ using System.Threading.Tasks;
 
 namespace HealthWebApp.Data.EntityModel.OutPatient
 {
+    public enum FrequencyLookUp
+    {
+        Daily = 1, Weekly = 2, Monthly = 3, Quarterly = 4, Yearly = 5, Indifinite = 6
+    }
+    public enum DoseRegimenLookUp
+    {
+        OnceADay = 1, TwiceADay = 2, ThriceADay = 3, FourTimesADay = 4, Every4Hours = 5, EveryMorning = 6, EveryEvening = 7, Others = 8
+    }
+
     public class Prescription
     {
         public int Id { get; set; }

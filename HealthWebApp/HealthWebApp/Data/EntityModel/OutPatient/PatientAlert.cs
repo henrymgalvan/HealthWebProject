@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public enum TypeOfAlert
     {
-        Disability = 1
+        Disability = 1, Allergy = 2, Drug = 3, Handicap = 4, Impairment = 5, Others = 6 
     }
     public class PatientAlert
     {
