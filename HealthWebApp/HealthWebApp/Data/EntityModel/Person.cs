@@ -1,5 +1,6 @@
 using HealthWebApp.Data.EntityModel.Admin;
 using HealthWebApp.Data.EntityModel.Household;
+using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -55,7 +56,13 @@ namespace HealthWebApp.Data.EntityModel
         public virtual HouseholdMember HouseholdMember { get; set; }
 
         public int EmployeeId { get; set; }
-        public virtual Employee AssignedBy { get; set; }
+        //public virtual Employee AssignedBy { get; set; }
+
+
+        public IEnumerable<PhilHealth> PhilHealth { get; set; }
+        // GSIS
+        // SSS
+        // PAG-IBIG
 
         public string FullName => (FirstName + " " + MiddleName + " " + LastName);
     }

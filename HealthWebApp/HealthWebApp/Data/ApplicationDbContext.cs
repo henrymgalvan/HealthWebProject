@@ -33,17 +33,6 @@ namespace HealthWebApp.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        
-        public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
-        
-        public DbSet<HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel> HouseholdMemberDetailModel { get; set; }
-        
-        //public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel> HouseholdProfileDetailModel { get; set; }
-        
-        //public DbSet<HealthWebApp.Models.HouseholdProfile.HouseholdProfileEditModel> HouseholdProfileEditModel { get; set; }
-        
-        //public DbSet<HealthWebApp.Models.Person.PersonCreateModel> PersonCreateModel { get; set; }
-        
-        //public DbSet<HealthWebApp.Models.Person.PersonEditModel> PersonEditModel { get; set; }
+
     }
 }

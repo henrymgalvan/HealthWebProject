@@ -1,9 +1,11 @@
-﻿using System;
+﻿using HealthWebApp.Data.EntityModel.OutPatient;
+using HealthWebApp.Data.EntityModel.OutPatient.ICD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HealthWebApp.Data.EntityModel.OutPatient
+namespace HealthWebApp.Data.EntityModel.Medicines
 {
     public enum FrequencyLookUp
     {
@@ -11,19 +13,23 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     }
     public enum DoseRegimenLookUp
     {
-        OnceADay = 1, TwiceADay = 2, ThriceADay = 3, FourTimesADay = 4, Every4Hours = 5, EveryMorning = 6, EveryEvening = 7, Others = 8
+        OnceADay = 1, TwiceADay = 2, ThriceADay = 3, FourTimesADay = 4, Every4Hours = 5, Every6Hours = 6,
+        EveryMorning = 7, EveryEvening = 7, Others = 8
     }
 
     public class Prescription
     {
         public int Id { get; set; }
-        //consultation id
+
+        public int DiagnosisId { get; set; }
+        public virtual Diagnosis Diagnosis { get; set; }
+
         public string DrugCode { get; set; }
         public FrequencyLookUp Frequency { get; set; }
         public DoseRegimenLookUp doseRegimen { get; set; }
         public int TotalQuantity { get; set; }
         public string QuantityUnitOfMeasure { get; set; }
-        public string IntededPurposeOfMedicine { get; set; }
+        public string IntededPurposeOfMedicine { get; set; } //lookup
         public string Medication { get; set; }
         public DateTime DateOfPrescription { get; set; }
         public int PrescribedBy { get; set; }

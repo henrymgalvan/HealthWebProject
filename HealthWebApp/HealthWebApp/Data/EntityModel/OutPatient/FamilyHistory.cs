@@ -32,5 +32,15 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public string PTBcategory { get; set; }
         public bool UrinaryTractInfection { get; set; }
         public string OtherMedicalHistory { get; set; }
+
+
+        public bool  KidneyDisease { get; set; }
+        public bool HeartAttack { get; set; }
+        public bool Stroke { get; set; }
+        public bool Others { get; set; }
+        public string Specify { get; set; }
+
+
+
     }
 }

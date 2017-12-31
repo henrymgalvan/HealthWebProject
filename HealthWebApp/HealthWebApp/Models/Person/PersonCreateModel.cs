@@ -9,7 +9,7 @@ namespace HealthWebApp.Models.Person
         public int Id { get; set; }
 
         [Display(Name = "Title")]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
+        //[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
         public string NameTitle { get; set; }
 
         [Required]

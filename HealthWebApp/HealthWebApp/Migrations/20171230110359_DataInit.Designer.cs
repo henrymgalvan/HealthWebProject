@@ -10,8 +10,8 @@ using HealthWebApp.Data.EntityModel;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171121154236_update date format and regular expressions")]
-    partial class updatedateformatandregularexpressions
+    [Migration("20171230110359_DataInit")]
+    partial class DataInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,6 +91,8 @@ namespace HealthWebApp.Migrations
 
                     b.Property<DateTime>("DateTimeLastUpdated");
 
+                    b.Property<int>("EmployeeId");
+
                     b.Property<string>("ExtensionName")
                         .HasMaxLength(3);
 
@@ -166,52 +168,6 @@ namespace HealthWebApp.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Barangay");
-
-                    b.Property<int>("DaysOld");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<int?>("HouseholdProfileDetailModelId");
-
-                    b.Property<int>("MonthsOld");
-
-                    b.Property<string>("RelationToHead");
-
-                    b.Property<string>("Sex");
-
-                    b.Property<int>("YearsOld");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HouseholdProfileDetailModelId");
-
-                    b.ToTable("HouseholdMemberDetailModel");
-                });
-
-            modelBuilder.Entity("HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("Barangay");
-
-                    b.Property<string>("Note");
-
-                    b.Property<string>("ProfileId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HouseholdProfileDetailModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -340,13 +296,6 @@ namespace HealthWebApp.Migrations
                         .WithMany()
                         .HasForeignKey("BarangayId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HealthWebApp.Models.HouseholdMember.HouseholdMemberDetailModel", b =>
-                {
-                    b.HasOne("HealthWebApp.Models.HouseholdProfile.HouseholdProfileDetailModel")
-                        .WithMany("HouseholdMembers")
-                        .HasForeignKey("HouseholdProfileDetailModelId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

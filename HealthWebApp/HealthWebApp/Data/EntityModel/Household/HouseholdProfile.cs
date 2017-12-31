@@ -14,6 +14,7 @@ namespace HealthWebApp.Data.EntityModel.Household
         public string Address { get; set; }
         public int BarangayId { get; set; }
         public virtual Barangay Barangay { get; set; }
+
         public string Note { get; set; }
         //public int GeotagId { get; set; }
         //public virtual GeoTag Geotag { get; set; }

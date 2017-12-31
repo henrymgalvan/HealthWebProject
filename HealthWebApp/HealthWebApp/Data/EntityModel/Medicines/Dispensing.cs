@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HealthWebApp.Data.EntityModel.OutPatient
+namespace HealthWebApp.Data.EntityModel.Medicines
 {
     public class Dispensing
     {
         public int Id { get; set; }
         //Source of Prescription
-        public bool Others { get; set; }
+        public bool Others { get; set; } //specify source
         public bool Facility { get; set; }
-        public Medicine Medicine { get; set; }
+
+        public string DrugCode { get; set; }
         public int Quantity { get; set; }
         public string Remarks { get; set; }
         public DateTime DispensingDate { get; set; }

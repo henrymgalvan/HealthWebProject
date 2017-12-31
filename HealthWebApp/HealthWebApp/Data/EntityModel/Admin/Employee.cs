@@ -17,15 +17,15 @@ namespace HealthWebApp.Data.EntityModel.Admin
         public int PositionId { get; set; }
         public virtual Position Position { get; set; }
 
-        public int SectionId { get; set; }
-        public virtual Section Section { get; set; }
+        //public int SectionId { get; set; }
+        //public virtual Section Section { get; set; }
 
         public virtual IEnumerable<Barangay> AreaOfAssignments { get; set; }
         
         public EmploymentStatus EmployeeStatus { get; set; }
         public bool ActiveInService { get; set; }
 
-        public string PRCID { get; set; }
+        public IEnumerable<PRCID> PRCID { get; set; }
 
         public virtual IEnumerable<EmploymentRecord> EmployeeRecords { get; set; }
 

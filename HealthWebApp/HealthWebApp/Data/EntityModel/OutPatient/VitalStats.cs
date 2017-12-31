@@ -26,9 +26,11 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
     public class VitalStats
     {
-        [Key]
-        public int AdmissionId { get; set; }
-        public virtual Admission Admission { get; set; }
+        public int Id { get; set; }
+
+        public int ConsultationId { get; set; }
+        public virtual Consultation Consultation { get; set; }
+
         public int Systolic { get; set; }
         public int Diastolic { get; set; }
         public BPMeasurementAssesment BPAssesment { get; set; }

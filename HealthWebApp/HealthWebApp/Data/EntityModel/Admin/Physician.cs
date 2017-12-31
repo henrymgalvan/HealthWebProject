@@ -8,8 +8,6 @@ namespace HealthWebApp.Data.EntityModel.Admin
 {
     public class Physician : Employee
     {
-        [Key]
-        public int EmployeeId { get; set; }
 
 
     }

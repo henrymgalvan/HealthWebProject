@@ -17,8 +17,13 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     public class Admission
     {
         public int Id { get; set; }
+
         public int PersonId { get; set; }
         public virtual Person Person { get; set; }
+
+        public int ConsultationId { get; set; }
+        public virtual Consultation Consultation { get; set; }
+
         public DateTime Date { get; set; }      //Default to Current Date & Time
         public DateTime Time { get; set; }
 

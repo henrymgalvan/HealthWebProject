@@ -15,15 +15,16 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     {
         Good = 1, Satisfactory = 2, Serious = 3, Critical = 4, Espired = 5
     }
-    public enum TypeOfDiagnosis
-    {
-        Admitting =1, Final = 2, Working = 3, NotApplicable = 4
-    }
+
 
 
     public class DoctorsOrder //pg109
     {
         public int Id { get; set; }
+
+        public int ConsultationId { get; set; }
+        public virtual Consultation Consultation { get; set; }
+
         //Laboratory Request
         public bool BloodChemistry { get; set; }
         public bool CompleteBloodCount { get; set; }
@@ -51,24 +52,22 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         //Alert Description
         public string AlertDescription { get; set; }
 
-        //Type Of Diagnosis Admitting, Final, Working, Not Applicable
-        public TypeOfDiagnosis DiagnosisType { get; set; }
-        public ICD10 Icd10 { get; set; } //List of ICD10 code
-        public string Diagnosis { get; set; }
-        public string TreatmentPlan { get; set; }
+        public IEnumerable<Diagnosis> Diagnosis { get; set; }
+
         public Disposition Disposition { get; set; }
         public ConditionOfDischarge ConditionOfDischarge { get; set; }
         public DateTime DateOfDischarge { get; set; }
-        public string Remarks { get; set; }
-
 
         //For follow-up
-        public bool ScheduleNextVisit { get; set; }
-        public DateTime ScheduleOfNextVisit { get; set; }
+        public bool ScheduledNextVisit { get; set; }
+        public ScheduleOfNextVisit ScheduleOfNextVisit { get; set; }
 
         //Prescribe Medicine
 
-//        public TypeOfConsultationService ConsultationService { get; set; }
+        //        public TypeOfConsultationService ConsultationService { get; set; }
+
+
+        public virtual Referral Referral { get; set; }
 
     }
 }

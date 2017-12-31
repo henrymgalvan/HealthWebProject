@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 namespace HealthWebApp.Data.EntityModel.Maternal
 {
     public enum BirthControlMethod { NaturalMethod = 1, Pills = 2, Injectable = 3, BLT = 4 }
-
+        //Condom,
+        //Female Sterilization/Bilateral Tubal Ligation
+        //Implant
+        //Depo-Medroxy Progestone Acetate(DMPA)
+        //Intra-Uterine Device
+        //Male Sterilization/Vasectomy
+        //Natural family Planning - Basal body Temperature
+        //Natural Family Planning - Cervical Mucus Method
+        //Lactational Amenorrhea Method
+        //Natural Family Planning - Standard Days Method
+        //Natural Family Planning - Sympothermal Method
+        //Pills
     public class MenstrualHistory
     {
         public int Id { get; set; }
@@ -17,6 +28,10 @@ namespace HealthWebApp.Data.EntityModel.Maternal
         public string PeriodDuration { get; set; }
         public string IntervalCycle { get; set; }
         public int NoOfPadsPerDayDuringMenstruation { get; set; }
+
+        public string OnsetOfSexualInterCourse { get; set; }
+
+
         public BirthControlMethod BirthControlMethod { get; set; }
 
         public string Notes { get; set; }

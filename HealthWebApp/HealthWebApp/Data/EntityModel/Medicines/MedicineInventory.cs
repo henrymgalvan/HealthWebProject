@@ -5,18 +5,24 @@ using System.Threading.Tasks;
 
 namespace HealthWebApp.Data.EntityModel.Medicines
 {
-    public enum UnitType
+    public enum UnitForm
     {
-        Tablet = 1, Capsule = 2, Bottle = 3 
+        Tablet = 1, Capsule = 2, Bottle = 3, Sasche = 4, tube = 5 
     }
+    //public enum UnitDescription
+    //{
+
+    //}
     public class MedicineInventory
     {
 
         //Inventory Drugs, All Drugs
         public int Id { get; set; }
         public string DrugCode { get; set; }
+        public string DrugName { get; set; }
         public string DrugDescription { get; set; }
-        public UnitType Unit { get; set; }
+        public UnitForm Unit { get; set; }
+        public string UnitDetail { get; set; }  // mg, ml, 
         public int OnStock { get; set; }
 
     }

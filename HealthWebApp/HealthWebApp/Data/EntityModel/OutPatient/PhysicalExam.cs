@@ -8,7 +8,9 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     public class PhysicalExam
     {
         public int Id { get; set; }
+
         public int ConsultationId { get; set; }
+        public virtual Consultation Consultation { get; set; }
 
         //HEENT==> anicteric sclerae, intact tympanic membrane, tonsilopharyngeal congestion, exudate,
         //          pupils brisky reactive to light, alar flaring, hypertrophic tonsils, aural discharge, 
