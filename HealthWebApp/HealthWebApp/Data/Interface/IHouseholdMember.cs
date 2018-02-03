@@ -10,12 +10,12 @@ namespace HealthWebApp.Data.Interface
     public interface IHouseholdMember
     {
         IEnumerable<HouseholdMember> GetAll();
-        IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(int householdProfileId);
-        HouseholdMember Get(int Id);
-        Person GetMemberDetail(int PersonId);
-        Person GetFather(int FatherId);
-        Person GetMother(int MotherId);
+        IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(long householdProfileId);
+        HouseholdMember Get(long Id);
+        Person GetMemberDetail(long PersonId);
+        Person GetFather(long FatherId);
+        Person GetMother(long MotherId);
         void Add(HouseholdMember newHouseholdMember);
-        void Delete(int HouseholdMemberId);
+        void Delete(long HouseholdMemberId);
     }
 }

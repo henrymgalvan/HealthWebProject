@@ -16,12 +16,12 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     }
     public class Admission
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int PersonId { get; set; }
+        public long PersonId { get; set; }
         public virtual Person Person { get; set; }
 
-        public int ConsultationId { get; set; }
+        public long ConsultationId { get; set; }
         public virtual Consultation Consultation { get; set; }
 
         public DateTime Date { get; set; }      //Default to Current Date & Time
@@ -38,7 +38,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
         public bool PatientConsent { get; set; } //to digital record for specific admission
 
-        public int EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
         public virtual Employee AdmittedBy { get; set; } //Baded On LogIn
 
         public string Notes { get; set; }

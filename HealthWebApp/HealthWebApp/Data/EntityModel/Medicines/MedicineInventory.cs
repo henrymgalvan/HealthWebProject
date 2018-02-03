@@ -17,7 +17,7 @@ namespace HealthWebApp.Data.EntityModel.Medicines
     {
 
         //Inventory Drugs, All Drugs
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string DrugCode { get; set; }
         public string DrugName { get; set; }
         public string DrugDescription { get; set; }

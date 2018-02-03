@@ -18,8 +18,8 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
     public class ChildBirthRecord
     {
-        public int Id { get; set; }
-        public int PersonId { get; set; }
+        public long Id { get; set; }
+        public long PersonId { get; set; }
         public virtual Person  Person { get; set; }
 
         public int Months { get; set; }
@@ -32,7 +32,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public decimal ChestCircumferenceCm { get; set; }
         public decimal AbdominalCircumferenceCm { get; set; }
 
-        public int EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
         public virtual Employee AdministeredBy { get; set; }
 
         public PlaceOfBirthCategory PlaceOfBirthCategory { get; set; }

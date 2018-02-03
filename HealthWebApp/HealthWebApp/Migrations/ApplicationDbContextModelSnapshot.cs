@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using HealthWebApp.Data;
 using HealthWebApp.Data.EntityModel.Household;
 using HealthWebApp.Data.EntityModel;
+using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 
 namespace HealthWebApp.Migrations
 {
@@ -20,6 +21,38 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.Barangay", b =>
                 {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CityMunicipalityId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityMunicipalityId");
+
+                    b.ToTable("Barangay");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.CityMunicipality", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ProvinceId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("City");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.PhilArea", b =>
+                {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
@@ -27,17 +60,49 @@ namespace HealthWebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Barangay");
+                    b.ToTable("PhilArea");
                 });
 
-            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdMember", b =>
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.Province", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("HouseholdProfileId");
+                    b.Property<string>("Name");
 
-                    b.Property<int>("PersonId");
+                    b.Property<int>("RegionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegionId");
+
+                    b.ToTable("Province");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.Region", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("PhilAreaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PhilAreaId");
+
+                    b.ToTable("Region");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdMember", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("HouseholdProfileId");
+
+                    b.Property<long>("PersonId");
 
                     b.Property<int>("RelationToHead");
 
@@ -53,12 +118,12 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdProfile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
 
-                    b.Property<int>("BarangayId");
+                    b.Property<long>("BarangayId");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -77,7 +142,7 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Person", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CivilStatus");
@@ -90,7 +155,7 @@ namespace HealthWebApp.Migrations
 
                     b.Property<DateTime>("DateTimeLastUpdated");
 
-                    b.Property<int>("EmployeeId");
+                    b.Property<string>("EmailAddress");
 
                     b.Property<string>("ExtensionName")
                         .HasMaxLength(3);
@@ -117,6 +182,38 @@ namespace HealthWebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("People");
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Category");
+
+                    b.Property<DateTime>("DateAssigned");
+
+                    b.Property<int>("EmployerType");
+
+                    b.Property<DateTime>("ExpirationDate");
+
+                    b.Property<string>("Identification");
+
+                    b.Property<int>("Individual");
+
+                    b.Property<bool>("Lifetime");
+
+                    b.Property<long>("PersonId");
+
+                    b.Property<int>("Sponsored");
+
+                    b.Property<int>("StatusType");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("PhilHealth");
                 });
 
             modelBuilder.Entity("HealthWebApp.Models.ApplicationUser", b =>
@@ -276,6 +373,38 @@ namespace HealthWebApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.Barangay", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.Barangays.CityMunicipality", "CityMunicipality")
+                        .WithMany("Barangays")
+                        .HasForeignKey("CityMunicipalityId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.CityMunicipality", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.Barangays.Province", "Province")
+                        .WithMany("CityMunicipalities")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.Province", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.Barangays.Region", "Region")
+                        .WithMany("Provinces")
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Barangays.Region", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.Barangays.PhilArea", "PhilArea")
+                        .WithMany("Regions")
+                        .HasForeignKey("PhilAreaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdMember", b =>
                 {
                     b.HasOne("HealthWebApp.Data.EntityModel.Household.HouseholdProfile", "HouseholdProfile")
@@ -294,6 +423,14 @@ namespace HealthWebApp.Migrations
                     b.HasOne("HealthWebApp.Data.EntityModel.Barangays.Barangay", "Barangay")
                         .WithMany()
                         .HasForeignKey("BarangayId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", b =>
+                {
+                    b.HasOne("HealthWebApp.Data.EntityModel.Person", "Person")
+                        .WithMany("PhilHealth")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

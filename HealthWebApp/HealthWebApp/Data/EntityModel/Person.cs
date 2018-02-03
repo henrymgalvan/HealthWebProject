@@ -20,7 +20,7 @@ namespace HealthWebApp.Data.EntityModel
     public class Person
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required, StringLength(30), MinLength(1)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
@@ -48,6 +48,8 @@ namespace HealthWebApp.Data.EntityModel
 
         [Phone]
         public string ContactNumber { get; set; }
+        [EmailAddress]
+        public string EmailAddress { get; set; }
 
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
         public DateTime DateTimeLastUpdated { get; set; }
@@ -55,14 +57,16 @@ namespace HealthWebApp.Data.EntityModel
 
         public virtual HouseholdMember HouseholdMember { get; set; }
 
-        public int EmployeeId { get; set; }
+
+        public IEnumerable<PhilHealth> PhilHealth { get; set; }
+
+
+        //public long EmployeeId { get; set; }
         //public virtual Employee AssignedBy { get; set; }
 
 
-        public IEnumerable<PhilHealth> PhilHealth { get; set; }
-        // GSIS
-        // SSS
-        // PAG-IBIG
+
+
 
         public string FullName => (FirstName + " " + MiddleName + " " + LastName);
     }

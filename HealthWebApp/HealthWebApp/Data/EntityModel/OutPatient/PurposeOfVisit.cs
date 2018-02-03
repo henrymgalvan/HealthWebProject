@@ -5,7 +5,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     public class PurposeOfVisit
     {
         [Key]
-        public int AdmissionId { get; set; }
+        public long AdmissionId { get; set; }
 
         public bool General { get; set; }
         public bool PreNatal { get; set; }

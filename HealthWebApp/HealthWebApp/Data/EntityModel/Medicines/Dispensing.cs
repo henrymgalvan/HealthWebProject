@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.Medicines
 {
     public class Dispensing
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         //Source of Prescription
         public bool Others { get; set; } //specify source
         public bool Facility { get; set; }
@@ -16,7 +16,7 @@ namespace HealthWebApp.Data.EntityModel.Medicines
         public int Quantity { get; set; }
         public string Remarks { get; set; }
         public DateTime DispensingDate { get; set; }
-        public int DispenseBy { get; set; }
+        public long DispenseBy { get; set; }
 
     }
 }

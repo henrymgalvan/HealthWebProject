@@ -7,10 +7,10 @@ namespace HealthWebApp.Data.Interface
     public interface IHouseholdProfile
     {
         IEnumerable<HouseholdProfile> GetAll();
-        IEnumerable<HouseholdProfile> GetallByBarangay(int BarangayId);
+        IEnumerable<HouseholdProfile> GetallByBarangay(long BarangayId);
 
-        HouseholdProfile GetByPersonId(int PersonId);
-        HouseholdProfile GetById(int id);
+        HouseholdProfile GetByPersonId(long PersonId);
+        HouseholdProfile GetById(long id);
         HouseholdProfile GetByProfileId(string ProfileId);
 
         void Add(HouseholdProfile newHouseholdProfile);

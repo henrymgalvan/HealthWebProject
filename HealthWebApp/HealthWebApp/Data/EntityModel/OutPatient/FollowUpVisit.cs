@@ -7,8 +7,8 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class FollowUpVisit
     {
-        public int Id { get; set; }
-        public int PersonId { get; set; }
+        public long Id { get; set; }
+        public long PersonId { get; set; }
         public virtual Person Child { get; set; }
         public DateTime Date { get; set; }
         public short AgeInYears { get; set; }

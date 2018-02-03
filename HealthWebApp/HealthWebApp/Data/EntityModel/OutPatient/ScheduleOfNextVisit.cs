@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class ScheduleOfNextVisit
     {
-        public int id { get; set; }
+        public long id { get; set; }
 
         //Purpose of Visit
         public bool General { get; set; }

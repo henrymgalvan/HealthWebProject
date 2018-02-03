@@ -7,8 +7,8 @@ namespace HealthWebApp.Models.HouseholdMember
 {
     public class HouseholdMemberCreateModel
     {
-        public int PersonId { get; set; }
-        public int HouseholdProfileId { get; set; }
+        public long PersonId { get; set; }
+        public long HouseholdProfileId { get; set; }
         public RelationToHouseholdHead RelationToHouseholdHead { get; set; }
     }
 }

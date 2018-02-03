@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HealthWebApp.Migrations
 {
-    public partial class DataInit : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Barangay",
+                name: "PhilArea",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -19,21 +19,21 @@ namespace HealthWebApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Barangay", x => x.Id);
+                    table.PrimaryKey("PK_PhilArea", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "People",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CivilStatus = table.Column<int>(nullable: false),
                     ContactNumber = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     DateTimeLastUpdated = table.Column<DateTime>(nullable: false),
-                    EmployeeId = table.Column<int>(nullable: false),
+                    EmailAddress = table.Column<string>(nullable: true),
                     ExtensionName = table.Column<string>(maxLength: 3, nullable: true),
                     FirstName = table.Column<string>(maxLength: 30, nullable: false),
                     LastName = table.Column<string>(maxLength: 30, nullable: false),
@@ -101,25 +101,49 @@ namespace HealthWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HouseholdProfile",
+                name: "Region",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Address = table.Column<string>(nullable: true),
-                    BarangayId = table.Column<int>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    DateTimeLastUpdated = table.Column<DateTime>(nullable: false),
-                    Note = table.Column<string>(nullable: true),
-                    ProfileId = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    PhilAreaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HouseholdProfile", x => x.Id);
+                    table.PrimaryKey("PK_Region", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HouseholdProfile_Barangay_BarangayId",
-                        column: x => x.BarangayId,
-                        principalTable: "Barangay",
+                        name: "FK_Region_PhilArea_PhilAreaId",
+                        column: x => x.PhilAreaId,
+                        principalTable: "PhilArea",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PhilHealth",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Category = table.Column<int>(nullable: false),
+                    DateAssigned = table.Column<DateTime>(nullable: false),
+                    EmployerType = table.Column<int>(nullable: false),
+                    ExpirationDate = table.Column<DateTime>(nullable: false),
+                    Identification = table.Column<string>(nullable: true),
+                    Individual = table.Column<int>(nullable: false),
+                    Lifetime = table.Column<bool>(nullable: false),
+                    PersonId = table.Column<long>(nullable: false),
+                    Sponsored = table.Column<int>(nullable: false),
+                    StatusType = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PhilHealth", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PhilHealth_People_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "People",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -211,13 +235,97 @@ namespace HealthWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HouseholdMember",
+                name: "Province",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    HouseholdProfileId = table.Column<int>(nullable: false),
-                    PersonId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    RegionId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Province", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Province_Region_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Region",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "City",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    ProvinceId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_City", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_City_Province_ProvinceId",
+                        column: x => x.ProvinceId,
+                        principalTable: "Province",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Barangay",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CityMunicipalityId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Barangay", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Barangay_City_CityMunicipalityId",
+                        column: x => x.CityMunicipalityId,
+                        principalTable: "City",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HouseholdProfile",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Address = table.Column<string>(nullable: true),
+                    BarangayId = table.Column<long>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    DateTimeLastUpdated = table.Column<DateTime>(nullable: false),
+                    Note = table.Column<string>(nullable: true),
+                    ProfileId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HouseholdProfile", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HouseholdProfile_Barangay_BarangayId",
+                        column: x => x.BarangayId,
+                        principalTable: "Barangay",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HouseholdMember",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HouseholdProfileId = table.Column<long>(nullable: false),
+                    PersonId = table.Column<long>(nullable: false),
                     RelationToHead = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -238,6 +346,26 @@ namespace HealthWebApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Barangay_CityMunicipalityId",
+                table: "Barangay",
+                column: "CityMunicipalityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_City_ProvinceId",
+                table: "City",
+                column: "ProvinceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Province_RegionId",
+                table: "Province",
+                column: "RegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Region_PhilAreaId",
+                table: "Region",
+                column: "PhilAreaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HouseholdMember_HouseholdProfileId",
                 table: "HouseholdMember",
                 column: "HouseholdProfileId");
@@ -252,6 +380,11 @@ namespace HealthWebApp.Migrations
                 name: "IX_HouseholdProfile_BarangayId",
                 table: "HouseholdProfile",
                 column: "BarangayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PhilHealth_PersonId",
+                table: "PhilHealth",
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -297,6 +430,9 @@ namespace HealthWebApp.Migrations
                 name: "HouseholdMember");
 
             migrationBuilder.DropTable(
+                name: "PhilHealth");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -325,6 +461,18 @@ namespace HealthWebApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Barangay");
+
+            migrationBuilder.DropTable(
+                name: "City");
+
+            migrationBuilder.DropTable(
+                name: "Province");
+
+            migrationBuilder.DropTable(
+                name: "Region");
+
+            migrationBuilder.DropTable(
+                name: "PhilArea");
         }
     }
 }

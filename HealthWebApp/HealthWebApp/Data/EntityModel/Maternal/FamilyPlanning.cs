@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.Maternal
 {
     public class FamilyPlanning
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
        // public FamilyPlanningMethod Method { get; set; }
         public DateTime DateStarted { get; set; }
         public string DropOutReason { get; set; }

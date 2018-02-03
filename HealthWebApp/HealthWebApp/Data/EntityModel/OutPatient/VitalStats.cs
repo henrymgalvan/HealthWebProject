@@ -26,9 +26,9 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
     public class VitalStats
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int ConsultationId { get; set; }
+        public long ConsultationId { get; set; }
         public virtual Consultation Consultation { get; set; }
 
         public int Systolic { get; set; }
@@ -51,7 +51,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
         public string Remarks { get; set; }
 
-        public int EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
         public virtual Employee AdministeredBy { get; set; } //Baded On LogIn
     }
 }

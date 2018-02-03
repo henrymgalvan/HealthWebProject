@@ -14,9 +14,9 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
     public class Diagnosis
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int DoctorsOrderId { get; set; }
+        public long DoctorsOrderId { get; set; }
         public virtual DoctorsOrder DoctorsOrder { get; set; }
         
         //Type Of Diagnosis Admitting, Final, Working, Not Applicable

@@ -43,7 +43,7 @@ namespace HealthWebApp.Controllers
             return View(model);
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(long id)
         {
             HouseholdMember member = _householdMember.Get(id);
 

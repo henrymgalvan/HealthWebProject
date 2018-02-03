@@ -33,9 +33,9 @@ namespace HealthWebApp.Data.EntityModel.PhilHealthFolder
 
     public class PhilHealth
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Identification { get; set; }
-        public int PersonId { get; set; }
+        public long PersonId { get; set; }
         public virtual Person Person { get; set; }
         public StatusType StatusType { get; set; }
         public TypeOfMembership Category { get; set; }

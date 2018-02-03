@@ -7,8 +7,8 @@ namespace HealthWebApp.Data.EntityModel.BasicServices
 {
     public class SystemReview
     {
-        public int Id { get; set; }
-        public int ConsultationId { get; set; }
+        public long Id { get; set; }
+        public long ConsultationId { get; set; }
 
         //Skin
         public bool SkinRashOrItching { get; set; }

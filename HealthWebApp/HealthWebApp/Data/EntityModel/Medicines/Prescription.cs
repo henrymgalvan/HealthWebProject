@@ -19,9 +19,9 @@ namespace HealthWebApp.Data.EntityModel.Medicines
 
     public class Prescription
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int DiagnosisId { get; set; }
+        public long DiagnosisId { get; set; }
         public virtual Diagnosis Diagnosis { get; set; }
 
         public string DrugCode { get; set; }
@@ -32,7 +32,7 @@ namespace HealthWebApp.Data.EntityModel.Medicines
         public string IntededPurposeOfMedicine { get; set; } //lookup
         public string Medication { get; set; }
         public DateTime DateOfPrescription { get; set; }
-        public int PrescribedBy { get; set; }
+        public long PrescribedBy { get; set; }
 
 
     }

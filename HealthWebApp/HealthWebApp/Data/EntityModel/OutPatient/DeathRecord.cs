@@ -21,7 +21,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     }
     public class DeathRecord
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime DateTimeOfDeath { get; set; }
         public TypeOfDeathEnum TypeOfDeath { get; set; }
         public PlaceOfDeathEnum PlaceOfDeath { get; set; }

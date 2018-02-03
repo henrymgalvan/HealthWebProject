@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.GeoTagging
 {
     public class GeoTag
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         //Orientation x, y, z
         //Latitude
         //Longitude

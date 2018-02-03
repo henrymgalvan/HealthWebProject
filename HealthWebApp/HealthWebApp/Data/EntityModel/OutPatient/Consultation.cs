@@ -8,9 +8,9 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class Consultation
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int PersonId { get; set; }
+        public long PersonId { get; set; }
         public virtual Patient Patient { get; set; }
 
         public virtual Admission Admission { get; set; }
@@ -29,7 +29,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public bool Done { get; set; }
         
 
-        public int EmployeeId { get; set; } // based on PhysicianId
+        public long EmployeeId { get; set; } // based on PhysicianId
         public Physician Physician { get; set; }
     }
 }

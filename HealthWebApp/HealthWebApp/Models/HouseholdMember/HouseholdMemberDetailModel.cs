@@ -7,7 +7,7 @@ namespace HealthWebApp.Models.HouseholdMember
 {
     public class HouseholdMemberDetailModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public String FullName { get; set; }
         public String Sex { get; set; }
         public String RelationToHead { get; set; }

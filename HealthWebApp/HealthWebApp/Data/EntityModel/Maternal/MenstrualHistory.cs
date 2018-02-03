@@ -20,8 +20,8 @@ namespace HealthWebApp.Data.EntityModel.Maternal
         //Pills
     public class MenstrualHistory
     {
-        public int Id { get; set; }
-        public int PersonId { get; set; }
+        public long Id { get; set; }
+        public long PersonId { get; set; }
         public Person Person { get; set; }
 
         public DateTime LastMenstrualPeriod { get; set; }

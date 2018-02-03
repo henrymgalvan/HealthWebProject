@@ -132,7 +132,7 @@ namespace HealthWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public IActionResult Details(long id)
         {
             HouseholdProfile household = _householdProfile.GetById(id);
             List<HouseholdMember> members = _householdMembers.GetAllByHouseholdProfileId(household.Id).ToList();

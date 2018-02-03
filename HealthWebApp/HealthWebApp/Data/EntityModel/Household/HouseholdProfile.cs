@@ -9,11 +9,21 @@ namespace HealthWebApp.Data.EntityModel.Household
     public class HouseholdProfile
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string ProfileId { get; set; }
         public string Address { get; set; }
-        public int BarangayId { get; set; }
+
+        public long BarangayId { get; set; }
         public virtual Barangay Barangay { get; set; }
+        //CityOrMunicipality
+        //public int CityMunicipalityId { get; set; }
+        //public virtual CityMunicipality City { get; set; }
+        //Province
+        //public int ProvinceId { get; set; }
+        //public virtual Province Province { get; set; }
+        //Region
+        //public int RegionId { get; set; }
+        //public virtual Region Region { get; set; }
 
         public string Note { get; set; }
         //public int GeotagId { get; set; }

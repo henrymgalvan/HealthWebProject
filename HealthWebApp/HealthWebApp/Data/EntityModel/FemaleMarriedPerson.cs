@@ -9,7 +9,7 @@ namespace HealthWebApp.Data.EntityModel
     public class FemaleMarriedPerson
     {
         [Key]
-        public int PersonId { get; set; }
+        public long PersonId { get; set; }
         public string MaidenMiddleName { get; set; }
         public string MaidenLastName { get; set; }
 

@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class SocialHistory
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public bool Smoking { get; set; }
         public bool QuitSmoking { get; set; }
         public int PackYear { get; set; }

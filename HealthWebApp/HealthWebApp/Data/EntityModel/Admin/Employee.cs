@@ -9,24 +9,28 @@ namespace HealthWebApp.Data.EntityModel.Admin
     }
     public class Employee
     {
-        public int Id { get; set; }
-        public int PersonId { get; set; }
+        public long Id { get; set; }
+        public long PersonId { get; set; }
         public virtual Person Person { get; set; }
         public string EmployeeIdentification { get; set; }
+
+        public virtual IEnumerable<EducationalBackground> Educations { get; set; }
+        public IEnumerable<PRCID> PRCID { get; set; }
+
+        public string GSIS { get; set; }
+        public string SSS { get; set; }
+        public string PagIbig { get; set; }
+        public string TIN { get; set; }
 
         public int PositionId { get; set; }
         public virtual Position Position { get; set; }
 
-        //public int SectionId { get; set; }
-        //public virtual Section Section { get; set; }
+        public int SectionId { get; set; }
+        public virtual Section Section { get; set; }
 
-        public virtual IEnumerable<Barangay> AreaOfAssignments { get; set; }
-        
+        public virtual IEnumerable<AreaOfAssignment> AreaOfAssignments { get; set; }
         public EmploymentStatus EmployeeStatus { get; set; }
         public bool ActiveInService { get; set; }
-
-        public IEnumerable<PRCID> PRCID { get; set; }
-
         public virtual IEnumerable<EmploymentRecord> EmployeeRecords { get; set; }
 
         public string Note { get; set; }

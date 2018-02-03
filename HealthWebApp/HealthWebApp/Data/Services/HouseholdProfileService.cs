@@ -30,14 +30,14 @@ namespace HealthWebApp.Data.Services
                 //.ToList();
         }
 
-        public IEnumerable<HouseholdProfile> GetallByBarangay(int BarangayId)
+        public IEnumerable<HouseholdProfile> GetallByBarangay(long BarangayId)
         {
             return _context.HouseholdProfile
                 .Include(b => b.Barangay)
                 .Where(b => b.BarangayId == BarangayId);
         }
 
-        public HouseholdProfile GetById(int id)
+        public HouseholdProfile GetById(long id)
         {
             return _context.HouseholdProfile
                 .Include(b => b.Barangay)
@@ -45,7 +45,7 @@ namespace HealthWebApp.Data.Services
                 .FirstOrDefault(hp => hp.Id == id);
         }
 
-        public HouseholdProfile GetByPersonId(int PersonId)
+        public HouseholdProfile GetByPersonId(long PersonId)
         {
             throw new NotImplementedException();
         }

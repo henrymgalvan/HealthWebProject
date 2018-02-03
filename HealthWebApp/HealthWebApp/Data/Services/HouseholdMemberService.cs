@@ -20,14 +20,14 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-        public void Delete(int HouseholdMemberId)
+        public void Delete(long HouseholdMemberId)
         {
             HouseholdMember householdMember = _context.HouseholdMember.FirstOrDefault(p => p.Id == HouseholdMemberId);
             _context.HouseholdMember.Remove(householdMember);
             _context.SaveChanges();
         }
 
-        public HouseholdMember Get(int Id)
+        public HouseholdMember Get(long Id)
         {
             return _context.HouseholdMember
                 .Include(p => p.Person)
@@ -43,7 +43,7 @@ namespace HealthWebApp.Data.Services
                 //.ToList();
         }
 
-        public IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(int householdProfileId)
+        public IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(long householdProfileId)
         {
             return _context.HouseholdMember
                 .Include(m => m.Person)
@@ -51,17 +51,17 @@ namespace HealthWebApp.Data.Services
                 //.ToList();
         }
 
-        public Person GetFather(int FatherId)
+        public Person GetFather(long FatherId)
         {
             return _context.People.FirstOrDefault(p => p.Id == FatherId);
         }
 
-        public Person GetMemberDetail(int PersonId)
+        public Person GetMemberDetail(long PersonId)
         {
             return _context.People.FirstOrDefault(p => p.Id == PersonId);
         }
 
-        public Person GetMother(int MotherId)
+        public Person GetMother(long MotherId)
         {
             return _context.People.FirstOrDefault(p => p.Id == MotherId);
         }

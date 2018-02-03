@@ -8,7 +8,7 @@ namespace HealthWebApp.Models.HouseholdProfile
 {
     public class HouseholdProfileDetailModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string ProfileId { get; set; }
         public string Address { get; set; }
         public string Barangay { get; set; }

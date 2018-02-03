@@ -22,7 +22,12 @@ namespace HealthWebApp.Data
         }
 
         public DbSet<Person> People {get; set;}
-        public DbSet<Barangay> Barangay { get; set; }        
+        public DbSet<Barangay> Barangay { get; set; }
+        public DbSet<CityMunicipality> City { get; set; }
+        public DbSet<Province> Province { get; set; }
+        public DbSet<Region> Region { get; set; }
+        public DbSet<PhilArea> PhilArea { get; set; }
+
         public DbSet<HouseholdMember> HouseholdMember { get; set; }
         public DbSet<HouseholdProfile> HouseholdProfile { get; set; }
         

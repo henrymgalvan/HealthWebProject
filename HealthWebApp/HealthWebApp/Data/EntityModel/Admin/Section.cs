@@ -8,7 +8,9 @@ namespace HealthWebApp.Data.EntityModel.Admin
         public string Name { get; set; }
 
         public string Description { get; set; }
-        
-        public virtual ICollection<Employee> Staffs { get; set; }
+
+        public virtual IEnumerable<Position> Positions { get; set; }
+
+        public virtual IEnumerable<Employee> Staffs { get; set; }
     }
 }

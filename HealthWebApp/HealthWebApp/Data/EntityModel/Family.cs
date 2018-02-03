@@ -9,13 +9,13 @@ namespace HealthWebApp.Data.EntityModel
     public class Family
     {
         [Key]
-        public int Id { get; set; }
-        public int PersonId { get; set; }
+        public long Id { get; set; }
+        public long PersonId { get; set; }
 
-        public int FatherId { get; set; }
-        public int MotherId { get; set; }
+        public long FatherId { get; set; }
+        public long MotherId { get; set; }
 
-        public int Spouse { get; set; }
+        public long Spouse { get; set; }
         IEnumerable<Person> Children { get; set; }
         IEnumerable<Person> Siblings { get; set; }
     }

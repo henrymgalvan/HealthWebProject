@@ -8,14 +8,14 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class ImmunizationRecord
     {
-        public int Id { get; set; }
-        public int PersonId { get; set; }
+        public long Id { get; set; }
+        public long PersonId { get; set; }
         public virtual Person Person { get; set; }
 
         public int VaccineId { get; set; }
         public virtual Vaccine Vaccine { get; set; }
         public DateTime DateReceived { get; set; }
-        public int EmployeeId { get; set; }
+        public long EmployeeId { get; set; }
         public virtual Employee AdministeredBy { get; set; }
 
         public string Notes { get; set; }

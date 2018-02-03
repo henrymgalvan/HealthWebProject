@@ -2,8 +2,8 @@
 {
     public class Population
     {
-        public int Id { get; set; }
-        public int BarangayId { get; set; }
+        public long Id { get; set; }
+        public long BarangayId { get; set; }
         public int Year { get; set; }
         public int Total { get; set; }
         public int NoOfHousehold { get; set; }

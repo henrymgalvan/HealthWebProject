@@ -9,7 +9,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class MedicalHistoryPresentIllness
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public ICD10 ICDCode { get; set; }
         public DateTime DateOfDiagnosis { get; set; }
         public IEnumerable<Prescription> Prescriptions { get; set; }

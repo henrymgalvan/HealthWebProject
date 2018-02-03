@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.Maternal
 {
     public class MaternalHistory
     {
-        public int PersonId { get; set; }
+        public long PersonId { get; set; }
         public Person Person { get; set; }
 
         public DateTime Menarche { get; set; }  //*First menstrual period

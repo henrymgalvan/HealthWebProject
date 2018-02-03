@@ -9,7 +9,7 @@ namespace HealthWebApp.Models.Person
 {
     public class PersonEditModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Display(Name = "Title")]
         public string NameTitle { get; set; }
         [Display(Name = "First Name")]

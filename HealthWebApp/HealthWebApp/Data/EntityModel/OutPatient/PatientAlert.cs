@@ -12,7 +12,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     public class PatientAlert
     {
 
-        public int Id { get; set; }
+        public long Id { get; set; }
         public TypeOfAlert AlertType { get; set; }
 
         //Type Of Disability

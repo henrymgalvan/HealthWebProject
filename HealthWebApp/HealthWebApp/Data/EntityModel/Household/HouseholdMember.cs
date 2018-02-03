@@ -13,14 +13,14 @@ namespace HealthWebApp.Data.EntityModel.Household
     public class HouseholdMember
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public RelationToHouseholdHead RelationToHead { get; set; }
 
-        public int PersonId { get; set; }
+        public long PersonId { get; set; }
         public virtual Person Person { get; set; }
 
-        public int HouseholdProfileId { get; set; }
+        public long HouseholdProfileId { get; set; }
         public virtual HouseholdProfile HouseholdProfile { get; set; }
 
     }

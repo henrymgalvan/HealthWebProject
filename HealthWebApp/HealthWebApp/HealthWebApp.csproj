@@ -37,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\EntityModel\Admin\PDS\" />
     <Folder Include="Data\EntityModel\BasicServices\" />
   </ItemGroup>
 

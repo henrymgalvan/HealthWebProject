@@ -33,9 +33,9 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
     }
     public class Referral
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public int DoctorsOrderId { get; set; }
+        public long DoctorsOrderId { get; set; }
         public DoctorsOrder DoctorsOrder { get; set; }
 
         public DateTime DateOfReferral { get; set; }

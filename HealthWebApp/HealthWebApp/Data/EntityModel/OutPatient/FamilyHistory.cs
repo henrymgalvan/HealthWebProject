@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class FamilyHistory
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public bool Allergy { get; set; }
         public string TypeOfAllergy { get; set; }
         public bool Asthma { get; set; }

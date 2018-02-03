@@ -7,10 +7,10 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 {
     public class ConsultationStatus
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         //link to Consultation
 
-        public int ConsultationId { get; set; }
+        public long ConsultationId { get; set; }
         public virtual Consultation Consultation { get; set; }
 
         //Consultation Status : Completed, Incomplete
