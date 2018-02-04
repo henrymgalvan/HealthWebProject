@@ -16,8 +16,6 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         Good = 1, Satisfactory = 2, Serious = 3, Critical = 4, Espired = 5
     }
 
-
-
     public class DoctorsOrder //pg109
     {
         public long Id { get; set; }

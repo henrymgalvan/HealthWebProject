@@ -13,9 +13,10 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public long PersonId { get; set; }
         public virtual Patient Patient { get; set; }
 
+        public long AdmissionId { get; set; }
         public virtual Admission Admission { get; set; }
 
-        public virtual VitalStats NewVitalStats { get; set; }
+        public virtual IEnumerable<VitalStats> VitalStats { get; set; }
 
         public virtual PhysicalExam PhysicalExam { get; set; }
 
@@ -26,7 +27,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public virtual ConsultationStatus ConsultationStatus { get; set; }
 
 
-        public bool Done { get; set; }
+        public bool DoneConsult { get; set; }
         
 
         public long EmployeeId { get; set; } // based on PhysicianId

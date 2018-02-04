@@ -9,6 +9,8 @@ namespace HealthWebApp.Data.EntityModel.OutPatient.ICD
     {
         public long Id { get; set; }
         public string ICDCode { get; set; }
+        public string ShortTitle { get; set; }
+        public string ICDDescription { get; set; }
 
     }
 }
