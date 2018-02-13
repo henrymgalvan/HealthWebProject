@@ -51,23 +51,15 @@ namespace HealthWebApp.Data.EntityModel
         [EmailAddress]
         public string EmailAddress { get; set; }
 
+        public HouseholdMember HouseholdMember { get; set; }
+        public IEnumerable<PhilHealth> PhilHealth { get; set; }
+        public Religion Religion { get; set; }
+
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
+        public long EmployeeId { get; set; }
 
-        public virtual HouseholdMember HouseholdMember { get; set; }
-
-
-        public IEnumerable<PhilHealth> PhilHealth { get; set; }
-
-
-        //public long EmployeeId { get; set; }
-        //public virtual Employee AssignedBy { get; set; }
-
-
-
-
-
-        public string FullName => (FirstName + " " + MiddleName + " " + LastName);
+        public string FullName => (FirstName + " " + MiddleName + " " + LastName + " " + ExtensionName);
     }
 }
