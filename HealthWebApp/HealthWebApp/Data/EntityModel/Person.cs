@@ -22,6 +22,9 @@ namespace HealthWebApp.Data.EntityModel
         [Key]
         public long Id { get; set; }
 
+        [StringLength(30)]
+        public string NameTitle { get; set; } 
+
         [Required, StringLength(30), MinLength(1)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
         public string FirstName { get; set; }
@@ -35,14 +38,14 @@ namespace HealthWebApp.Data.EntityModel
         [StringLength(3)]
         public string ExtensionName { get; set; }
 
-        [StringLength(30)]
-        public string NameTitle { get; set; }
-
-        public Gender Sex { get; set; }
+        public long FamilyId { get; set; }
+        public virtual Family Family { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
+
+        public Gender Sex { get; set; }
 
         public CivilStatus CivilStatus { get; set; }
 
@@ -51,8 +54,8 @@ namespace HealthWebApp.Data.EntityModel
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        public HouseholdMember HouseholdMember { get; set; }
-        public IEnumerable<PhilHealth> PhilHealth { get; set; }
+        public virtual HouseholdMember HouseholdMember { get; set; }
+        public ICollection<PhilHealth> PhilHealth { get; set; }
         public Religion Religion { get; set; }
 
         public bool PersonConsent { get; set; } //Consent of patient to digital storage

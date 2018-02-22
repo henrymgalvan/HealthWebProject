@@ -6,10 +6,10 @@ namespace HealthWebApp.Data.Interface
     public interface IPerson
     {
         IEnumerable<Person> Getall();
-        Person Get(int id);
+        Person Get(long id);
         void Add(Person newPerson);
         void Update(Person updatedPerson);
-        void Delete(int id);
+        void Delete(long id);
          
     }
 }

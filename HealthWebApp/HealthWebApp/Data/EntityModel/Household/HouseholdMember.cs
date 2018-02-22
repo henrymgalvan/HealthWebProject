@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthWebApp.Data.EntityModel.Household
 {
@@ -13,12 +14,11 @@ namespace HealthWebApp.Data.EntityModel.Household
     public class HouseholdMember
     {
         [Key]
-        public long Id { get; set; }
-
-        public RelationToHouseholdHead RelationToHead { get; set; }
-
+        [ForeignKey("Person")]
         public long PersonId { get; set; }
         public virtual Person Person { get; set; }
+
+        public RelationToHouseholdHead RelationToHead { get; set; }
 
         public long HouseholdProfileId { get; set; }
         public virtual HouseholdProfile HouseholdProfile { get; set; }

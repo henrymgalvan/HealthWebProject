@@ -44,6 +44,14 @@ namespace HealthWebApp.Models.Person
         [Phone]
         public string ContactNumber { get; set; }
 
+        [EmailAddress]
+        public string EmailAddress { get; set; }
+
+        public Religion Religion { get; set; }
+
         public bool PersonConsent { get; set; }
+        public DateTime DateTimeLastUpdated { get; set; }
+        public DateTime DateCreated { get; set; }
+        public long EmployeeId { get; set; }
     }
 }

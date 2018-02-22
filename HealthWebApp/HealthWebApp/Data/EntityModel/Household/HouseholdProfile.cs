@@ -28,7 +28,7 @@ namespace HealthWebApp.Data.EntityModel.Household
         public string Note { get; set; }
         //public int GeotagId { get; set; }
         //public virtual GeoTag Geotag { get; set; }
-        public virtual IEnumerable<HouseholdMember> HouseholdMembers { get; set; }
+        public virtual ICollection<HouseholdMember> HouseholdMembers { get; set; }
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
     }
