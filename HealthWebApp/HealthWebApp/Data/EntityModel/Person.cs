@@ -38,9 +38,6 @@ namespace HealthWebApp.Data.EntityModel
         [StringLength(3)]
         public string ExtensionName { get; set; }
 
-        public long FamilyId { get; set; }
-        public virtual Family Family { get; set; }
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
@@ -57,6 +54,12 @@ namespace HealthWebApp.Data.EntityModel
         public virtual HouseholdMember HouseholdMember { get; set; }
         public ICollection<PhilHealth> PhilHealth { get; set; }
         public Religion Religion { get; set; }
+
+        public long FatherId { get; set; }
+        public virtual Person Father { get; set; }
+
+        public long MotherId { get; set; }
+        public virtual Person Mother { get; set; }
 
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
         public DateTime DateTimeLastUpdated { get; set; }

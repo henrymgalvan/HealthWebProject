@@ -29,7 +29,7 @@ namespace HealthWebApp.Data.Services
                 .ToList();
         }
 
-        public Person Get(int id)
+        public Person Get(long id)
         {
             return Getall().FirstOrDefault(p => p.Id == id);
         }
@@ -40,7 +40,7 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(long id)
         {
             Person person = _context.People.FirstOrDefault(p => p.Id == id);
             _context.People.Remove(person);

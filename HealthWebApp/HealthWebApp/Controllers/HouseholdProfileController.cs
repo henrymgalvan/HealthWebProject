@@ -139,7 +139,7 @@ namespace HealthWebApp.Controllers
             IEnumerable<HouseholdMemberDetailModel> householdMembersDetailModel = members
                 .Select(hm => new HouseholdMemberDetailModel
                 {
-                    Id = hm.Id,
+                    Id = hm.PersonId,
                     FullName = hm.Person.FirstName + " " + hm.Person.MiddleName + " " + hm.Person.LastName,
                     Sex = hm.Person.Sex.ToString(),
                     RelationToHead = hm.RelationToHead.ToString(),

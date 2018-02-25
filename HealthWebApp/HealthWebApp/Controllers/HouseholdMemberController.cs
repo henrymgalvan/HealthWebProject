@@ -28,7 +28,7 @@ namespace HealthWebApp.Controllers
             IEnumerable<HouseholdMemberDetailModel> HouseholdMembersModel = allMembers
                 .Select(hm => new HouseholdMemberDetailModel
                 {
-                    Id = hm.Id,
+                    Id = hm.PersonId,
                     FullName = hm.Person.FullName,
                     Sex = hm.Person.Sex.ToString(),
                     RelationToHead = hm.RelationToHead.ToString(),
@@ -49,7 +49,7 @@ namespace HealthWebApp.Controllers
 
             var model = new HouseholdMemberDetailModel()
             {
-                Id = member.Id,
+                Id = member.PersonId,
                 FullName = member.Person.FullName,
                 Sex = member.Person.Sex.ToString(),
                 RelationToHead = member.RelationToHead.ToString(),

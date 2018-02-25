@@ -22,7 +22,7 @@ namespace HealthWebApp.Data.Services
 
         public void Delete(long HouseholdMemberId)
         {
-            HouseholdMember householdMember = _context.HouseholdMember.FirstOrDefault(p => p.Id == HouseholdMemberId);
+            HouseholdMember householdMember = _context.HouseholdMember.FirstOrDefault(p => p.PersonId == HouseholdMemberId);
             _context.HouseholdMember.Remove(householdMember);
             _context.SaveChanges();
         }
@@ -32,7 +32,7 @@ namespace HealthWebApp.Data.Services
             return _context.HouseholdMember
                 .Include(p => p.Person)
                 .Include(hp => hp.HouseholdProfile)
-                .FirstOrDefault(p => p.Id == Id);
+                .FirstOrDefault(p => p.PersonId == Id);
         }
 
         public IEnumerable<HouseholdMember> GetAll()
