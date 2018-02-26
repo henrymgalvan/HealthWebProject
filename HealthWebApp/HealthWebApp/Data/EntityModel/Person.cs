@@ -22,8 +22,8 @@ namespace HealthWebApp.Data.EntityModel
         [Key]
         public long Id { get; set; }
 
-        [StringLength(30)]
-        public string NameTitle { get; set; } 
+        public int NameTitleId { get; set; }
+        public virtual NameTitle NameTitle { get; set; } 
 
         [Required, StringLength(30), MinLength(1)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
@@ -35,8 +35,8 @@ namespace HealthWebApp.Data.EntityModel
         [Required, StringLength(30)]
         public string LastName { get; set; }
 
-        [StringLength(3)]
-        public string ExtensionName { get; set; }
+        public int ExtensionNameId { get; set; }
+        public virtual ExtensionName ExtensionName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
@@ -51,9 +51,14 @@ namespace HealthWebApp.Data.EntityModel
         [EmailAddress]
         public string EmailAddress { get; set; }
 
+        public int WorkId { get; set; }
+        public virtual Work Work { get; set; }
+
         public virtual HouseholdMember HouseholdMember { get; set; }
         public ICollection<PhilHealth> PhilHealth { get; set; }
-        public Religion Religion { get; set; }
+
+        public int ReligionId { get; set; }
+        public virtual Religion Religion { get; set; }
 
         public long FatherId { get; set; }
         public virtual Person Father { get; set; }
@@ -62,9 +67,10 @@ namespace HealthWebApp.Data.EntityModel
         public virtual Person Mother { get; set; }
 
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
+
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
-        public long EmployeeId { get; set; }
+        public long EmployeeId { get; set; }    //Updated by Last Employee
 
         public string FullName => (FirstName + " " + MiddleName + " " + LastName + " " + ExtensionName);
     }

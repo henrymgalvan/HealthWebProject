@@ -31,5 +31,6 @@ namespace HealthWebApp.Data.EntityModel.Household
         public virtual ICollection<HouseholdMember> HouseholdMembers { get; set; }
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
+        public long EmployeeId { get; set; }
     }
 }

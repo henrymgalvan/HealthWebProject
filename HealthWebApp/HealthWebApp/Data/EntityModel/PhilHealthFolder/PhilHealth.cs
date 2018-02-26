@@ -49,7 +49,7 @@ namespace HealthWebApp.Data.EntityModel.PhilHealthFolder
 
         public DateTime DateAssigned { get; set; }
         public DateTime ExpirationDate { get; set; }
-
+        public long EmployeeId { get; set; }
 
 
     }

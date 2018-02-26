@@ -15,7 +15,5 @@ namespace HealthWebApp.Data.EntityModel
 
         public virtual Person Person { get; set; }
 
-
-
     }
 }
