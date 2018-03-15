@@ -7,21 +7,30 @@ using System.Threading.Tasks;
 
 namespace HealthWebApp.Data.EntityModel.OutPatient
 {
-    public enum BMI
-    {
-        Normal = 1, Overweight = 2
-    }
-    public enum BPMeasurementAssesment
+
+    public enum BPMeasurementAssessment
     {
         Hypertensive = 1, NonHypertensive = 2  //select BP Measurement assesment
     }
-    public enum WeightCategoryForAge
+
+    public enum WeightCategory  //for age
     {
-        Normal = 1
+        SeverelyUnderWeight = 0, Underweight = 1, Normal = 2, Overweight = 3,
+        SeverelyObese = 4, MorbidlyObese = 5
     }
-    public enum HeightCategoryForAge
+
+    public enum HeighCategory   //for age
     {
-        Normal = 1
+        Midget = 0, VeryShortHeight = 1, ShortHeight = 2, BelowMediumHeight = 3,
+        MediumHeight = 4, AboveMediumHeight = 5, TallHeight = 6, VeryTallHeight = 7,
+        Giants = 8
+    }
+
+    public enum BMICategory
+    {
+        UnderWeight = 0, NormalWeight = 1, OverWeight = 2, ClassI_Obesity = 3
+        ClassII_Obesity = 4, ClassIII_Obesity_Severe = 5,  ClassIII_Obesity_Morbid = 6, 
+        ClassIII_Obesity_Super = 7
     }
 
     public class VitalStats
@@ -33,7 +42,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
         public int Systolic { get; set; }
         public int Diastolic { get; set; }
-        public BPMeasurementAssesment BPAssesment { get; set; }
+        public BPMeasurementAssessment BPAssessment { get; set; }
 
         public int PulseRate { get; set; }
         public int RespiratoryRate { get; set; }
@@ -43,11 +52,11 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         
         public decimal TemperatureC { get; set; }
         public decimal WeightKgms { get; set; }     //in viewmodel add weightInPounds
-        public WeightCategoryForAge WeightCategory{ get; set; }
+        public WeightCategory WeightCategory{ get; set; }
         public decimal HeightCm { get; set; }       //in viewmodel add Height in feet and inches
-        public HeightCategoryForAge HeightCategory { get; set; }
+        public HeightCategory HeightCategory { get; set; }
         public decimal WaistCircumferenceCm { get; set; }   //in viewmodel add waistcircumference in inches
-        public BMI BodyMassIndex { get; set; }        //Computed
+        public BMICategory BodyMassIndex { get; set; }        //Computed
 
         public string Remarks { get; set; }
 

@@ -17,6 +17,10 @@ namespace HealthWebApp.Data.EntityModel
         Single = 1, Married, LiveIn, Separated, Annulled, Widow
     }
 
+    
+
+
+
     public class Person
     {
         [Key]

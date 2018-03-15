@@ -15,7 +15,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         public bool Tuberculosis { get; set; }
         public bool ChildCare { get; set; }
         public bool SickChildren { get; set; }
-        public bool ChilImmunization { get; set; }
+        public bool ChildImmunization { get; set; }
         public bool ChildNutrition { get; set; }
         public bool Injury { get; set; }
         public bool FirecrackerInjury { get; set; }
