@@ -85,7 +85,7 @@ namespace HealthWebApp.Controllers
                         person.MiddleName = newPerson.MiddleName;
                         person.LastName = newPerson.LastName;
                         person.ExtensionName = newPerson.ExtensionName;
-                        person.NameTitle = newPerson.NameTitle;
+                        person.NameTitleId = newPerson.NameTitleId;
                         person.Sex = newPerson.Sex;
                         person.DateOfBirth = newPerson.DateOfBirth;
                         person.CivilStatus = newPerson.CivilStatus;
@@ -118,7 +118,7 @@ namespace HealthWebApp.Controllers
                 MiddleName = person.MiddleName,
                 LastName = person.LastName,
                 ExtensionName = person.ExtensionName,
-                NameTitle = person.NameTitle,
+                NameTitle = person.NameTitleId.ToString(),
                 DateOfBirth = person.DateOfBirth,
                 Sex = person.Sex,
                 ContactNumber = person.ContactNumber,
@@ -139,7 +139,7 @@ namespace HealthWebApp.Controllers
                     UpdatedPerson.MiddleName = editPerson.MiddleName;
                     UpdatedPerson.LastName = editPerson.LastName;
                     UpdatedPerson.ExtensionName = editPerson.ExtensionName;
-                    UpdatedPerson.NameTitle = editPerson.NameTitle;
+                    UpdatedPerson.NameTitleId = editPerson.NameTitleId;
                     UpdatedPerson.Sex = editPerson.Sex;
                     UpdatedPerson.DateOfBirth = editPerson.DateOfBirth;
                     UpdatedPerson.CivilStatus = editPerson.CivilStatus;

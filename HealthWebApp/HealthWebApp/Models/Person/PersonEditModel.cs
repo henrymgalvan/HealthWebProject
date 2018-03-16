@@ -10,7 +10,7 @@ namespace HealthWebApp.Models.Person
     public class PersonEditModel
     {
         public long Id { get; set; }
-        [Display(Name = "Title")]
+        public int NameTitleId {get; set;}
         public string NameTitle { get; set; }
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -19,7 +19,7 @@ namespace HealthWebApp.Models.Person
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Extension")]
-        public string ExtensionName { get; set; }
+        public ExtensionName ExtensionName { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }

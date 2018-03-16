@@ -17,7 +17,10 @@ namespace HealthWebApp.Data.EntityModel
         Single = 1, Married, LiveIn, Separated, Annulled, Widow
     }
 
-    
+    public enum ExtensionName
+    {
+        II = 1, III = 2, IV = 3, V = 4, Jr = 5, Sr = 6
+    }
 
 
 
@@ -39,8 +42,7 @@ namespace HealthWebApp.Data.EntityModel
         [Required, StringLength(30)]
         public string LastName { get; set; }
 
-        public int ExtensionNameId { get; set; }
-        public virtual ExtensionName ExtensionName { get; set; }
+        public ExtensionName ExtensionName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]

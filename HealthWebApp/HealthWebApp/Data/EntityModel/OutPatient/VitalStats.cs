@@ -10,7 +10,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
     public enum BPMeasurementAssessment
     {
-        Hypertensive = 1, NonHypertensive = 2  //select BP Measurement assesment
+        Hypertensive = 1, NonHypertensive = 2  //select BP Measurement assessment
     }
 
     public enum WeightCategory  //for age
@@ -19,7 +19,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
         SeverelyObese = 4, MorbidlyObese = 5
     }
 
-    public enum HeighCategory   //for age
+    public enum HeightCategory   //for age
     {
         Midget = 0, VeryShortHeight = 1, ShortHeight = 2, BelowMediumHeight = 3,
         MediumHeight = 4, AboveMediumHeight = 5, TallHeight = 6, VeryTallHeight = 7,
@@ -28,7 +28,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
     public enum BMICategory
     {
-        UnderWeight = 0, NormalWeight = 1, OverWeight = 2, ClassI_Obesity = 3
+        UnderWeight = 0, NormalWeight = 1, OverWeight = 2, ClassI_Obesity = 3,
         ClassII_Obesity = 4, ClassIII_Obesity_Severe = 5,  ClassIII_Obesity_Morbid = 6, 
         ClassIII_Obesity_Super = 7
     }

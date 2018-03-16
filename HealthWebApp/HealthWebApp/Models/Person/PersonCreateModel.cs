@@ -10,7 +10,7 @@ namespace HealthWebApp.Models.Person
 
         [Display(Name = "Title")]
         //[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
-        public string NameTitle { get; set; }
+        public int NameTitleId { get; set; }
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
@@ -28,7 +28,7 @@ namespace HealthWebApp.Models.Person
         public string LastName { get; set; }
 
         [Display(Name = "Extension Name")]
-        public string ExtensionName { get; set; }
+        public ExtensionName ExtensionName { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
