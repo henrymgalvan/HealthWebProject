@@ -47,9 +47,7 @@ namespace HealthWebApp.Data.EntityModel
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
-
         public Gender Sex { get; set; }
-
         public CivilStatus CivilStatus { get; set; }
 
         [Phone]
@@ -61,6 +59,8 @@ namespace HealthWebApp.Data.EntityModel
         public virtual Work Work { get; set; }
 
         public virtual HouseholdMember HouseholdMember { get; set; }
+        
+        public long PhilHealthId { get; set; }
         public ICollection<PhilHealth> PhilHealth { get; set; }
 
         public int ReligionId { get; set; }
