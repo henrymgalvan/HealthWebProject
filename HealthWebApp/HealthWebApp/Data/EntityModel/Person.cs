@@ -61,7 +61,7 @@ namespace HealthWebApp.Data.EntityModel
         public virtual HouseholdMember HouseholdMember { get; set; }
         
         public long PhilHealthId { get; set; }
-        public ICollection<PhilHealth> PhilHealth { get; set; }
+        public virtual PhilHealth PhilHealth { get; set; }
 
         public int ReligionId { get; set; }
         public virtual Religion Religion { get; set; }

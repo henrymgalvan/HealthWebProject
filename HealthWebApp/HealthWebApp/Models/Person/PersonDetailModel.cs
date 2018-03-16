@@ -1,4 +1,4 @@
-using System;
+pusing System;
 using HealthWebApp.Data.EntityModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,7 +31,7 @@ namespace HealthWebApp.Models.Person
 
         public string PhilHealthID { get; set; }
 
-        public String Religion { get; set; }
+        public string Religion { get; set; }
         public string Father { get; set; }
         public string Mother { get; set; }
         
