@@ -12,6 +12,42 @@ namespace HealthWebApp.Data
         public static void Initialize(ApplicationDbContext context)
         {
             //context.Database.EnsureCreated();
+
+            if (!context.PhilArea.Any()) 
+            {
+               var PhilAreas = new List<PhilArea>()
+               {
+                   new Work {Name = "Luzon"},
+                   new Work {Name = "Visayas"},
+                   new Work {Name = "Mindanao"}
+               }
+               context.PhilArea.AddRange(PhilAreas);
+               context.SaveChanges();
+            }
+
+            if (!context.Region.Any()) 
+            {
+               var Regions = new List<Region>()
+               {
+                   new Region {Name = "1", PhilAreaId = 1},
+                   new Region {Name = "2", PhilAreaId = 1},
+                   new Region {Name = "3", PhilAreaId = 1}
+               }
+               context.Region.AddRange(Regions);
+               context.SaveChanges();
+            }
+            
+            if (!context.Province.Any()) 
+            {
+               var Provinces = new List<Province>()
+               {
+                   new Province {Name = "Pangasinan", RegionId = 1},
+                   new Province {Name = "San Fernando", RegionId = 1},
+                   new Province {Name = "Ilocos Norte", RegionId = 1}
+               }
+               context.Province.AddRange(Provinces);
+               context.SaveChanges();
+            }
             //if (!context.Barangay.Any())
             //{
             //    var barangays = new List<Barangay>()
@@ -52,7 +88,67 @@ namespace HealthWebApp.Data
             //    context.SaveChanges();
             //}
 
+            if (!context.Religion.Any()) 
+            {
+               var Religions = new List<Religion>()
+               {
+                   new Religion {ShortName = "Aglipay"},
+                   new Religion {ShortName = "Alliance of Bible Christian Community"},
+                   new Religion {ShortName = "Anglican"},
+                   new Religion {ShortName = "Anglican"},
+                   new Religion {ShortName = "Baptist"},
+                   new Religion {ShortName = "Born Again Christian"},
+                   new Religion {ShortName = "Buddhism"},
+                   new Religion {ShortName = "Catholic"},
+                   new Religion {ShortName = "Church of God"},
+                   new Religion {ShortName = "Evangelical"},
+                   new Religion {ShortName = "Iglesia ni Kristo"},
+                   new Religion {ShortName = "Jehovah's Witness"},
+                   new Religion {ShortName = "Life Renewal Christian Ministry"},
+                   new Religion {ShortName = "Lutheran"},
+                   new Religion {ShortName = "Methodist"},
+                   new Religion {ShortName = "Islam"},
+                   new Religion {ShortName = "Pentecostal"},
+                   new Religion {ShortName = "LDS - Mormons"},
+                   new Religion {ShortName = "Protestants"},
+                   new Religion {ShortName = "Seventh Day Adventist"},
+                   new Religion {ShortName = "UCCP"},
+                   new Religion {ShortName = "Wesleyan"},
+                   new Religion {ShortName = "Christian"}
+               }
+               context.Religion.AddRange(Religions);
+               context.SaveChanges();
+            }
 
+            if (!context.Work.Any()) 
+            {
+               var Works = new List<Work>()
+               {
+                   new Work {ShortName = "Accountant"},
+                   new Work {ShortNmae = "Actor"}
+               }
+               context.Work.AddRange(Works);
+               context.SaveChanges();
+            }
+
+            if (!context.Education.Any()) 
+            {
+               var Educations = new List<Education>()
+               {
+                   new Education {ShortName = "Prep"},
+                   new Education {ShortName = "Kinder"},
+                   new Education {ShortName = "Elementary"},
+                   new Education {ShortName = "High School"},
+                   new Education {ShortName = "Senior High School"},
+                   new Education {ShortName = "Vocational"},
+                   new Education {ShortName = "Post Graduate Program"},
+                   new Education {ShortName = "Not Applicable"},
+                   new Education {ShortName = "No Formal Education"},
+                   new Education {ShortName = "Others"},
+               }
+               context.Work.AddRange(Education);
+               context.SaveChanges();
+            }
         }
 
     }
