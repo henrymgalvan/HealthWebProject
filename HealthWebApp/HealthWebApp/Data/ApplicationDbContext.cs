@@ -11,6 +11,7 @@ using HealthWebApp.Models.HouseholdProfile;
 using HealthWebApp.Models.HouseholdMember;
 using HealthWebApp.Data.EntityModel.Barangays;
 using HealthWebApp.Data.EntityModel.Household;
+using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 
 namespace HealthWebApp.Data
 {
@@ -30,6 +31,7 @@ namespace HealthWebApp.Data
         public DbSet<Province> Province { get; set; }
         public DbSet<Region> Region { get; set; }
         public DbSet<PhilArea> PhilArea { get; set; }
+        public DbSet<PhilHealth> PhilHealth { get; set; }
 
         public DbSet<HouseholdMember> HouseholdMember { get; set; }
         public DbSet<HouseholdProfile> HouseholdProfile { get; set; }
