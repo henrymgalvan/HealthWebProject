@@ -18,7 +18,13 @@
                 <th>Date Of Birth</th>
                 <th>Gender</th>
                 <th>Civil Status</th>
+                <th>Address</th>
                 <th>Barangay</th>
+                <th>Contact #</th>
+                <th>Email</th>
+                <th>PhilHealth ID</th>
+                <th>Father</th>
+                <th>Mother</th>
                 <th></th>
             </tr>
         </thead>
@@ -34,9 +40,14 @@
                     <td>@patient.DateOfBirth</td>
                     <td>@patient.Sex</td>
                     <td>@patient.CivilStatus</td>
+                    <td>@patient.Address</td>
                     <td>@patient.Barangay</td>
+                    <td>@patient.ContactNumber</td>
+                    <td>@patient.EmailAddress</td>
+                    <td>@patient.PhilHealthID</td>
+                    <td>@patient.Father</td>
+                    <td>@patient.Mother</td>
                     <td id="PatientIcon"><a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a></td>
-
                 </tr>
             }
         </tbody>
