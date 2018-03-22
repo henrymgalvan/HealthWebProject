@@ -39,7 +39,7 @@ namespace HealthWebApp.Controllers
         }
 
 
-        public IActionResult Details(int id)
+        public IActionResult Details(long id)
         {
             Person person = _person.Get(id);
             if (person != null)
@@ -97,7 +97,7 @@ namespace HealthWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int Id)
+        public IActionResult Edit(long Id)
         {
             Person person = _person.Get(Id);
             var model = new PersonEditModel()
