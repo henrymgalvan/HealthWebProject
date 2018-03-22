@@ -7,24 +7,31 @@
     <div class="container">
 
         <div class="clearfix">
-            <h3 class="text-muted">Detail of @Model.LastName, @Model.FirstName @Model.MiddleName</h3>
+            <h3 class="text-muted">Detail of @model.FullName</h3>
         </div>
 
         <div class="jumbotron">
             <div class="row">
                 <div class="col-md-4">
-                    <div>First Name : @Model.FirstName </div>
-                    <div>Middle Name : @Model.MiddleName </div>
-                    <div>Last Name : @Model.LastName </div>
-                    <div>Birthdate : @Model.DateOfBirth </div>
-                    <div>Gender : @Model.Sex </div>
-                    <div>Civil Status : @Model.CivilStatus</div>
+                    <div>First Name : @model.FullName ', ' @model.ExtensionName </div>
+                    <div>Middle Name : @model.MiddleName </div>
+                    <div>Last Name : @model.LastName </div>
+                    <div>Birthdate : @model.DateOfBirth </div>
+                    <div>Gender : @model.Sex </div>
+                    <div>Civil Status : @model.CivilStatus</div>
                  </div>
                 <div class="col-md-4">
-                    <div>Contact # : @Model.ContactNumber </div>
+                    <div>Contact # : @model.ContactNumber </div>
+                    <div>Email Address : @model.EmailAddress</div>
+                    <div>PhilHealth : @model.PhilHealthID</div>
+                    <div>Father : @model.Father</div>
+                    <div>Mother : @model.Mother</div>
                 </div>
                 <div class="col-md-4">
-                    <div>Profile Data </div>
+                    <div>Address : @model.Address</div>
+                    <div>Barangay : @model.Barangay</div>
+                    <div>City/Municipality : @model.City</div>
+                    <div>Province : @model.Province</div>
 
                 </div> 
             </div>

@@ -12,6 +12,7 @@ namespace HealthWebApp.Models.Person
         public string MiddleName { get; set; }  
         public string LastName { get; set; }    
         public string ExtensionName { get; set; }
+        public string FullName {get; set;}
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:mm-dd-yyyy}")]
         public string DateOfBirth { get; set; }

@@ -4,6 +4,6 @@ namespace HealthWebApp.Models.Person
 {
     public class PersonIndexModel
     {
-        public IEnumerable<PersonDetailModel> People {get; }
+        public IEnumerable<PersonDetailModel> People {get; set;}
     }
 }

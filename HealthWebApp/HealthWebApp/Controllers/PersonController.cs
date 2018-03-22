@@ -25,16 +25,17 @@ namespace HealthWebApp.Controllers
             List<Person> allPersons = _person.Getall().ToList();
             IEnumerable<PersonDetailModel> PersonModels;
 
- //           if (allPersons.Any())
- //           {
+           if (allPersons.Any())
+           {
                 PersonModels = Mapper.Map<List<Person>, List<PersonDetailModel>>(allPersons);
                 var model = new PersonIndexModel()
                 {
                     People = PersonModels
                 };
                 return View(model);
- //           }
- //           return RedirectToAction("Index", "Home");
+            }
+            // return info - no data found
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -47,18 +48,6 @@ namespace HealthWebApp.Controllers
                 return View(model);
             }
 
-            //var model = new PersonDetailModel()
-            //{
-            //    Id = person.Id,
-            //    FirstName = person.FirstName,
-            //    MiddleName = person.MiddleName,
-            //    LastName = person.LastName,
-            //    ExtensionName = person.ExtensionName,
-            //    NameTitle = person.NameTitle,
-            //    DateOfBirth = person.DateOfBirth.ToString("yyyy, MMM-dd"),
-            //    Sex = person.Sex.ToString(),
-            //    ContactNumber = person.ContactNumber,
-            //};
             return RedirectToAction("Index", "Home");
 
         }
@@ -157,19 +146,28 @@ namespace HealthWebApp.Controllers
             return View(editPerson);
         }
 
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    Person person = _person.Get(id);
-        //    if (person != null)
-        //    {
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+           Person person = _person.Get(id);
+           if (person != null)
+           {
 
-        //        ViewBag["FullName"] = person.FirstName + " " + person.MiddleName + " " + person.LastName;
-        //        return View(ViewBag);
-        //    } else
-        //    {
-        //        return View("ErrorDelete");
-        //    }
-        //}
+               ViewBag["FullName"] = person.FirstName + " " + person.MiddleName + " " + person.LastName;
+               return View(ViewBag);
+           } else
+           {
+               return View("ErrorDelete");
+           }
+        }
+
+
+        private void PopulateWorksDropDownList(object selectedWork = null)
+        {
+            var worksQuery = from w in _work
+                                order by w.ShortName
+                                select w;
+            ViewBag.WorkId = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName")
+        }
     }
 }

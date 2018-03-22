@@ -6,8 +6,6 @@ namespace HealthWebApp.Models.Person
 {
     public class PersonCreateModel
     {
-        public long Id { get; set; }
-
         [Display(Name = "Title")]
         //[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
         public int NameTitleId { get; set; }
@@ -47,9 +45,16 @@ namespace HealthWebApp.Models.Person
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        public Religion Religion { get; set; }
+        public int WorkId {get; set;}
+
+        public int ReligionId { get; set; }
+
+        public int FatherId { get; set; }
+
+        public int MotherId { get; set; }
 
         public bool PersonConsent { get; set; }
+        
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
         public long EmployeeId { get; set; }
