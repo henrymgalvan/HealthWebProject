@@ -13,7 +13,6 @@ namespace HealthWebApp.Controllers
     {
         private IPerson _person;
         private IMapper _mapper;
-
         public PersonController(IPerson person, IMapper mapper)
         {
             _person = person;

@@ -1,4 +1,4 @@
-pusing System;
+using System;
 using HealthWebApp.Data.EntityModel;
 using System.ComponentModel.DataAnnotations;
 
