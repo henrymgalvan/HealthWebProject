@@ -6,40 +6,40 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HealthWebApp.Data.Services
 {
-    public class NameTitleService : INameTitle
+    public class ReligionService : IReligion
     {
         private ApplicationDbContext _context;
-        public WorkService(ApplicationDbContext context)
+        public ReligionService(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public void Add(NameTitle newNameTitle)
+        public void Add(Religion newReligion)
         {
-            _context.Add(newNameTitle);
+            _context.Add(newReligion);
             _context.SaveChanges();
         }
 
-        public IEnumerable<NameTitle> Getall()
+        public IEnumerable<Religion> Getall()
         {
-            return _context.NameTitle.ToList();
+            return _context.Religion.ToList();
         }
 
-        public NameTitle Get(int id)
+        public Religion Get(int id)
         {
             return Getall().FirstOrDefault(p => p.Id == id);
         }
 
-        public void Update(NameTitle UpdatedNameTitle)
+        public void Update(Religion UpdatedReligion)
         {
-            _context.Entry(UpdatedNameTitle).State = EntityState.Modified;
+            _context.Entry(UpdatedReligion).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            NameTitle nameTitle = _context.NameTitle.FirstOrDefault(p => p.Id == id);
-            _context.NameTitle.Remove(nameTitle);
+            Religion religion = _context.Work.FirstOrDefault(p => p.Id == id);
+            _context.Religion.Remove(religion);
             _context.SaveChanges();
          }
     }
