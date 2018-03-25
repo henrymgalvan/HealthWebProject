@@ -12,10 +12,16 @@ namespace HealthWebApp.Controllers
     public class PersonController : Controller
     {
         private IPerson _person;
+        private IWork _work;
+        private IReligion _religion;
+        private INameTitle _nameTitle;
         private IMapper _mapper;
-        public PersonController(IPerson person, IMapper mapper)
+        public PersonController(IPerson person, IWork work, IReligion religion, INameTitle nameTitle, IMapper mapper)
         {
             _person = person;
+            _work = work;
+            _religion = religion;
+            _nameTitle = nameTitle;
             _mapper = mapper;
         }
 
@@ -54,6 +60,9 @@ namespace HealthWebApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            PopulateWorksDropDownList();
+            PopulateNameTitleDropDownList();
+            PopulateReligionDropDownList();
             PersonCreateModel newPerson = new PersonCreateModel();
             return View(newPerson);
         }
@@ -88,29 +97,35 @@ namespace HealthWebApp.Controllers
                     return View(newPerson);
                 }
             }
-            catch (Exception err)
+//            catch (Exception err)
+            catch (RetryLimitExceededException)
             {
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
+            PopulateWorksDropDownList(newPerson.WorkId)
+            PopulateNameTitleDropDownList(newPerson.NameTitleId);
+            PopulateReligionDropDownList(newPerson.ReligionId);
             return View(newPerson);
         }
 
         [HttpGet]
-        public IActionResult Edit(long Id)
+        public IActionResult Edit(long? Id)
         {
-            Person person = _person.Get(Id);
-            var model = new PersonEditModel()
+            if (id == null)
             {
-                Id = person.Id,
-                FirstName = person.FirstName,
-                MiddleName = person.MiddleName,
-                LastName = person.LastName,
-                ExtensionName = person.ExtensionName,
-                NameTitle = person.NameTitleId.ToString(),
-                DateOfBirth = person.DateOfBirth,
-                Sex = person.Sex,
-                ContactNumber = person.ContactNumber,
-            };
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Person person = _person.Get(Id);
+            if (person == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = Mapper.Map<Person, PersonEditModel>(person);
+            PopulateWorksDropDownList(newPerson.WorkId)
+            PopulateNameTitleDropDownList(newPerson.NameTitleId);
+            PopulateReligionDropDownList(newPerson.ReligionId);
             return View(model);
         }
         [HttpPost]
@@ -121,19 +136,8 @@ namespace HealthWebApp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var UpdatedPerson = new Person();
-                    UpdatedPerson.Id = editPerson.Id;
-                    UpdatedPerson.FirstName = editPerson.FirstName;
-                    UpdatedPerson.MiddleName = editPerson.MiddleName;
-                    UpdatedPerson.LastName = editPerson.LastName;
-                    UpdatedPerson.ExtensionName = editPerson.ExtensionName;
-                    UpdatedPerson.NameTitleId = editPerson.NameTitleId;
-                    UpdatedPerson.Sex = editPerson.Sex;
-                    UpdatedPerson.DateOfBirth = editPerson.DateOfBirth;
-                    UpdatedPerson.CivilStatus = editPerson.CivilStatus;
-                    UpdatedPerson.ContactNumber = editPerson.ContactNumber;
-                    UpdatedPerson.DateTimeLastUpdated = DateTime.Now;
-                    _person.Update(UpdatedPerson);
+                    var model = Mapper.Map<PersonDetailModel, Person>(editPerson);
+                    _person.Update(model);
                     return RedirectToAction("Index");
                 }
                 return View(editPerson);
@@ -142,6 +146,10 @@ namespace HealthWebApp.Controllers
             {
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
+            
+            PopulateWorksDropDownList(newPerson.WorkId)
+            PopulateNameTitleDropDownList(newPerson.NameTitleId);
+            PopulateReligionDropDownList(newPerson.ReligionId);
             return View(editPerson);
         }
 
@@ -166,7 +174,23 @@ namespace HealthWebApp.Controllers
             var worksQuery = from w in _work
                                 order by w.ShortName
                                 select w;
-            ViewBag.WorkId = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName")
+            ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
+        }
+        
+        private void PopulateNameTitleDropDownList(object selectedNameTitle = null)
+        {
+            var nameTitleQuery = from nt in _nameTitle
+                                order by nt.ShortTitle
+                                select nt;
+            ViewBag.NameTitleID = new SelectList(nameTitleQuery.AsNoTracking(), "NameTitleId", "ShortName", selectedNameTitle);
+        }
+
+        private void PopulateReligionDropDownList(object selectedReligion = null)
+        {
+            var ReligionsQuery = from r in _religion
+                                order by r.ShortName
+                                select r;
+            ViewBag.ReligionID = new SelectList(ReligionsQuery.AsNoTracking(), "ReligionId", "ShortName", selectedReligion);
         }
     }
 }
