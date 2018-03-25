@@ -15,36 +15,36 @@ namespace HealthWebApp.Data
 
             if (!context.PhilArea.Any()) 
             {
-               var PhilAreas = new List<PhilArea>()
+                var PhilAreas = new List<PhilArea>()
                {
-                   new Work {Name = "Luzon"},
-                   new Work {Name = "Visayas"},
-                   new Work {Name = "Mindanao"}
-               }
+                   new PhilArea {Name = "Luzon"},
+                   new PhilArea {Name = "Visayas"},
+                   new PhilArea {Name = "Mindanao"}
+               };
                context.PhilArea.AddRange(PhilAreas);
                context.SaveChanges();
             }
 
             if (!context.Region.Any()) 
             {
-               var Regions = new List<Region>()
+                var Regions = new List<Region>()
                {
                    new Region {Name = "1", PhilAreaId = 1},
                    new Region {Name = "2", PhilAreaId = 1},
                    new Region {Name = "3", PhilAreaId = 1}
-               }
+               };
                context.Region.AddRange(Regions);
                context.SaveChanges();
             }
             
             if (!context.Province.Any()) 
             {
-               var Provinces = new List<Province>()
+                var Provinces = new List<Province>()
                {
                    new Province {Name = "Pangasinan", RegionId = 1},
                    new Province {Name = "San Fernando", RegionId = 1},
                    new Province {Name = "Ilocos Norte", RegionId = 1}
-               }
+               };
                context.Province.AddRange(Provinces);
                context.SaveChanges();
             }
@@ -90,7 +90,7 @@ namespace HealthWebApp.Data
 
             if (!context.Religion.Any()) 
             {
-               var Religions = new List<Religion>()
+                var Religions = new List<Religion>()
                {
                    new Religion {ShortName = "Aglipay"},
                    new Religion {ShortName = "Alliance of Bible Christian Community"},
@@ -115,25 +115,25 @@ namespace HealthWebApp.Data
                    new Religion {ShortName = "UCCP"},
                    new Religion {ShortName = "Wesleyan"},
                    new Religion {ShortName = "Christian"}
-               }
+               };
                context.Religion.AddRange(Religions);
                context.SaveChanges();
             }
 
             if (!context.Work.Any()) 
             {
-               var Works = new List<Work>()
+                var Works = new List<Work>()
                {
                    new Work {ShortName = "Accountant"},
-                   new Work {ShortNmae = "Actor"}
-               }
+                   new Work {ShortName = "Actor"}
+               };
                context.Work.AddRange(Works);
                context.SaveChanges();
             }
 
             if (!context.Education.Any()) 
             {
-               var Educations = new List<Education>()
+                var Educations = new List<Education>()
                {
                    new Education {ShortName = "Prep"},
                    new Education {ShortName = "Kinder"},
@@ -145,8 +145,8 @@ namespace HealthWebApp.Data
                    new Education {ShortName = "Not Applicable"},
                    new Education {ShortName = "No Formal Education"},
                    new Education {ShortName = "Others"},
-               }
-               context.Work.AddRange(Education);
+               };
+               context.Education.AddRange(Educations);
                context.SaveChanges();
             }
         }
