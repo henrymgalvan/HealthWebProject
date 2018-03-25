@@ -63,13 +63,13 @@ namespace HealthWebApp.Controllers
             PopulateWorksDropDownList();
             PopulateNameTitleDropDownList();
             PopulateReligionDropDownList();
-            PersonCreateModel newPerson = new PersonCreateModel();
+            PersonEditModel newPerson = new PersonEditModel();
             return View(newPerson);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PersonCreateModel newPerson)
+        public IActionResult Create(PersonEditModel newPerson)
         {
             try
             {
@@ -77,32 +77,21 @@ namespace HealthWebApp.Controllers
                 {
                     if (newPerson.PersonConsent)
                     {
-                        var person = new Person();
-                        person.FirstName = newPerson.FirstName;
-                        person.MiddleName = newPerson.MiddleName;
-                        person.LastName = newPerson.LastName;
-                        person.ExtensionName = newPerson.ExtensionName;
-                        person.NameTitleId = newPerson.NameTitleId;
-                        person.Sex = newPerson.Sex;
-                        person.DateOfBirth = newPerson.DateOfBirth;
-                        person.CivilStatus = newPerson.CivilStatus;
-                        person.ContactNumber = newPerson.ContactNumber;
-                        person.DateCreated = DateTime.Now;
-                        person.DateTimeLastUpdated = person.DateCreated;
-                        person.PersonConsent = newPerson.PersonConsent;
+                       // var person = new Person();
+                        var person = Mapper.Map<PersonEditModel, Person>(newPerson);
 
                         _person.Add(person);
                         return RedirectToAction("Index");
                     }
-                    return View(newPerson);
                 }
             }
 //            catch (Exception err)
-            catch (RetryLimitExceededException)
+            catch (RetryLimitExceededException err)
             {
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
-            PopulateWorksDropDownList(newPerson.WorkId)
+
+            PopulateWorksDropDownList(newPerson.WorkId);
             PopulateNameTitleDropDownList(newPerson.NameTitleId);
             PopulateReligionDropDownList(newPerson.ReligionId);
             return View(newPerson);
@@ -123,9 +112,11 @@ namespace HealthWebApp.Controllers
             }
 
             var model = Mapper.Map<Person, PersonEditModel>(person);
-            PopulateWorksDropDownList(newPerson.WorkId)
+
+            PopulateWorksDropDownList(newPerson.WorkId);
             PopulateNameTitleDropDownList(newPerson.NameTitleId);
             PopulateReligionDropDownList(newPerson.ReligionId);
+
             return View(model);
         }
         [HttpPost]
@@ -140,16 +131,16 @@ namespace HealthWebApp.Controllers
                     _person.Update(model);
                     return RedirectToAction("Index");
                 }
-                return View(editPerson);
             }
             catch (Exception err)
             {
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
-            
-            PopulateWorksDropDownList(newPerson.WorkId)
+
+            PopulateWorksDropDownList(newPerson.WorkId);
             PopulateNameTitleDropDownList(newPerson.NameTitleId);
             PopulateReligionDropDownList(newPerson.ReligionId);
+
             return View(editPerson);
         }
 

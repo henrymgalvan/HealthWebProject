@@ -13,7 +13,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.0" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="2.0.1" />
     <PackageReference Include="bootstrap" Version="3.3.7" />
     <PackageReference Include="Bootstrap.v3.Datetimepicker" Version="4.17.45" />
