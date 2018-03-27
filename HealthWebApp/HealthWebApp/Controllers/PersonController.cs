@@ -45,9 +45,9 @@ namespace HealthWebApp.Controllers
         }
 
 
-        public IActionResult Details(long id)
+        public IActionResult Details(long Id)
         {
-            Person person = _person.Get(id);
+            Person person = _person.Get(Id);
             if (person != null)
             {
                 var model = Mapper.Map<Person, PersonDetailModel>(person);
