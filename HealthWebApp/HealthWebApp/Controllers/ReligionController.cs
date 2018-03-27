@@ -20,8 +20,8 @@ namespace HealthWebApp.Controllers {
       List<Religion> allReligion = _religion.Getall().ToList();
       return View(allReligion);
     }
-    public IActionResult Details(int id) {
-      Religion religion = _religion.Get(id);
+    public IActionResult Details(int Id) {
+      Religion religion = _religion.Get(Id);
       return View(religion);
     }
 
@@ -53,15 +53,15 @@ namespace HealthWebApp.Controllers {
     }
 
     [HttpGet]
-    public IActionResult Edit(int id) 
+    public IActionResult Edit(int Id) 
     {
-      Religion religion = _religion.Get(id);
+      Religion religion = _religion.Get(Id);
       return View(religion);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(Work modifiedReligion) 
+    public IActionResult Edit(Religion modifiedReligion) 
     {
         if (ModelState.IsValid) 
         {

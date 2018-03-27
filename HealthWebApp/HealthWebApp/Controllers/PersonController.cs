@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HealthWebApp.Controllers
 {
@@ -127,7 +128,7 @@ namespace HealthWebApp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var model = Mapper.Map<PersonDetailModel, Person>(editPerson);
+                    var model = Mapper.Map<PersonEditModel, Person>(editPerson);
                     _person.Update(model);
                     return RedirectToAction("Index");
                 }
@@ -145,9 +146,9 @@ namespace HealthWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int Id)
         {
-           Person person = _person.Get(id);
+           Person person = _person.Get(Id);
            if (person != null)
            {
 
@@ -162,7 +163,7 @@ namespace HealthWebApp.Controllers
 
         private void PopulateWorksDropDownList(object selectedWork = null)
         {
-            var worksQuery = from w in _work
+            var worksQuery = from w in _work.Getall().ToList<Work>()
                                 order by w.ShortName
                                 select w;
             ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
@@ -170,7 +171,7 @@ namespace HealthWebApp.Controllers
         
         private void PopulateNameTitleDropDownList(object selectedNameTitle = null)
         {
-            var nameTitleQuery = from nt in _nameTitle
+            var nameTitleQuery = from nt in _nameTitle.Getall().ToList<NameTitle>()
                                 order by nt.ShortTitle
                                 select nt;
             ViewBag.NameTitleID = new SelectList(nameTitleQuery.AsNoTracking(), "NameTitleId", "ShortName", selectedNameTitle);
@@ -178,7 +179,7 @@ namespace HealthWebApp.Controllers
 
         private void PopulateReligionDropDownList(object selectedReligion = null)
         {
-            var ReligionsQuery = from r in _religion
+            var ReligionsQuery = from r in _religion.Getall().ToList<Religion>()
                                 order by r.ShortName
                                 select r;
             ViewBag.ReligionID = new SelectList(ReligionsQuery.AsNoTracking(), "ReligionId", "ShortName", selectedReligion);

@@ -31,7 +31,7 @@ namespace HealthWebApp.Controllers {
     [HttpGet]
     public IActionResult Create() 
     {
-      NameTitle newnameTitle = new NameTitle();
+      NameTitle newNameTitle = new NameTitle();
       return View(newNameTitle);
     }
 
