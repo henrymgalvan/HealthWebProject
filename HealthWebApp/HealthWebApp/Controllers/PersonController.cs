@@ -164,7 +164,7 @@ namespace HealthWebApp.Controllers
         private void PopulateWorksDropDownList(object selectedWork = null)
         {
             var worksQuery = from w in _work.Getall().ToList<Work>()
-                                order by w.ShortName
+                                orderby w.ShortName
                                 select w;
             ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
         }
@@ -172,7 +172,7 @@ namespace HealthWebApp.Controllers
         private void PopulateNameTitleDropDownList(object selectedNameTitle = null)
         {
             var nameTitleQuery = from nt in _nameTitle.Getall().ToList<NameTitle>()
-                                order by nt.ShortTitle
+                                orderby nt.ShortTitle
                                 select nt;
             ViewBag.NameTitleID = new SelectList(nameTitleQuery.AsNoTracking(), "NameTitleId", "ShortName", selectedNameTitle);
         }
@@ -180,7 +180,7 @@ namespace HealthWebApp.Controllers
         private void PopulateReligionDropDownList(object selectedReligion = null)
         {
             var ReligionsQuery = from r in _religion.Getall().ToList<Religion>()
-                                order by r.ShortName
+                                orderby r.ShortName
                                 select r;
             ViewBag.ReligionID = new SelectList(ReligionsQuery.AsNoTracking(), "ReligionId", "ShortName", selectedReligion);
         }
