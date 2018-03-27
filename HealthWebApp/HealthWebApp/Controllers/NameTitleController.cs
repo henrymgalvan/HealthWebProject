@@ -11,7 +11,8 @@ using Microsoft.Extensions.Logging;
 namespace HealthWebApp.Controllers {
   public class NameTitleController : Controller {
     private INameTitle _nameTitle;
-    public WorkController (INameTitle nameTitle) {
+    public NameTitleController (INameTitle nameTitle) 
+    {
       _nameTitle = nameTitle;
     }
 
@@ -24,7 +25,7 @@ namespace HealthWebApp.Controllers {
     public IActionResult Details(int id) 
     {
       NameTitle nameTitle = _nameTitle.Get(id);
-      return View(NameTitle);
+      return View(nameTitle);
     }
 
     [HttpGet]
