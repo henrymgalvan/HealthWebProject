@@ -36,9 +36,9 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(int Id)
         {
-            Religion religion = _context.Work.FirstOrDefault(p => p.Id == id);
+            Religion religion = _context.Religion.FirstOrDefault(p => p.Id == Id);
             _context.Religion.Remove(religion);
             _context.SaveChanges();
          }

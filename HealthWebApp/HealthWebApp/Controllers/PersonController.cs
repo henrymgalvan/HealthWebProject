@@ -29,7 +29,7 @@ namespace HealthWebApp.Controllers
         {
             List<Person> allPersons = _person.Getall().ToList();
             IEnumerable<PersonDetailModel> PersonModels;
-
+ 
            if (allPersons.Any())
            {
                 PersonModels = Mapper.Map<List<Person>, List<PersonDetailModel>>(allPersons);
@@ -86,7 +86,7 @@ namespace HealthWebApp.Controllers
                 }
             }
 //            catch (Exception err)
-            catch (RetryLimitExceededException err)
+            catch (Microsoft.EntityFrameworkCore.Storage.RetryLimitExceededException err)
             {
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
@@ -100,7 +100,7 @@ namespace HealthWebApp.Controllers
         [HttpGet]
         public IActionResult Edit(long? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -113,9 +113,9 @@ namespace HealthWebApp.Controllers
 
             var model = Mapper.Map<Person, PersonEditModel>(person);
 
-            PopulateWorksDropDownList(newPerson.WorkId);
-            PopulateNameTitleDropDownList(newPerson.NameTitleId);
-            PopulateReligionDropDownList(newPerson.ReligionId);
+            PopulateWorksDropDownList(person.WorkId);
+            PopulateNameTitleDropDownList(person.NameTitleId);
+            PopulateReligionDropDownList(person.ReligionId);
 
             return View(model);
         }
@@ -137,9 +137,9 @@ namespace HealthWebApp.Controllers
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
 
-            PopulateWorksDropDownList(newPerson.WorkId);
-            PopulateNameTitleDropDownList(newPerson.NameTitleId);
-            PopulateReligionDropDownList(newPerson.ReligionId);
+            PopulateWorksDropDownList(editPerson.WorkId);
+            PopulateNameTitleDropDownList(editPerson.NameTitleId);
+            PopulateReligionDropDownList(editPerson.ReligionId);
 
             return View(editPerson);
         }

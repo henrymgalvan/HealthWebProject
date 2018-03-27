@@ -9,7 +9,7 @@ namespace HealthWebApp.Data.Services
     public class NameTitleService : INameTitle
     {
         private ApplicationDbContext _context;
-        public WorkService(ApplicationDbContext context)
+        public NameTitleService(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -25,9 +25,9 @@ namespace HealthWebApp.Data.Services
             return _context.NameTitle.ToList();
         }
 
-        public NameTitle Get(int id)
+        public NameTitle Get(int Id)
         {
-            return Getall().FirstOrDefault(p => p.Id == id);
+            return Getall().FirstOrDefault(p => p.Id == Id);
         }
 
         public void Update(NameTitle UpdatedNameTitle)
@@ -36,9 +36,9 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(int Id)
         {
-            NameTitle nameTitle = _context.NameTitle.FirstOrDefault(p => p.Id == id);
+            NameTitle nameTitle = _context.NameTitle.FirstOrDefault(p => p.Id == Id);
             _context.NameTitle.Remove(nameTitle);
             _context.SaveChanges();
          }

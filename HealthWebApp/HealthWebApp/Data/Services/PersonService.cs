@@ -29,9 +29,9 @@ namespace HealthWebApp.Data.Services
                 .ToList();
         }
 
-        public Person Get(long id)
+        public Person Get(long Id)
         {
-            return Getall().FirstOrDefault(p => p.Id == id);
+            return Getall().FirstOrDefault(p => p.Id == Id);
         }
 
         public void Update(Person UpdatedPerson)
@@ -40,9 +40,9 @@ namespace HealthWebApp.Data.Services
             _context.SaveChanges();
         }
 
-        public void Delete(long id)
+        public void Delete(long Id)
         {
-            Person person = _context.People.FirstOrDefault(p => p.Id == id);
+            Person person = _context.People.FirstOrDefault(p => p.Id == Id);
             _context.People.Remove(person);
             _context.SaveChanges();
          }

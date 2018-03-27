@@ -25,6 +25,7 @@ namespace HealthWebApp.Data
         public DbSet<Person> People {get; set;}
         public DbSet<Religion> Religion {get; set;}
         public DbSet<Work> Work {get; set;}
+        public DbSet<NameTitle> NameTitle{get; set;}
         public DbSet<Education> Education {get; set;} //Highest Educational Attainment 
         public DbSet<Barangay> Barangay { get; set; }
         public DbSet<CityMunicipality> City { get; set; }

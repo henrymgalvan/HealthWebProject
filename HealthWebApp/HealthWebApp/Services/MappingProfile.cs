@@ -28,10 +28,10 @@ namespace HealthWebApp.Services
                 .ForMember(dest => dest.Father, opt => opt.MapFrom(src => src.Father.FullName))
                 .ForMember(dest => dest.Mother, opt => opt.MapFrom(src => src.Mother.FullName));
 
-            .CreateMap<PersonCreateModel, Person>();
+            CreateMap<PersonCreateModel, Person>();
 
-            .CreateMap<Person, PersonEditModel>();
-            .CreateMap<PersonEditModel, Person>();
+            CreateMap<Person, PersonEditModel>();
+            CreateMap<PersonEditModel, Person>();
                   
 
 

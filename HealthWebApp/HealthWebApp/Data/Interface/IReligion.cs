@@ -8,10 +8,10 @@ namespace HealthWebApp.Data.Interface
 {
     public interface IReligion
     {
-        IEnumerable<IReligion> Getall();
-        Religion Get(int id);
+        IEnumerable<Religion> Getall();
+        Religion Get(int Id);
         void Add(Religion newReligion);
-        void Update(NameTitle updatedReligion);
-        void Delete(int id);
+        void Update(Religion updatedReligion);
+        void Delete(int Id);
     }
 }

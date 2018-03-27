@@ -25,9 +25,9 @@ namespace HealthWebApp.Data.Services
             return _context.Work.ToList();
         }
 
-        public Work Get(int id)
+        public Work Get(int Id)
         {
-            return Getall().FirstOrDefault(p => p.Id == id);
+            return Getall().FirstOrDefault(p => p.Id == Id);
         }
 
         public void Update(Work UpdatedWork)
