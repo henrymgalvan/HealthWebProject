@@ -45,9 +45,9 @@ namespace HealthWebApp.Controllers
         }
 
 
-        public IActionResult Details(long Id)
+        public IActionResult Details(long? Id)
         {
-            Person person = _person.Get(Id);
+            Person person = _person.Get((long)Id);
             if (person != null)
             {
                 var model = Mapper.Map<Person, PersonDetailModel>(person);
@@ -103,22 +103,24 @@ namespace HealthWebApp.Controllers
         {
             if (Id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Person person = _person.Get(Id);
-            if (person == null)
+                return NotFound();
+            } else
             {
-                return HttpNotFound();
+                Person person = _person.Get((long)Id);
+                if (person == null)
+                {
+                    return NotFound();
+                }   
+                var model = Mapper.Map<Person, PersonEditModel>(person);
+
+                PopulateWorksDropDownList(person.WorkId);
+                PopulateNameTitleDropDownList(person.NameTitleId);
+                PopulateReligionDropDownList(person.ReligionId);
+
+                return View(model);             
             }
 
-            var model = Mapper.Map<Person, PersonEditModel>(person);
-
-            PopulateWorksDropDownList(person.WorkId);
-            PopulateNameTitleDropDownList(person.NameTitleId);
-            PopulateReligionDropDownList(person.ReligionId);
-
-            return View(model);
+                              
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -146,9 +148,13 @@ namespace HealthWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(long? Id)
         {
-           Person person = _person.Get(Id);
+           if (Id == null)
+           {
+               return NotFound();
+           } 
+           Person person = _person.Get((long)Id);
            if (person != null)
            {
 
@@ -166,7 +172,9 @@ namespace HealthWebApp.Controllers
             var worksQuery = from w in _work.Getall().ToList<Work>()
                                 orderby w.ShortName
                                 select w;
-            ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
+            ViewBag.WorkID = new SelectList(worksQuery, "WorkId", "ShortName", selectedWork);
+            // ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
+
         }
         
         private void PopulateNameTitleDropDownList(object selectedNameTitle = null)
@@ -174,7 +182,7 @@ namespace HealthWebApp.Controllers
             var nameTitleQuery = from nt in _nameTitle.Getall().ToList<NameTitle>()
                                 orderby nt.ShortTitle
                                 select nt;
-            ViewBag.NameTitleID = new SelectList(nameTitleQuery.AsNoTracking(), "NameTitleId", "ShortName", selectedNameTitle);
+            ViewBag.NameTitleID = new SelectList(nameTitleQuery, "NameTitleId", "ShortName", selectedNameTitle);
         }
 
         private void PopulateReligionDropDownList(object selectedReligion = null)
@@ -182,7 +190,7 @@ namespace HealthWebApp.Controllers
             var ReligionsQuery = from r in _religion.Getall().ToList<Religion>()
                                 orderby r.ShortName
                                 select r;
-            ViewBag.ReligionID = new SelectList(ReligionsQuery.AsNoTracking(), "ReligionId", "ShortName", selectedReligion);
+            ViewBag.ReligionID = new SelectList(ReligionsQuery, "ReligionId", "ShortName", selectedReligion);
         }
     }
 }
