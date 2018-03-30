@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,6 +34,7 @@ namespace HealthWebApp.Data.EntityModel.PhilHealthFolder
 
     public class PhilHealth
     {
+        [Key]
         public long Id { get; set; }
         public string Identification { get; set; }
         public long PersonId { get; set; }
