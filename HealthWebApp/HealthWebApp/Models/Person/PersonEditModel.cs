@@ -1,4 +1,5 @@
 ﻿using HealthWebApp.Data.EntityModel;
+using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,9 +10,11 @@ namespace HealthWebApp.Models.Person
 {
     public class PersonEditModel
     {
-        public long Id { get; set; }
+        [Key]
+        public long PersonId { get; set; }
 
         public int NameTitleId { get; set; }
+        public NameTitle NameTitle { get; set; }
 
         [Required, StringLength(30), MinLength(1)]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
@@ -39,15 +42,17 @@ namespace HealthWebApp.Models.Person
         public string EmailAddress { get; set; }
 
         public int WorkId { get; set; }
-
+        public Work Work { get; set; }
 //        public virtual HouseholdMember HouseholdMember { get; set; }
         
         public long PhilHealthId { get; set; }
+        public PhilHealth PhilHealth { get; set; }
 
         public int ReligionId { get; set; }
+        public Religion Religion { get; set; }
 
         public long FatherId { get; set; }
-//        public virtual Person Father { get; set; }
+ //       public Person Father { get; set; }
 
         public long MotherId { get; set; }
 //        public virtual Person Mother { get; set; }

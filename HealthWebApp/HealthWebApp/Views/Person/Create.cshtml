@@ -1,5 +1,5 @@
-@model HealthWebApp.Models.Person.PersonCreateModel
-@using HealthWebApp.Data.EntityModel
+@model HealthWebApp.Models.Person.PersonEditModel
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -8,14 +8,13 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>PersonCreateModel</h4>
+        <h4>PersonEditModel</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="NameTitle" class="col-md-2 control-label"></label>
+            <label asp-for="NameTitleId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="NameTitle" class="form-control" />
-                <span asp-validation-for="NameTitle" class="text-danger"></span>
+                <select asp-for="NameTitleId" class ="form-control" asp-items="ViewBag.NameTitleId"></select>
             </div>
         </div>
         <div class="form-group">
@@ -42,7 +41,7 @@
         <div class="form-group">
             <label asp-for="ExtensionName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ExtensionName" class="form-control" />
+                <select asp-for="ExtensionName" class="form-control"></select>
                 <span asp-validation-for="ExtensionName" class="text-danger"></span>
             </div>
         </div>
@@ -56,15 +55,14 @@
         <div class="form-group">
             <label asp-for="Sex" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="Sex" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()">
-                </select>
+                <select asp-for="Sex" class="form-control"></select>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="CivilStatus" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="CivilStatus" class="form-control" asp-items="Html.GetEnumSelectList<CivilStatus>()"></select>
+                <select asp-for="CivilStatus" class="form-control"></select>
                 <span asp-validation-for="CivilStatus" class="text-danger"></span>
             </div>
         </div>
@@ -76,13 +74,67 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="PersonConsent" class="col-md-2 control-label">Agree to store info to Service Provider Database.</label>
+            <label asp-for="EmailAddress" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="PersonConsent" class="form-control" />
-                <span asp-validation-for="PersonConsent" class="btn-success"></span>
+                <input asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
             </div>
         </div>
-
+        <div class="form-group">
+            <label asp-for="WorkId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="WorkId" class ="form-control" asp-items="ViewBag.WorkId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhilHealthId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PhilHealthId" class="form-control" />
+                <span asp-validation-for="PhilHealthId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReligionId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ReligionId" class ="form-control" asp-items="ViewBag.ReligionId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FatherId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FatherId" class="form-control" />
+                <span asp-validation-for="FatherId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MotherId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MotherId" class="form-control" />
+                <span asp-validation-for="MotherId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="PersonConsent" />
+                    <label asp-for="PersonConsent"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateTimeLastUpdated" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateTimeLastUpdated" class="form-control" />
+                <span asp-validation-for="DateTimeLastUpdated" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateCreated" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
