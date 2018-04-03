@@ -40,8 +40,9 @@ namespace HealthWebApp.Controllers
                 };
                 return View(model);
             }
+            return View();
             // return info - no data found
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
         }
 
 

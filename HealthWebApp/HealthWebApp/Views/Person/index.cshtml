@@ -29,27 +29,32 @@
             </tr>
         </thead>
         <tbody class="alert-info">
-            @foreach (var patient in Model.People)
+            @if (@Model != null)
             {
-                <tr>
-                    <td id="PatientIcon"><a asp-controller="Person" asp-action="Details" asp-route-id="@patient.Id"> @patient.Id</a></td>
-                    <td>@patient.LastName</td>
-                    <td>@patient.FirstName</td>
-                    <td>@patient.MiddleName</td>
-                    <td>@patient.ExtensionName</td>
-                    <td>@patient.DateOfBirth</td>
-                    <td>@patient.Sex</td>
-                    <td>@patient.CivilStatus</td>
-                    <td>@patient.Address</td>
-                    <td>@patient.Barangay</td>
-                    <td>@patient.ContactNumber</td>
-                    <td>@patient.EmailAddress</td>
-                    <td>@patient.PhilHealthID</td>
-                    <td>@patient.Father</td>
-                    <td>@patient.Mother</td>
-                    <td id="PatientIcon"><a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a></td>
-                </tr>
+               @foreach (var patient in @Model.People)
+                {
+                    <tr>
+                        <td id="PatientIcon"><a asp-controller="Person" asp-action="Details" asp-route-id="@patient.Id"> @patient.Id</a></td>
+                        <td>@patient.LastName</td>
+                        <td>@patient.FirstName</td>
+                        <td>@patient.MiddleName</td>
+                        <td>@patient.ExtensionName</td>
+                        <td>@patient.DateOfBirth</td>
+                        <td>@patient.Sex</td>
+                        <td>@patient.CivilStatus</td>
+                        <td>@patient.Address</td>
+                        <td>@patient.Barangay</td>
+                        <td>@patient.ContactNumber</td>
+                        <td>@patient.EmailAddress</td>
+                        <td>@patient.PhilHealthID</td>
+                        <td>@patient.Father</td>
+                        <td>@patient.Mother</td>
+                        <td id="PatientIcon"><a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a></td>
+                    </tr>
+                }
+
             }
+
         </tbody>
     </table>
 </div>

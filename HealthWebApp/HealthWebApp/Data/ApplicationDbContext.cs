@@ -39,17 +39,24 @@ namespace HealthWebApp.Data
         
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             builder.Entity<Person>()
-                .HasOne(p => p.Father);
+                .HasOne(p => p.Father)
+                .WithMany()
+                .HasForeignKey(m=>m.FatherId)
+                .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+
             builder.Entity<Person>()
-                .HasOne(p => p.Mother);
+                .HasOne(p => p.Mother)
+                .WithMany()
+                .HasForeignKey(m=>m.MotherId)
+                .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
             builder.Entity<Person>()
                 .HasOne(h=>h.PhilHealth)
                 .WithOne(p=>p.Person)
                 .HasForeignKey<PhilHealth>(g=>g.PersonId);
-
-            //base.OnModelCreating(builder);
 
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.

@@ -11,7 +11,7 @@ namespace HealthWebApp.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            //context.Database.EnsureCreated();
+            context.Database.EnsureCreated();
 
             if (!context.PhilArea.Any()) 
             {
