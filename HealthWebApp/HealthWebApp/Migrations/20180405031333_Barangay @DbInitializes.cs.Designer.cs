@@ -11,9 +11,10 @@ using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180405031333_Barangay @DbInitializes.cs")]
+    partial class BarangayDbInitializescs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -321,6 +322,8 @@ namespace HealthWebApp.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<long>("EmployeeId");
 
                     b.Property<string>("LongName");
 

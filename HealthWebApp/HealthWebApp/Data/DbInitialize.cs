@@ -48,45 +48,57 @@ namespace HealthWebApp.Data
                context.Province.AddRange(Provinces);
                context.SaveChanges();
             }
-            //if (!context.Barangay.Any())
-            //{
-            //    var barangays = new List<Barangay>()
-            //    {
-            //        new Barangay {Name = "Bacayao Norte"},
-            //        new Barangay {Name = "Bacayao Sur"},
-            //        new Barangay {Name = "Barangay I"},
-            //        new Barangay {Name = "Barangay II"},
-            //        new Barangay {Name = "Barangay IV"},
-            //        new Barangay {Name = "Bolosan"},
-            //        new Barangay {Name = "Bonuan Binloc"},
-            //        new Barangay {Name = "Bonuan Boquig"},
-            //        new Barangay {Name = "Bonuan Gueset"},
-            //        new Barangay {Name = "Calmay"},
-            //        new Barangay {Name = "Carael"},
-            //        new Barangay {Name = "Caranglaan"},
-            //        new Barangay {Name = "Herrero"},
-            //        new Barangay {Name = "Lasip Chico"},
-            //        new Barangay {Name = "Lasip Grande"},
-            //        new Barangay {Name = "Lomboy"},
-            //        new Barangay {Name = "Lucao"},
-            //        new Barangay {Name = "Malued"},
-            //        new Barangay {Name = "Mamalingling"},
-            //        new Barangay {Name = "Mangin"},
-            //        new Barangay {Name = "Mayombo"},
-            //        new Barangay {Name = "Pantal"},
-            //        new Barangay {Name = "Poblacion Oeste"},
-            //        new Barangay {Name = "Pogo Chico"},
-            //        new Barangay {Name = "Pogo Grande"},
-            //        new Barangay {Name = "Pugaro Suit"},
-            //        new Barangay {Name = "Salapingao"},
-            //        new Barangay {Name = "Salisay"},
-            //        new Barangay {Name = "Tambac"},
-            //        new Barangay {Name = "Tapuac"},
-            //        new Barangay {Name = "Tebeng"},
-            //    };
-            //    context.Barangay.AddRange(barangays);
-            //    context.SaveChanges();
-            //}
+
+            if (!context.City.Any())
+            {
+                var City = new List<CityMunicipality>()
+               {
+                   new CityMunicipality {Name = "Dagupan City", ProvinceId = 1},
+                   new CityMunicipality {Name = "San Carlos City", ProvinceId = 1}
+               };
+                context.City.AddRange(City);
+                context.SaveChanges();
+            }
+
+            if (!context.Barangay.Any())
+            {
+                var barangays = new List<Barangay>()
+                {
+                    new Barangay {Name = "Bacayao Norte", CityMunicipalityId = 1},
+                    new Barangay {Name = "Bacayao Sur", CityMunicipalityId = 1},
+                    new Barangay {Name = "Barangay I", CityMunicipalityId = 1},
+                    new Barangay {Name = "Barangay II", CityMunicipalityId = 1},
+                    new Barangay {Name = "Barangay IV", CityMunicipalityId = 1},
+                    new Barangay {Name = "Bolosan", CityMunicipalityId = 1},
+                    new Barangay {Name = "Bonuan Binloc", CityMunicipalityId = 1},
+                    new Barangay {Name = "Bonuan Boquig", CityMunicipalityId = 1},
+                    new Barangay {Name = "Bonuan Gueset", CityMunicipalityId = 1},
+                    new Barangay {Name = "Calmay", CityMunicipalityId = 1},
+                    new Barangay {Name = "Carael", CityMunicipalityId = 1},
+                    new Barangay {Name = "Caranglaan", CityMunicipalityId = 1},
+                    new Barangay {Name = "Herrero", CityMunicipalityId = 1},
+                    new Barangay {Name = "Lasip Chico", CityMunicipalityId = 1},
+                    new Barangay {Name = "Lasip Grande", CityMunicipalityId = 1},
+                    new Barangay {Name = "Lomboy", CityMunicipalityId = 1},
+                    new Barangay {Name = "Lucao", CityMunicipalityId = 1},
+                    new Barangay {Name = "Malued", CityMunicipalityId = 1},
+                    new Barangay {Name = "Mamalingling", CityMunicipalityId = 1},
+                    new Barangay {Name = "Mangin", CityMunicipalityId = 1},
+                    new Barangay {Name = "Mayombo", CityMunicipalityId = 1},
+                    new Barangay {Name = "Pantal", CityMunicipalityId = 1},
+                    new Barangay {Name = "Poblacion Oeste", CityMunicipalityId = 1},
+                    new Barangay {Name = "Pogo Chico", CityMunicipalityId = 1},
+                    new Barangay {Name = "Pogo Grande", CityMunicipalityId = 1},
+                    new Barangay {Name = "Pugaro Suit", CityMunicipalityId = 1},
+                    new Barangay {Name = "Salapingao", CityMunicipalityId = 1},
+                    new Barangay {Name = "Salisay", CityMunicipalityId = 1},
+                    new Barangay {Name = "Tambac", CityMunicipalityId = 1},
+                    new Barangay {Name = "Tapuac", CityMunicipalityId = 1},
+                    new Barangay {Name = "Tebeng", CityMunicipalityId = 1}
+                };
+                context.Barangay.AddRange(barangays);
+                context.SaveChanges();
+            }
 
             if (!context.Religion.Any()) 
             {
