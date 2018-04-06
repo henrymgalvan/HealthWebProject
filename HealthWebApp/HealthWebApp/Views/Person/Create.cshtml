@@ -12,10 +12,11 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="NameTitleId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="NameTitleId" class ="form-control" asp-items="ViewBag.NameTitleId"></select>
-            </div>
+            <label asp-for="NameTitle" class="col-md-2 control-label"></label>
+            <select asp-for = "NameTitleId" class="col-md-10 form-control" asp-items = "ViewBag.NameTitleID">
+                <option value = ""> -- Select Name Title --</option>
+            </select>
+            <span asp-validation-for="NameTitleId" class="text-danger"/>
         </div>
         <div class="form-group">
             <label asp-for="FirstName" class="col-md-2 control-label"></label>
@@ -81,9 +82,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="WorkId" class="col-md-2 control-label"></label>
+            <label asp-for="Work" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="WorkId" class ="form-control" asp-items="ViewBag.WorkId"></select>
+                <select asp-for="WorkId" class ="form-control" asp-items="ViewBag.WorkID">
+                    <option value="">-- Select Work --</option>
+                </select>
+                <span asp-validation-for="WorkId" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -94,12 +98,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ReligionId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="ReligionId" class ="form-control" asp-items="ViewBag.ReligionId"></select>
-            </div>
+            <label asp-for="Religion" class="col-md-2 control-label"></label>
+            <select asp-for="ReligionId" class="col-md-10" asp-items="Viewbag.ReligionID">
+               <option value="">-- Select Religion --</option>
+            </select>
+            <span asp-validation-for="ReligionId" class="text-danger" />
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label asp-for="FatherId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="FatherId" class="form-control" />
@@ -112,7 +117,7 @@
                 <input asp-for="MotherId" class="form-control" />
                 <span asp-validation-for="MotherId" class="text-danger"></span>
             </div>
-        </div>
+        </div> -->
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
