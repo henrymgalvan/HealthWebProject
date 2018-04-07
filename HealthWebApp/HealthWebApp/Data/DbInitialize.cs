@@ -143,6 +143,21 @@ namespace HealthWebApp.Data
                context.SaveChanges();
             }
 
+            if (!context.NameTitle.Any())
+            {
+                var NameTitles = new List<NameTitle>()
+               {
+                   new NameTitle {ShortName = "II"},
+                   new NameTitle {ShortName = "III"},
+                   new NameTitle {ShortName = "IV"},
+                   new NameTitle {ShortName = "V"},
+                   new NameTitle {ShortName = "Jr."},
+                   new NameTitle {ShortName = "Sr."},
+               };
+                context.NameTitle.AddRange(NameTitles);
+                context.SaveChanges();
+            }
+
             if (!context.Education.Any()) 
             {
                 var Educations = new List<Education>()

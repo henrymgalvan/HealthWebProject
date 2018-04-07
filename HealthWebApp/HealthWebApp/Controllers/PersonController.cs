@@ -175,13 +175,12 @@ namespace HealthWebApp.Controllers
                                 select w;
             ViewBag.WorkID = new SelectList(worksQuery, "WorkId", "ShortName", selectedWork);
             // ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
-
         }
         
         private void PopulateNameTitleDropDownList(object selectedNameTitle = null)
         {
             var nameTitleQuery = from nt in _nameTitle.Getall().ToList<NameTitle>()
-                                orderby nt.ShortTitle
+                                orderby nt.ShortName
                                 select nt;
             ViewBag.NameTitleID = new SelectList(nameTitleQuery, "NameTitleId", "ShortName", selectedNameTitle);
         }
