@@ -65,13 +65,13 @@ namespace HealthWebApp.Controllers
             PopulateWorksDropDownList();
             PopulateNameTitleDropDownList();
             PopulateReligionDropDownList();
-            PersonEditModel newPerson = new PersonEditModel();
+            PersonCreateModel newPerson = new PersonCreateModel();
             return View(newPerson);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(PersonEditModel newPerson)
+        public IActionResult Create(PersonCreateModel newPerson)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace HealthWebApp.Controllers
                     if (newPerson.PersonConsent)
                     {
                        // var person = new Person();
-                        var person = Mapper.Map<PersonEditModel, Person>(newPerson);
+                        var person = Mapper.Map<PersonCreateModel, Person>(newPerson);
 
                         _person.Add(person);
                         return RedirectToAction("Index");

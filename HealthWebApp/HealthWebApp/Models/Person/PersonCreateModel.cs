@@ -6,9 +6,10 @@ namespace HealthWebApp.Models.Person
 {
     public class PersonCreateModel
     {
+        public int NameTitleId { get; set; }
         [Display(Name = "Title")]
         //[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
-        public int NameTitleId { get; set; }
+        public NameTitle NameTitle { get; set; }
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
@@ -26,7 +27,7 @@ namespace HealthWebApp.Models.Person
         public string LastName { get; set; }
 
         [Display(Name = "Extension Name")]
-        public ExtensionName ExtensionName { get; set; }
+        public EnumExtensionName ExtensionName { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
@@ -34,10 +35,10 @@ namespace HealthWebApp.Models.Person
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Gender")]
-        public Gender Sex { get; set; }
+        public EnumGender Sex { get; set; }
 
         [Display(Name = "Civil Status")]
-        public CivilStatus CivilStatus { get; set; }
+        public EnumCivilStatus CivilStatus { get; set; }
 
         [Phone]
         public string ContactNumber { get; set; }
@@ -45,11 +46,13 @@ namespace HealthWebApp.Models.Person
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        public int WorkId {get; set;}
+        public int WorkId { get; set; }
+        public Work Work {get; set;}
 
         public int ReligionId { get; set; }
+        public Religion Religion { get; set; }
 
-        public int FatherId { get; set; }
+        public int Father { get; set; }
 
         public int MotherId { get; set; }
 

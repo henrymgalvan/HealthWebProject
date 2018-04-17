@@ -8,17 +8,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HealthWebApp.Data.EntityModel
 {
-    public enum Gender
+    public enum EnumGender
     {
         Male = 1, Female = 2
     }
 
-    public enum CivilStatus
+    public enum EnumCivilStatus
     {
         Single = 1, Married, LiveIn, Separated, Annulled, Widow
     }
 
-    public enum ExtensionName
+    public enum EnumExtensionName
     {
         II = 1, III = 2, IV = 3, V = 4, Jr = 5, Sr = 6
     }
@@ -43,15 +43,15 @@ namespace HealthWebApp.Data.EntityModel
         [Required, StringLength(30)]
         public string LastName { get; set; }
 
-        public ExtensionName ExtensionName { get; set; }
+        public EnumExtensionName ExtensionName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
 
-        public Gender Sex { get; set; }
+        public EnumGender Sex { get; set; }
         
-        public CivilStatus CivilStatus { get; set; }
+        public EnumCivilStatus CivilStatus { get; set; }
 
         [Phone]
         public string ContactNumber { get; set; }

@@ -1,10 +1,7 @@
 ﻿using HealthWebApp.Data.EntityModel;
 using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HealthWebApp.Models.Person
 {
@@ -26,15 +23,15 @@ namespace HealthWebApp.Models.Person
         [Required, StringLength(30)]
         public string LastName { get; set; }
 
-        public ExtensionName ExtensionName { get; set; }
+        public EnumExtensionName ExtensionName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
 
-        public Gender Sex { get; set; }
+        public EnumGender Sex { get; set; }
         
-        public CivilStatus CivilStatus { get; set; }
+        public EnumCivilStatus CivilStatus { get; set; }
 
         [Phone]
         public string ContactNumber { get; set; }

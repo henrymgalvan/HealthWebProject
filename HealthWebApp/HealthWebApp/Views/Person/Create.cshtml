@@ -1,4 +1,6 @@
-@model HealthWebApp.Models.Person.PersonEditModel
+@using HealthWebApp.Data.EntityModel
+@model HealthWebApp.Models.Person.PersonCreateModel
+
 
 @{
     ViewData["Title"] = "Create";
@@ -6,9 +8,9 @@
 
 <h2>Create</h2>
 
-<form asp-action="Create">
+<form asp-controller="Person" asp-action="Create" method="post">
     <div class="form-horizontal">
-        <h4>PersonEditModel</h4>
+        <h4>Create new Person</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -16,7 +18,7 @@
             <select asp-for = "NameTitleId" class="col-md-10 form-control" asp-items = "ViewBag.NameTitleID">
                 <option value = ""> -- Select Name Title --</option>
             </select>
-            <span asp-validation-for="NameTitleId" class="text-danger"/>
+            <span asp-validation-for="NameTitle" class="text-danger"/>
         </div>
         <div class="form-group">
             <label asp-for="FirstName" class="col-md-2 control-label"></label>
@@ -42,7 +44,8 @@
         <div class="form-group">
             <label asp-for="ExtensionName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="ExtensionName" class="form-control"></select>
+                <select asp-for="ExtensionName" class="form-control"
+                    asp-items ="Html.GetEnumSelectList<EnumExtensionName>()"></select>
                 <span asp-validation-for="ExtensionName" class="text-danger"></span>
             </div>
         </div>
@@ -56,14 +59,16 @@
         <div class="form-group">
             <label asp-for="Sex" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="Sex" class="form-control"></select>
+                <select asp-for="Sex" class="form-control" 
+                        asp-items="Html.GetEnumSelectList<EnumGender>()"></select>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="CivilStatus" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="CivilStatus" class="form-control"></select>
+                <select asp-for="CivilStatus" class="form-control" 
+                        asp-items="Html.GetEnumSelectList<EnumCivilStatus>()"></select>
                 <span asp-validation-for="CivilStatus" class="text-danger"></span>
             </div>
         </div>
@@ -90,13 +95,13 @@
                 <span asp-validation-for="WorkId" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label asp-for="PhilHealthId" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="PhilHealthId" class="form-control" />
                 <span asp-validation-for="PhilHealthId" class="text-danger"></span>
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <label asp-for="Religion" class="col-md-2 control-label"></label>
             <select asp-for="ReligionId" class="col-md-10" asp-items="ViewBag.ReligionID">
@@ -126,7 +131,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label asp-for="DateTimeLastUpdated" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="DateTimeLastUpdated" class="form-control" />
@@ -139,7 +144,7 @@
                 <input asp-for="DateCreated" class="form-control" />
                 <span asp-validation-for="DateCreated" class="text-danger"></span>
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
