@@ -15,7 +15,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="NameTitle" class="col-md-2 control-label"></label>
-            <select asp-for = "NameTitleId" class="col-md-10 form-control" asp-items = "ViewBag.NameTitleID">
+            <select asp-for = "NameTitleId" class="col-md-10 form-control" asp-items = "@ViewBag.NameTitleID">
                 <option value = ""> -- Select Name Title --</option>
             </select>
             <span asp-validation-for="NameTitle" class="text-danger"/>
@@ -89,7 +89,7 @@
         <div class="form-group">
             <label asp-for="Work" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="WorkId" class ="form-control" asp-items="ViewBag.WorkID">
+                <select asp-for="WorkId" class ="form-control" asp-items="@ViewBag.WorkID">
                     <option value="">-- Select Work --</option>
                 </select>
                 <span asp-validation-for="WorkId" class="text-danger" />
@@ -104,7 +104,7 @@
         </div>*@
         <div class="form-group">
             <label asp-for="Religion" class="col-md-2 control-label"></label>
-            <select asp-for="ReligionId" class="col-md-10" asp-items="ViewBag.ReligionID">
+            <select asp-for="ReligionId" class="col-md-10" asp-items="@ViewBag.ReligionID">
                <option value="">-- Select Religion --</option>
             </select>
             <span asp-validation-for="ReligionId" class="text-danger" />

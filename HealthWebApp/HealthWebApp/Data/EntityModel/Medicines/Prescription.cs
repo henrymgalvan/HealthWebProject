@@ -29,7 +29,7 @@ namespace HealthWebApp.Data.EntityModel.Medicines
         public DoseRegimenLookUp doseRegimen { get; set; }
         public int TotalQuantity { get; set; }
         public string QuantityUnitOfMeasure { get; set; }
-        public string IntededPurposeOfMedicine { get; set; } //lookup
+        public string IntendedPurposeOfMedicine { get; set; } //lookup
         public string Medication { get; set; }
         public DateTime DateOfPrescription { get; set; }
         public long PrescribedBy { get; set; }
