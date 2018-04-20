@@ -7,7 +7,7 @@ namespace HealthWebApp.Data.EntityModel.Medicines
 {
     public enum UnitForm
     {
-        Tablet = 1, Capsule = 2, Bottle = 3, Sasche = 4, tube = 5 
+        Tablet = 1, Capsule = 2, Bottle = 3, Sachet = 4, tube = 5 
     }
     //public enum UnitDescription
     //{

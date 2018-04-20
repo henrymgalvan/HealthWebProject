@@ -20,7 +20,7 @@ namespace HealthWebApp.Data.EntityModel.OutPatient
 
         public virtual PhysicalExam PhysicalExam { get; set; }
 
-        public virtual RiskAssesment RiskAssesment { get; set; }
+        public virtual RiskAssessment RiskAssessment { get; set; }
 
         public virtual DoctorsOrder DoctorsOrder { get; set; }
 

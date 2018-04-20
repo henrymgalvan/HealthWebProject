@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HealthWebApp.Data.EntityModel.OutPatient
 {
-    public class RiskAssesment
+    public class RiskAssessment
     {
         public long Id { get; set; }
 
