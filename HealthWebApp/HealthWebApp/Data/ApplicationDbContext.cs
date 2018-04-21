@@ -41,17 +41,17 @@ namespace HealthWebApp.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Person>()
-                .HasOne(p => p.Father)
-                .WithMany()
-                .HasForeignKey(m=>m.FatherId)
-                .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+            //builder.Entity<Person>()
+            //    .HasOne(p => p.Father)
+            //    .WithMany()
+            //    .HasForeignKey(m=>m.FatherId)
+            //    .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
-            builder.Entity<Person>()
-                .HasOne(p => p.Mother)
-                .WithMany()
-                .HasForeignKey(m=>m.MotherId)
-                .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+            //builder.Entity<Person>()
+            //    .HasOne(p => p.Mother)
+            //    .WithMany()
+            //    .HasForeignKey(m=>m.MotherId)
+            //    .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
 
             builder.Entity<Person>()
                 .HasOne(h=>h.PhilHealth)
@@ -63,7 +63,7 @@ namespace HealthWebApp.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         
-        public DbSet<HealthWebApp.Models.Person.PersonEditModel> PersonEditModel { get; set; }
+       // public DbSet<HealthWebApp.Models.Person.PersonEditModel> PersonEditModel { get; set; }
 
     }
 }

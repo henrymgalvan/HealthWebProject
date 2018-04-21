@@ -51,7 +51,7 @@ namespace HealthWebApp.Models.Person
 
         public int ReligionId { get; set; }
 
-        public int Father { get; set; }
+        public int FatherId { get; set; }
 
         public int MotherId { get; set; }
 

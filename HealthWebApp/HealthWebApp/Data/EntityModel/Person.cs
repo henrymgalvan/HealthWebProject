@@ -70,10 +70,10 @@ namespace HealthWebApp.Data.EntityModel
         public virtual Religion Religion { get; set; }
 
         public long FatherId { get; set; }
-        public virtual Person Father { get; set; }
+        //public virtual Person Father { get; set; }
 
         public long MotherId { get; set; }
-        public virtual Person Mother { get; set; }
+        //public virtual Person Mother { get; set; }
 
         public bool PersonConsent { get; set; } //Consent of patient to digital storage
 

@@ -147,12 +147,12 @@ namespace HealthWebApp.Data
             {
                 var NameTitles = new List<NameTitle>()
                {
-                   new NameTitle {Name = "II"},
-                   new NameTitle {Name = "III"},
-                   new NameTitle {Name = "IV"},
-                   new NameTitle {Name = "V"},
-                   new NameTitle {Name = "Jr."},
-                   new NameTitle {Name = "Sr."},
+                   new NameTitle {Name = "M.D."},
+                   new NameTitle {Name = "Nurse"},
+                   new NameTitle {Name = "Engineer"},
+                   new NameTitle {Name = "Attorney"},
+                   new NameTitle {Name = "Sanitation Inspector"},
+                   new NameTitle {Name = "Midwives"},
                };
                 context.NameTitle.AddRange(NameTitles);
                 context.SaveChanges();

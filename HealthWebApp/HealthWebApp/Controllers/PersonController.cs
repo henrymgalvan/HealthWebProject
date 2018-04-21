@@ -79,12 +79,17 @@ namespace HealthWebApp.Controllers
                 {
                     if (newPerson.PersonConsent)
                     {
-                       // var person = new Person();
+                        newPerson.FatherId = 0;
+                        newPerson.MotherId = 0;
+                        
                         var person = Mapper.Map<PersonCreateModel, Person>(newPerson);
 
                         _person.Add(person);
                         return RedirectToAction("Index");
                     }
+                } else
+                {
+                    return View(newPerson);
                 }
             }
 //            catch (Exception err)
