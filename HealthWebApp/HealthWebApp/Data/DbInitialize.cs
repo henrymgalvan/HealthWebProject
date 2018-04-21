@@ -104,29 +104,29 @@ namespace HealthWebApp.Data
             {
                 var Religions = new List<Religion>()
                {
-                   new Religion {ShortName = "Aglipay"},
-                   new Religion {ShortName = "Alliance of Bible Christian Community"},
-                   new Religion {ShortName = "Anglican"},
-                   new Religion {ShortName = "Anglican"},
-                   new Religion {ShortName = "Baptist"},
-                   new Religion {ShortName = "Born Again Christian"},
-                   new Religion {ShortName = "Buddhism"},
-                   new Religion {ShortName = "Catholic"},
-                   new Religion {ShortName = "Church of God"},
-                   new Religion {ShortName = "Evangelical"},
-                   new Religion {ShortName = "Iglesia ni Kristo"},
-                   new Religion {ShortName = "Jehovah's Witness"},
-                   new Religion {ShortName = "Life Renewal Christian Ministry"},
-                   new Religion {ShortName = "Lutheran"},
-                   new Religion {ShortName = "Methodist"},
-                   new Religion {ShortName = "Islam"},
-                   new Religion {ShortName = "Pentecostal"},
-                   new Religion {ShortName = "LDS - Mormons"},
-                   new Religion {ShortName = "Protestants"},
-                   new Religion {ShortName = "Seventh Day Adventist"},
-                   new Religion {ShortName = "UCCP"},
-                   new Religion {ShortName = "Wesleyan"},
-                   new Religion {ShortName = "Christian"}
+                   new Religion {Name = "Aglipay"},
+                   new Religion {Name = "Alliance of Bible Christian Community"},
+                   new Religion {Name = "Anglican"},
+                   new Religion {Name = "Anglican"},
+                   new Religion {Name = "Baptist"},
+                   new Religion {Name = "Born Again Christian"},
+                   new Religion {Name = "Buddhism"},
+                   new Religion {Name = "Catholic"},
+                   new Religion {Name = "Church of God"},
+                   new Religion {Name = "Evangelical"},
+                   new Religion {Name = "Iglesia ni Kristo"},
+                   new Religion {Name = "Jehovah's Witness"},
+                   new Religion {Name = "Life Renewal Christian Ministry"},
+                   new Religion {Name = "Lutheran"},
+                   new Religion {Name = "Methodist"},
+                   new Religion {Name = "Islam"},
+                   new Religion {Name = "Pentecostal"},
+                   new Religion {Name = "LDS - Mormons"},
+                   new Religion {Name = "Protestants"},
+                   new Religion {Name = "Seventh Day Adventist"},
+                   new Religion {Name = "UCCP"},
+                   new Religion {Name = "Wesleyan"},
+                   new Religion {Name = "Christian"}
                };
                context.Religion.AddRange(Religions);
                context.SaveChanges();
@@ -136,8 +136,8 @@ namespace HealthWebApp.Data
             {
                 var Works = new List<Work>()
                {
-                   new Work {ShortName = "Accountant"},
-                   new Work {ShortName = "Actor"}
+                   new Work {Name = "Accountant"},
+                   new Work {Name = "Actor"}
                };
                context.Work.AddRange(Works);
                context.SaveChanges();
@@ -147,12 +147,12 @@ namespace HealthWebApp.Data
             {
                 var NameTitles = new List<NameTitle>()
                {
-                   new NameTitle {ShortName = "II"},
-                   new NameTitle {ShortName = "III"},
-                   new NameTitle {ShortName = "IV"},
-                   new NameTitle {ShortName = "V"},
-                   new NameTitle {ShortName = "Jr."},
-                   new NameTitle {ShortName = "Sr."},
+                   new NameTitle {Name = "II"},
+                   new NameTitle {Name = "III"},
+                   new NameTitle {Name = "IV"},
+                   new NameTitle {Name = "V"},
+                   new NameTitle {Name = "Jr."},
+                   new NameTitle {Name = "Sr."},
                };
                 context.NameTitle.AddRange(NameTitles);
                 context.SaveChanges();

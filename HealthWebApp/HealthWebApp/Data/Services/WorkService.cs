@@ -27,7 +27,7 @@ namespace HealthWebApp.Data.Services
 
         public Work Get(int Id)
         {
-            return Getall().FirstOrDefault(p => p.Id == Id);
+            return Getall().FirstOrDefault(p => p.WorkId == Id);
         }
 
         public void Update(Work UpdatedWork)
@@ -38,7 +38,7 @@ namespace HealthWebApp.Data.Services
 
         public void Delete(int id)
         {
-            Work work = _context.Work.FirstOrDefault(p => p.Id == id);
+            Work work = _context.Work.FirstOrDefault(p => p.WorkId == id);
             _context.Work.Remove(work);
             _context.SaveChanges();
          }

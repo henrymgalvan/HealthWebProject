@@ -4,32 +4,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HealthWebApp.Migrations
 {
-    public partial class updateonNameTitle : Migration
+    public partial class idtoWorkIdReligionId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "ShortTitle",
-                table: "NameTitle",
-                newName: "ShortName");
+                name: "Id",
+                table: "Work",
+                newName: "WorkId");
 
             migrationBuilder.RenameColumn(
-                name: "LongTittle",
-                table: "NameTitle",
-                newName: "LongName");
+                name: "Id",
+                table: "Religion",
+                newName: "ReligionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "ShortName",
-                table: "NameTitle",
-                newName: "ShortTitle");
+                name: "WorkId",
+                table: "Work",
+                newName: "Id");
 
             migrationBuilder.RenameColumn(
-                name: "LongName",
-                table: "NameTitle",
-                newName: "LongTittle");
+                name: "ReligionId",
+                table: "Religion",
+                newName: "Id");
         }
     }
 }

@@ -188,16 +188,12 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.NameTitle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NameTitleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("EmployeeId");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("LongName");
-
-                    b.Property<string>("ShortName");
-
-                    b.HasKey("Id");
+                    b.HasKey("NameTitleId");
 
                     b.ToTable("NameTitle");
                 });
@@ -303,30 +299,24 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Religion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReligionId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("EmployeeId");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("LongName");
-
-                    b.Property<string>("ShortName");
-
-                    b.HasKey("Id");
+                    b.HasKey("ReligionId");
 
                     b.ToTable("Religion");
                 });
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Work", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("WorkId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LongName");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("ShortName");
-
-                    b.HasKey("Id");
+                    b.HasKey("WorkId");
 
                     b.ToTable("Work");
                 });

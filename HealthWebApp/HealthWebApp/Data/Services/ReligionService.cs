@@ -27,7 +27,7 @@ namespace HealthWebApp.Data.Services
 
         public Religion Get(int id)
         {
-            return Getall().FirstOrDefault(p => p.Id == id);
+            return Getall().FirstOrDefault(p => p.ReligionId == id);
         }
 
         public void Update(Religion UpdatedReligion)
@@ -38,7 +38,7 @@ namespace HealthWebApp.Data.Services
 
         public void Delete(int Id)
         {
-            Religion religion = _context.Religion.FirstOrDefault(p => p.Id == Id);
+            Religion religion = _context.Religion.FirstOrDefault(p => p.ReligionId == Id);
             _context.Religion.Remove(religion);
             _context.SaveChanges();
          }

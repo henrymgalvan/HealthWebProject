@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using HealthWebApp.Data.EntityModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HealthWebApp.Data.Interface
 {
@@ -10,6 +12,5 @@ namespace HealthWebApp.Data.Interface
         void Add(NameTitle newNameTitle);
         void Update(NameTitle updatedNameTitle);
         void Delete(int Id);
-         
     }
 }

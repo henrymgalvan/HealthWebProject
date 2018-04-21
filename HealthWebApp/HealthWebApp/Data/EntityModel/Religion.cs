@@ -7,11 +7,12 @@ namespace HealthWebApp.Data.EntityModel
 {
     public class Religion
     {
-        public int Id { get; set; }
-        public string ShortName { get; set; }
-        public string LongName { get; set; }
+        public int ReligionId { get; set; }
+        public string Name { get; set; }
+        //public string ShortName { get; set; }
+        //public string LongName { get; set; }
 
-        public long EmployeeId { get; set; }
+        //public long EmployeeId { get; set; }
 
     }
 }

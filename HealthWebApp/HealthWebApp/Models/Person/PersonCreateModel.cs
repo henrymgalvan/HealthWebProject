@@ -1,4 +1,5 @@
 ﻿using HealthWebApp.Data.EntityModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,9 +8,9 @@ namespace HealthWebApp.Models.Person
     public class PersonCreateModel
     {
         public int NameTitleId { get; set; }
-        [Display(Name = "Title")]
+        //[Display(Name = "Title")]
         //[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
-        public NameTitle NameTitle { get; set; }
+        //public NameTitle NameTitles { get; set; }
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
@@ -47,10 +48,8 @@ namespace HealthWebApp.Models.Person
         public string EmailAddress { get; set; }
 
         public int WorkId { get; set; }
-        public Work Work {get; set;}
 
         public int ReligionId { get; set; }
-        public Religion Religion { get; set; }
 
         public int Father { get; set; }
 

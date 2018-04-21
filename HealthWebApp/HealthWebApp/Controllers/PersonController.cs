@@ -65,8 +65,8 @@ namespace HealthWebApp.Controllers
             PopulateWorksDropDownList();
             PopulateNameTitleDropDownList();
             PopulateReligionDropDownList();
-            PersonCreateModel newPerson = new PersonCreateModel();
-            return View(newPerson);
+            var model = new PersonCreateModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -93,9 +93,9 @@ namespace HealthWebApp.Controllers
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
 
-            PopulateWorksDropDownList(newPerson.WorkId);
-            PopulateNameTitleDropDownList(newPerson.NameTitleId);
-            PopulateReligionDropDownList(newPerson.ReligionId);
+            ////PopulateWorksDropDownList(newPerson.WorkId);
+            ////PopulateNameTitleDropDownList(newPerson.NameTitleId);
+            ////PopulateReligionDropDownList(newPerson.ReligionId);
             return View(newPerson);
         }
 
@@ -114,9 +114,9 @@ namespace HealthWebApp.Controllers
                 }   
                 var model = Mapper.Map<Person, PersonEditModel>(person);
 
-                PopulateWorksDropDownList(person.WorkId);
-                PopulateNameTitleDropDownList(person.NameTitleId);
-                PopulateReligionDropDownList(person.ReligionId);
+                //PopulateWorksDropDownList(person.WorkId);
+                //PopulateNameTitleDropDownList(person.NameTitleId);
+                //PopulateReligionDropDownList(person.ReligionId);
 
                 return View(model);             
             }
@@ -141,9 +141,9 @@ namespace HealthWebApp.Controllers
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
 
-            PopulateWorksDropDownList(editPerson.WorkId);
-            PopulateNameTitleDropDownList(editPerson.NameTitleId);
-            PopulateReligionDropDownList(editPerson.ReligionId);
+            //PopulateWorksDropDownList(editPerson.WorkId);
+            //PopulateNameTitleDropDownList(editPerson.NameTitleId);
+            //PopulateReligionDropDownList(editPerson.ReligionId);
 
             return View(editPerson);
         }
@@ -171,26 +171,25 @@ namespace HealthWebApp.Controllers
         private void PopulateWorksDropDownList(object selectedWork = null)
         {
             var worksQuery = from w in _work.Getall().ToList<Work>()
-                                orderby w.ShortName
-                                select w;
-            ViewBag.WorkID = new SelectList(worksQuery, "WorkId", "ShortName", selectedWork);
-            // ViewBag.WorkID = new SelectList(worksQuery.AsNoTracking(), "WorkId", "ShortName", selectedWork);
+                             orderby w.Name
+                             select w;
+            ViewBag.WorkID = new SelectList(worksQuery, "WorkId", "Name", selectedWork);
         }
-        
+
         private void PopulateNameTitleDropDownList(object selectedNameTitle = null)
         {
             var nameTitleQuery = from nt in _nameTitle.Getall().ToList<NameTitle>()
-                                orderby nt.ShortName
-                                select nt;
-            ViewBag.NameTitleID = new SelectList(nameTitleQuery, "NameTitleId", "ShortName", selectedNameTitle);
+                                 orderby nt.Name
+                                 select nt;
+            ViewBag.NameTitleID = new SelectList(nameTitleQuery, "NameTitleId", "Name", selectedNameTitle);
         }
 
         private void PopulateReligionDropDownList(object selectedReligion = null)
         {
             var ReligionsQuery = from r in _religion.Getall().ToList<Religion>()
-                                orderby r.ShortName
-                                select r;
-            ViewBag.ReligionID = new SelectList(ReligionsQuery, "ReligionId", "ShortName", selectedReligion);
+                                 orderby r.Name
+                                 select r;
+            ViewBag.ReligionID = new SelectList(ReligionsQuery, "ReligionId", "Name", selectedReligion);
         }
     }
 }

@@ -11,8 +11,8 @@ using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180407115429_update on NameTitle")]
-    partial class updateonNameTitle
+    [Migration("20180421061316_id to NameTitleId of NameTitle")]
+    partial class idtoNameTitleIdofNameTitle
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -189,16 +189,12 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.NameTitle", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NameTitleId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("EmployeeId");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("LongName");
-
-                    b.Property<string>("ShortName");
-
-                    b.HasKey("Id");
+                    b.HasKey("NameTitleId");
 
                     b.ToTable("NameTitle");
                 });
@@ -307,11 +303,7 @@ namespace HealthWebApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("EmployeeId");
-
-                    b.Property<string>("LongName");
-
-                    b.Property<string>("ShortName");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -323,9 +315,7 @@ namespace HealthWebApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("LongName");
-
-                    b.Property<string>("ShortName");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 

@@ -27,7 +27,7 @@ namespace HealthWebApp.Data.Services
 
         public NameTitle Get(int Id)
         {
-            return Getall().FirstOrDefault(p => p.Id == Id);
+            return Getall().FirstOrDefault(p => p.NameTitleId == Id);
         }
 
         public void Update(NameTitle UpdatedNameTitle)
@@ -38,7 +38,7 @@ namespace HealthWebApp.Data.Services
 
         public void Delete(int Id)
         {
-            NameTitle nameTitle = _context.NameTitle.FirstOrDefault(p => p.Id == Id);
+            NameTitle nameTitle = _context.NameTitle.FirstOrDefault(p => p.NameTitleId == Id);
             _context.NameTitle.Remove(nameTitle);
             _context.SaveChanges();
          }

@@ -14,11 +14,14 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="NameTitle" class="col-md-2 control-label"></label>
-            <select asp-for = "NameTitleId" class="col-md-10 form-control" asp-items = "@ViewBag.NameTitleID">
-                <option value = ""> -- Select Name Title --</option>
-            </select>
-            <span asp-validation-for="NameTitle" class="text-danger"/>
+            <label asp-for="NameTitleId" class="col-md-2 control-label">Title</label>
+            <div class="col-md-10">
+                <select asp-for="NameTitleId" class="form-control" asp-items=@ViewBag.NameTitleID>
+                    <option value=""> -- Select Name Title --</option>
+                </select>
+            </div>
+
+            <span asp-validation-for="NameTitleId" class="text-danger"/>
         </div>
         <div class="form-group">
             <label asp-for="FirstName" class="col-md-2 control-label"></label>
@@ -87,7 +90,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Work" class="col-md-2 control-label"></label>
+            <label asp-for="WorkId" class="col-md-2 control-label">Occupation</label>
             <div class="col-md-10">
                 <select asp-for="WorkId" class ="form-control" asp-items="@ViewBag.WorkID">
                     <option value="">-- Select Work --</option>
@@ -103,10 +106,12 @@
             </div>
         </div>*@
         <div class="form-group">
-            <label asp-for="Religion" class="col-md-2 control-label"></label>
-            <select asp-for="ReligionId" class="col-md-10" asp-items="@ViewBag.ReligionID">
-               <option value="">-- Select Religion --</option>
-            </select>
+            <label asp-for="ReligionId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ReligionId"  class="form-control" asp-items="@ViewBag.ReligionID">
+                    <option value="">-- Select Religion --</option>
+                </select>
+            </div>
             <span asp-validation-for="ReligionId" class="text-danger" />
         </div>
         <!-- <div class="form-group">
@@ -127,10 +132,19 @@
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
                     <input asp-for="PersonConsent" />
-                    <label asp-for="PersonConsent"></label>
+                    <label asp-for="PersonConsent">With consent</label>
                 </div>
             </div>
         </div>
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="PersonConsent" />
+                    <label asp-for="PersonConsent">With consent</label>
+                </div>
+            </div>
+        </div>*@
         @*<div class="form-group">
             <label asp-for="DateTimeLastUpdated" class="col-md-2 control-label"></label>
             <div class="col-md-10">

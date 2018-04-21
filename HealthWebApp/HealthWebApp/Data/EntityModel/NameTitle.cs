@@ -7,10 +7,11 @@ namespace HealthWebApp.Data.EntityModel
 {
     public class NameTitle
     {
-        public int Id { get; set; }
-        public string ShortName { get; set; }
-        public string LongName { get; set; }
+        public int NameTitleId { get; set; }
+        public string Name { get; set; }
+        //public string ShortName { get; set; }
+        //public string LongName { get; set; }
         
-        public long EmployeeId { get; set; }
+        //public long EmployeeId { get; set; }
     }
 }

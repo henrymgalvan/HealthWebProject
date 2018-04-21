@@ -24,7 +24,7 @@ namespace HealthWebApp.Services
                 .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.HouseholdMember.HouseholdProfile.Barangay.CityMunicipality.Province.Name.ToString()))
                 .ForMember(dest => dest.Region, opt => opt.MapFrom(src => src.HouseholdMember.HouseholdProfile.Barangay.CityMunicipality.Province.Region.Name.ToString()))
                 .ForMember(dest => dest.PhilHealthID, opt => opt.MapFrom(src => src.PhilHealth.Identification))
-                .ForMember(dest => dest.Religion, opt => opt.MapFrom(src => src.Religion.LongName))
+                .ForMember(dest => dest.Religion, opt => opt.MapFrom(src => src.Religion.Name))
                 .ForMember(dest => dest.Father, opt => opt.MapFrom(src => src.Father.FullName))
                 .ForMember(dest => dest.Mother, opt => opt.MapFrom(src => src.Mother.FullName));
 
