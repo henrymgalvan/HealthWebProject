@@ -11,8 +11,8 @@ using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180421061316_id to NameTitleId of NameTitle")]
-    partial class idtoNameTitleIdofNameTitle
+    [Migration("20180422040707_Data initialize")]
+    partial class Datainitialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,6 +146,16 @@ namespace HealthWebApp.Migrations
                     b.ToTable("Education");
                 });
 
+            modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.Family", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Family");
+                });
+
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdMember", b =>
                 {
                     b.Property<long>("PersonId");
@@ -220,7 +230,7 @@ namespace HealthWebApp.Migrations
 
                     b.Property<int>("ExtensionName");
 
-                    b.Property<long>("FatherId");
+                    b.Property<long?>("FamilyId");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -233,8 +243,6 @@ namespace HealthWebApp.Migrations
                     b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasMaxLength(30);
-
-                    b.Property<long>("MotherId");
 
                     b.Property<int>("NameTitleId");
 
@@ -250,9 +258,7 @@ namespace HealthWebApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FatherId");
-
-                    b.HasIndex("MotherId");
+                    b.HasIndex("FamilyId");
 
                     b.HasIndex("NameTitleId");
 
@@ -300,24 +306,24 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Religion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ReligionId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("Id");
+                    b.HasKey("ReligionId");
 
                     b.ToTable("Religion");
                 });
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Work", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("WorkId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("Id");
+                    b.HasKey("WorkId");
 
                     b.ToTable("Work");
                 });
@@ -370,68 +376,6 @@ namespace HealthWebApp.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("HealthWebApp.Models.Person.PersonEditModel", b =>
-                {
-                    b.Property<long>("PersonId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CivilStatus");
-
-                    b.Property<string>("ContactNumber");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateOfBirth");
-
-                    b.Property<DateTime>("DateTimeLastUpdated");
-
-                    b.Property<string>("EmailAddress");
-
-                    b.Property<int>("ExtensionName");
-
-                    b.Property<long>("FatherId");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<string>("MiddleName")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<long>("MotherId");
-
-                    b.Property<int>("NameTitleId");
-
-                    b.Property<bool>("PersonConsent");
-
-                    b.Property<long>("PhilHealthId");
-
-                    b.Property<long?>("PhilHealthId1");
-
-                    b.Property<int>("ReligionId");
-
-                    b.Property<int>("Sex");
-
-                    b.Property<int>("WorkId");
-
-                    b.HasKey("PersonId");
-
-                    b.HasIndex("NameTitleId");
-
-                    b.HasIndex("PhilHealthId1");
-
-                    b.HasIndex("ReligionId");
-
-                    b.HasIndex("WorkId");
-
-                    b.ToTable("PersonEditModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -614,13 +558,9 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Person", b =>
                 {
-                    b.HasOne("HealthWebApp.Data.EntityModel.Person", "Father")
+                    b.HasOne("HealthWebApp.Data.EntityModel.Household.Family", "Family")
                         .WithMany()
-                        .HasForeignKey("FatherId");
-
-                    b.HasOne("HealthWebApp.Data.EntityModel.Person", "Mother")
-                        .WithMany()
-                        .HasForeignKey("MotherId");
+                        .HasForeignKey("FamilyId");
 
                     b.HasOne("HealthWebApp.Data.EntityModel.NameTitle", "NameTitle")
                         .WithMany()
@@ -643,28 +583,6 @@ namespace HealthWebApp.Migrations
                     b.HasOne("HealthWebApp.Data.EntityModel.Person", "Person")
                         .WithOne("PhilHealth")
                         .HasForeignKey("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("HealthWebApp.Models.Person.PersonEditModel", b =>
-                {
-                    b.HasOne("HealthWebApp.Data.EntityModel.NameTitle", "NameTitle")
-                        .WithMany()
-                        .HasForeignKey("NameTitleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", "PhilHealth")
-                        .WithMany()
-                        .HasForeignKey("PhilHealthId1");
-
-                    b.HasOne("HealthWebApp.Data.EntityModel.Religion", "Religion")
-                        .WithMany()
-                        .HasForeignKey("ReligionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("HealthWebApp.Data.EntityModel.Work", "Work")
-                        .WithMany()
-                        .HasForeignKey("WorkId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

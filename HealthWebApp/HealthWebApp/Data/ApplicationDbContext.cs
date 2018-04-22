@@ -36,6 +36,7 @@ namespace HealthWebApp.Data
 
         public DbSet<HouseholdMember> HouseholdMember { get; set; }
         public DbSet<HouseholdProfile> HouseholdProfile { get; set; }
+        //public DbSet<Family> Family { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -52,6 +53,15 @@ namespace HealthWebApp.Data
             //    .WithMany()
             //    .HasForeignKey(m=>m.MotherId)
             //    .OnDelete(Microsoft.EntityFrameworkCore.Metadata.DeleteBehavior.Restrict);
+            //builder.Entity<Family>()
+            //        .HasOne(p => p.Father)
+            //        .WithMany()
+            //        .HasForeignKey(m => m.FatherId)
+            //        .OnDelete();
+            //builder.Entity<Family>()
+            //        .HasOne(p => p.Mother)
+            //        .WithMany()
+            //        .HasForeignKey(m => m.MotherID);
 
             builder.Entity<Person>()
                 .HasOne(h=>h.PhilHealth)

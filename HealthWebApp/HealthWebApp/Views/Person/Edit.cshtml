@@ -59,14 +59,14 @@
         <div class="form-group">
             <label asp-for="Sex" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="Sex" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                <select asp-for="Sex" class="form-control" asp-items="Html.GetEnumSelectList<EnumGender>()"></select>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
             <label asp-for="CivilStatus" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="CivilStatus" class="form-control" asp-items="Html.GetEnumSelectList<CivilStatus>()"></select>
+                <select asp-for="CivilStatus" class="form-control" asp-items="Html.GetEnumSelectList<EnumCivilStatus>()"></select>
                 <span asp-validation-for="CivilStatus" class="text-danger"></span>
             </div>
         </div>

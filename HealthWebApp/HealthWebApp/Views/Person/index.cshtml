@@ -26,6 +26,7 @@
                 <th>Father</th>
                 <th>Mother</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody class="alert-info">
@@ -50,6 +51,8 @@
                         <td>@patient.Father</td>
                         <td>@patient.Mother</td>
                         <td id="PatientIcon"><a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a></td>
+                        <td id="PatientIcon"><a asp-controller="Person" asp-action="Details" asp-route-id="@patient.Id"> Details</a></td>
+
                     </tr>
                 }
 

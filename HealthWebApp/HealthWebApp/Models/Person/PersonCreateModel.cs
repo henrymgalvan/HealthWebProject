@@ -41,6 +41,8 @@ namespace HealthWebApp.Models.Person
         [Display(Name = "Civil Status")]
         public EnumCivilStatus CivilStatus { get; set; }
 
+
+
         [Phone]
         public string ContactNumber { get; set; }
 
@@ -50,10 +52,6 @@ namespace HealthWebApp.Models.Person
         public int WorkId { get; set; }
 
         public int ReligionId { get; set; }
-
-        public int FatherId { get; set; }
-
-        public int MotherId { get; set; }
 
         public bool PersonConsent { get; set; }
         

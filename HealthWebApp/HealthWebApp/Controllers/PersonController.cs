@@ -30,9 +30,8 @@ namespace HealthWebApp.Controllers
         {
             List<Person> allPersons = _person.Getall().ToList();
             IEnumerable<PersonDetailModel> PersonModels;
- 
-           if (allPersons.Any())
-           {
+            if (allPersons.Any())
+            {
                 PersonModels = Mapper.Map<List<Person>, List<PersonDetailModel>>(allPersons);
                 var model = new PersonIndexModel()
                 {
@@ -54,9 +53,7 @@ namespace HealthWebApp.Controllers
                 var model = Mapper.Map<Person, PersonDetailModel>(person);
                 return View(model);
             }
-
             return RedirectToAction("Index", "Home");
-
         }
 
         [HttpGet]
@@ -79,11 +76,7 @@ namespace HealthWebApp.Controllers
                 {
                     if (newPerson.PersonConsent)
                     {
-                        newPerson.FatherId = 0;
-                        newPerson.MotherId = 0;
-                        
                         var person = Mapper.Map<PersonCreateModel, Person>(newPerson);
-
                         _person.Add(person);
                         return RedirectToAction("Index");
                     }
@@ -119,9 +112,9 @@ namespace HealthWebApp.Controllers
                 }   
                 var model = Mapper.Map<Person, PersonEditModel>(person);
 
-                //PopulateWorksDropDownList(person.WorkId);
-                //PopulateNameTitleDropDownList(person.NameTitleId);
-                //PopulateReligionDropDownList(person.ReligionId);
+                PopulateWorksDropDownList(person.WorkId);
+                PopulateNameTitleDropDownList(person.NameTitleId);
+                PopulateReligionDropDownList(person.ReligionId);
 
                 return View(model);             
             }
