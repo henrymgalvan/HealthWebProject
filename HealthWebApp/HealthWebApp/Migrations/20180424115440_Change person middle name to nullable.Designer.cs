@@ -11,8 +11,8 @@ using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180422040707_Data initialize")]
-    partial class Datainitialize
+    [Migration("20180424115440_Change person middle name to nullable")]
+    partial class Changepersonmiddlenametonullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -241,14 +241,11 @@ namespace HealthWebApp.Migrations
                         .HasMaxLength(30);
 
                     b.Property<string>("MiddleName")
-                        .IsRequired()
                         .HasMaxLength(30);
 
                     b.Property<int>("NameTitleId");
 
                     b.Property<bool>("PersonConsent");
-
-                    b.Property<long>("PhilHealthId");
 
                     b.Property<int>("ReligionId");
 
@@ -271,8 +268,7 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("PersonId");
 
                     b.Property<int>("Category");
 
@@ -290,16 +286,11 @@ namespace HealthWebApp.Migrations
 
                     b.Property<bool>("Lifetime");
 
-                    b.Property<long>("PersonId");
-
                     b.Property<int>("Sponsored");
 
                     b.Property<int>("StatusType");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId")
-                        .IsUnique();
+                    b.HasKey("PersonId");
 
                     b.ToTable("PhilHealth");
                 });
@@ -551,7 +542,7 @@ namespace HealthWebApp.Migrations
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdProfile", b =>
                 {
                     b.HasOne("HealthWebApp.Data.EntityModel.Barangays.Barangay", "Barangay")
-                        .WithMany()
+                        .WithMany("HouseholdProfiles")
                         .HasForeignKey("BarangayId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -580,7 +571,7 @@ namespace HealthWebApp.Migrations
 
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", b =>
                 {
-                    b.HasOne("HealthWebApp.Data.EntityModel.Person", "Person")
+                    b.HasOne("HealthWebApp.Data.EntityModel.Person")
                         .WithOne("PhilHealth")
                         .HasForeignKey("HealthWebApp.Data.EntityModel.PhilHealthFolder.PhilHealth", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade);

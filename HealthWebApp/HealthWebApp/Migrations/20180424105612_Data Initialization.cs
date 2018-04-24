@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HealthWebApp.Migrations
 {
-    public partial class Datainitialize : Migration
+    public partial class DataInitialization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -194,7 +194,6 @@ namespace HealthWebApp.Migrations
                     MiddleName = table.Column<string>(maxLength: 30, nullable: false),
                     NameTitleId = table.Column<int>(nullable: false),
                     PersonConsent = table.Column<bool>(nullable: false),
-                    PhilHealthId = table.Column<long>(nullable: false),
                     ReligionId = table.Column<int>(nullable: false),
                     Sex = table.Column<int>(nullable: false),
                     WorkId = table.Column<int>(nullable: false)
@@ -338,8 +337,7 @@ namespace HealthWebApp.Migrations
                 name: "PhilHealth",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PersonId = table.Column<long>(nullable: false),
                     Category = table.Column<int>(nullable: false),
                     DateAssigned = table.Column<DateTime>(nullable: false),
                     EmployeeId = table.Column<long>(nullable: false),
@@ -348,13 +346,12 @@ namespace HealthWebApp.Migrations
                     Identification = table.Column<string>(nullable: true),
                     Individual = table.Column<int>(nullable: false),
                     Lifetime = table.Column<bool>(nullable: false),
-                    PersonId = table.Column<long>(nullable: false),
                     Sponsored = table.Column<int>(nullable: false),
                     StatusType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PhilHealth", x => x.Id);
+                    table.PrimaryKey("PK_PhilHealth", x => x.PersonId);
                     table.ForeignKey(
                         name: "FK_PhilHealth_People_PersonId",
                         column: x => x.PersonId,
@@ -550,12 +547,6 @@ namespace HealthWebApp.Migrations
                 name: "IX_People_WorkId",
                 table: "People",
                 column: "WorkId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PhilHealth_PersonId",
-                table: "PhilHealth",
-                column: "PersonId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

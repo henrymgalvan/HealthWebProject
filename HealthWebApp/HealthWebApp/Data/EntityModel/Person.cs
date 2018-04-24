@@ -37,7 +37,7 @@ namespace HealthWebApp.Data.EntityModel
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]   //First letter is capital, remaining characters is alphabetical
         public string FirstName { get; set; }
 
-        [Required, StringLength(30)]
+        [StringLength(30)]
         public string MiddleName { get; set; }
 
         [Required, StringLength(30)]
@@ -66,7 +66,6 @@ namespace HealthWebApp.Data.EntityModel
         public long? FamilyId { get; set; }
         public virtual Family Family { get; set; }
 
-        public long PhilHealthId { get; set; }
         public virtual PhilHealth PhilHealth { get; set; }
 
         public int ReligionId { get; set; }

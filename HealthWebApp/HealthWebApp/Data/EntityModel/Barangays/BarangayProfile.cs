@@ -13,7 +13,7 @@ namespace HealthWebApp.Data.EntityModel.Barangays
         public long BarangayId { get; set; }
         public virtual Barangay Barangay { get; set; }
 
-        public IEnumerable<BarangayOfficial> BarangayOfficials { get; set; }
+        public virtual IEnumerable<BarangayOfficial> BarangayOfficials { get; set; }
         public virtual IEnumerable<Population> Population { get; set; }
 
         public virtual IEnumerable<Employee> BarangayNurses { get; set; }

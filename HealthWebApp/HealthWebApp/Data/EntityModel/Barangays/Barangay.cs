@@ -1,3 +1,4 @@
+using HealthWebApp.Data.EntityModel.Household;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,7 @@ namespace HealthWebApp.Data.EntityModel.Barangays
         public long Id { get; set; }
         public string Name { get; set; }
 
+        public virtual IEnumerable<HouseholdProfile> HouseholdProfiles { get; set; }
         public int CityMunicipalityId { get; set; }
         public virtual CityMunicipality CityMunicipality { get; set; }
 

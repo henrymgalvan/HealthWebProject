@@ -11,9 +11,10 @@ using HealthWebApp.Data.EntityModel.PhilHealthFolder;
 namespace HealthWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180424105612_Data Initialization")]
+    partial class DataInitialization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -240,6 +241,7 @@ namespace HealthWebApp.Migrations
                         .HasMaxLength(30);
 
                     b.Property<string>("MiddleName")
+                        .IsRequired()
                         .HasMaxLength(30);
 
                     b.Property<int>("NameTitleId");
@@ -541,7 +543,7 @@ namespace HealthWebApp.Migrations
             modelBuilder.Entity("HealthWebApp.Data.EntityModel.Household.HouseholdProfile", b =>
                 {
                     b.HasOne("HealthWebApp.Data.EntityModel.Barangays.Barangay", "Barangay")
-                        .WithMany("HouseholdProfiles")
+                        .WithMany()
                         .HasForeignKey("BarangayId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

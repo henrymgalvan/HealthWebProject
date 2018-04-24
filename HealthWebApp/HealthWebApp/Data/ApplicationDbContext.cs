@@ -63,10 +63,6 @@ namespace HealthWebApp.Data
             //        .WithMany()
             //        .HasForeignKey(m => m.MotherID);
 
-            builder.Entity<Person>()
-                .HasOne(h=>h.PhilHealth)
-                .WithOne(p=>p.Person)
-                .HasForeignKey<PhilHealth>(g=>g.PersonId);
 
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
