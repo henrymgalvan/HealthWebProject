@@ -11,6 +11,10 @@
     <Compile Remove="Data\temp.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Person\Createa.cshtml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />

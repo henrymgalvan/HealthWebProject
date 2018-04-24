@@ -38,6 +38,7 @@ namespace HealthWebApp.Data.EntityModel.PhilHealthFolder
         [Key]
         [ForeignKey("Person")]
         public long PersonId { get; set; }
+        public virtual Person Person { get; set; }
         //set length to 12 digits
         public string Identification { get; set; }
 

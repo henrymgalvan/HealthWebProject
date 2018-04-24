@@ -43,7 +43,7 @@ namespace HealthWebApp.Models.Person
 //        public virtual HouseholdMember HouseholdMember { get; set; }
         
         public long PhilHealthId { get; set; }
-        public PhilHealth PhilHealth { get; set; }
+        public string PhilHealth { get; set; }
 
         public int ReligionId { get; set; }
         public Religion Religion { get; set; }

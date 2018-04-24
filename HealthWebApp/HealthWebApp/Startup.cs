@@ -62,6 +62,7 @@ namespace HealthWebApp
             services.AddScoped<IWork, WorkService>();
             services.AddScoped<IReligion, ReligionService>();
             services.AddScoped<INameTitle, NameTitleService>();
+            services.AddScoped<IPhilHealth, PhilHealthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
