@@ -40,7 +40,7 @@ namespace HealthWebApp.Data.EntityModel.PhilHealthFolder
         public long PersonId { get; set; }
         public virtual Person Person { get; set; }
         //set length to 12 digits
-        public string Identification { get; set; }
+        public string PhilHealthId { get; set; }
 
         public StatusType StatusType { get; set; }
         public TypeOfMembership Category { get; set; }

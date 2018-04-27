@@ -36,13 +36,15 @@ namespace HealthWebApp.Controllers
 
         }
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(long Id)
         {
-
-            return View();
+            var model = new PhilHealthCreateModel();
+            model.PersonId = Id;
+            model.NameOfMember = _person.Get(Id).FullName;
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Create(PhilHealthEditModel createPhilHealth)
+        public IActionResult Create(PhilHealthCreateModel createPhilHealth)
         {
 
             return Index();
